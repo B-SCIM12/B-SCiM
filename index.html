@@ -17,17 +17,17 @@
     <style>
 
         :root {
-            --primary: #2E5984;
-            --primary-dark: #1a3d5c;
-            --secondary: #5A8DC9;
-            --accent: #D4A574;
-            --light-blue: #E8F3FA;
-            --soft-bg: #F4F8FC;
-            --text: #1a3d5c;
-            --muted: #5a6f7d;
+            --primary: #0a2d4d;
+            --primary-dark: #071d35;
+            --secondary: #c9973d;
+            --accent: #e8c77a;
+            --light-blue: #ebf4fb;
+            --soft-bg: #f7f3ee;
+            --text: #183b5c;
+            --muted: #5a7282;
             --white: #ffffff;
-            --border: #d4e3f0;
-            --shadow: 0 15px 45px rgba(30, 61, 92, 0.12);
+            --border: #dfe9f1;
+            --shadow: 0 15px 45px rgba(10, 45, 77, 0.12);
         }
 
         * {
@@ -62,8 +62,6 @@
             margin: auto;
         }
 
-        /* ================= NAVBAR ================= */
-
         .navbar {
             position: sticky;
             top: 0;
@@ -71,7 +69,7 @@
             background: rgba(255,255,255,0.96);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
-            box-shadow: 0 2px 10px rgba(30, 61, 92, 0.06);
+            box-shadow: 0 2px 10px rgba(10, 45, 77, 0.05);
         }
 
         .nav-inner {
@@ -135,8 +133,8 @@
         }
 
         .nav-button:hover {
-            background: var(--primary-dark);
-            box-shadow: 0 5px 15px rgba(30, 61, 92, 0.25);
+            background: var(--secondary);
+            box-shadow: 0 5px 15px rgba(201, 151, 61, 0.25);
         }
 
         .menu-toggle {
@@ -148,15 +146,13 @@
             cursor: pointer;
         }
 
-        /* ================= HERO ================= */
-
         .hero {
             position: relative;
             overflow: hidden;
             background:
-                radial-gradient(circle at 85% 20%, rgba(90,141,201,0.15), transparent 28%),
-                radial-gradient(circle at 10% 90%, rgba(46,89,132,0.10), transparent 30%),
-                linear-gradient(135deg, #f8fafc, #eef6fc);
+                radial-gradient(circle at 85% 20%, rgba(201, 151, 61, 0.18), transparent 28%),
+                radial-gradient(circle at 10% 90%, rgba(10, 45, 77, 0.08), transparent 30%),
+                linear-gradient(135deg, #f8fbff, #eef5fb);
             padding: 105px 0 100px;
         }
 
@@ -181,9 +177,7 @@
             margin-bottom: 20px;
         }
 
-        .eyebrow i {
-            font-size: 10px;
-        }
+        .eyebrow i { font-size: 10px; }
 
         .hero h1 {
             font-size: clamp(42px, 6vw, 70px);
@@ -193,9 +187,7 @@
             color: var(--text);
         }
 
-        .hero h1 span {
-            color: var(--primary);
-        }
+        .hero h1 span { color: var(--primary); }
 
         .hero-text {
             max-width: 620px;
@@ -225,15 +217,15 @@
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), #164f7b);
             color: white;
-            box-shadow: 0 10px 25px rgba(46, 89, 132, 0.20);
+            box-shadow: 0 10px 25px rgba(10, 45, 77, 0.18);
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
+            background: linear-gradient(135deg, var(--secondary), #b8832d);
             transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(46, 89, 132, 0.30);
+            box-shadow: 0 15px 35px rgba(201, 151, 61, 0.25);
         }
 
         .btn-outline {
@@ -243,18 +235,16 @@
         }
 
         .btn-outline:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: #f9fbfd;
+            border-color: var(--secondary);
+            color: var(--primary-dark);
+            background: #faf8f3;
         }
 
-        .hero-visual {
-            position: relative;
-        }
+        .hero-visual { position: relative; }
 
         .visual-card {
             background: rgba(255,255,255,0.9);
-            border: 1px solid rgba(212, 227, 240, 0.6);
+            border: 1px solid rgba(201, 151, 61, 0.18);
             border-radius: 28px;
             padding: 40px;
             box-shadow: var(--shadow);
@@ -275,16 +265,9 @@
             color: var(--primary-dark);
         }
 
-        .visual-card p {
-            color: var(--muted);
-            font-size: 14px;
-        }
+        .visual-card p { color: var(--muted); font-size: 14px; }
 
-        /* ================= SECTION ================= */
-
-        section {
-            padding: 90px 0;
-        }
+        section { padding: 90px 0; }
 
         .section-header {
             text-align: center;
@@ -308,16 +291,9 @@
             color: var(--primary-dark);
         }
 
-        .section-header p {
-            color: var(--muted);
-            font-size: 15px;
-        }
+        .section-header p { color: var(--muted); font-size: 15px; }
 
-        /* ================= ABOUT ================= */
-
-        .about {
-            background: white;
-        }
+        .about { background: white; }
 
         .about-grid {
             display: grid;
@@ -328,7 +304,7 @@
 
         .about-image {
             min-height: 400px;
-            background: linear-gradient(135deg, var(--light-blue), rgba(212, 227, 240, 0.3));
+            background: linear-gradient(135deg, var(--light-blue), rgba(201, 151, 61, 0.08));
             border-radius: 25px;
             display: flex;
             align-items: center;
@@ -343,7 +319,7 @@
             position: absolute;
             width: 220px;
             height: 220px;
-            border: 30px solid rgba(46, 89, 132, 0.08);
+            border: 30px solid rgba(10, 45, 77, 0.08);
             border-radius: 50%;
             top: -80px;
             right: -60px;
@@ -362,10 +338,7 @@
             color: var(--primary-dark);
         }
 
-        .about-content p {
-            color: var(--muted);
-            margin-bottom: 17px;
-        }
+        .about-content p { color: var(--muted); margin-bottom: 17px; }
 
         .features {
             display: grid;
@@ -404,11 +377,7 @@
             color: var(--muted);
         }
 
-        /* ================= COURSES ================= */
-
-        .courses {
-            background: var(--soft-bg);
-        }
+        .courses { background: var(--soft-bg); }
 
         .courses-grid {
             display: grid;
@@ -431,7 +400,7 @@
 
         .course-top {
             height: 130px;
-            background: linear-gradient(135deg, rgba(90, 141, 201, 0.1), rgba(212, 165, 116, 0.08));
+            background: linear-gradient(135deg, rgba(10,45,77,0.08), rgba(201,151,61,0.12));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -439,9 +408,7 @@
             font-size: 42px;
         }
 
-        .course-body {
-            padding: 24px;
-        }
+        .course-body { padding: 24px; }
 
         .course-tag {
             display: inline-block;
@@ -483,15 +450,9 @@
             align-items: center;
         }
 
-        .course-meta i {
-            color: var(--primary);
-        }
+        .course-meta i { color: var(--primary); }
 
-        .course-button {
-            width: 100%;
-        }
-
-        /* ================= WHY US ================= */
+        .course-button { width: 100%; }
 
         .why-grid {
             display: grid;
@@ -508,7 +469,7 @@
         }
 
         .why-card:hover {
-            border-color: rgba(90, 141, 201, 0.3);
+            border-color: rgba(201, 151, 61, 0.25);
             box-shadow: var(--shadow);
         }
 
@@ -531,16 +492,9 @@
             color: var(--text);
         }
 
-        .why-card p {
-            color: var(--muted);
-            font-size: 13px;
-        }
+        .why-card p { color: var(--muted); font-size: 13px; }
 
-        /* ================= SPEAKERS ================= */
-
-        .speakers {
-            background: var(--soft-bg);
-        }
+        .speakers { background: var(--soft-bg); }
 
         .speaker-note {
             text-align: center;
@@ -565,9 +519,7 @@
             transition: 0.3s;
         }
 
-        .speaker-card:hover {
-            box-shadow: var(--shadow);
-        }
+        .speaker-card:hover { box-shadow: var(--shadow); }
 
         .speaker-avatar {
             width: 80px;
@@ -588,12 +540,7 @@
             color: var(--text);
         }
 
-        .speaker-card p {
-            color: var(--muted);
-            font-size: 11px;
-        }
-
-        /* ================= STATS ================= */
+        .speaker-card p { color: var(--muted); font-size: 11px; }
 
         .stats {
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
@@ -614,12 +561,7 @@
             font-weight: 800;
         }
 
-        .stat p {
-            font-size: 12px;
-            opacity: 0.85;
-        }
-
-        /* ================= GALLERY ================= */
+        .stat p { font-size: 12px; opacity: 0.85; }
 
         .gallery-grid {
             display: grid;
@@ -629,7 +571,7 @@
 
         .gallery-item {
             height: 220px;
-            background: linear-gradient(135deg, var(--light-blue), rgba(90, 141, 201, 0.08));
+            background: linear-gradient(135deg, var(--light-blue), rgba(201,151,61,0.08));
             border-radius: 15px;
             display: flex;
             align-items: center;
@@ -644,25 +586,19 @@
             box-shadow: var(--shadow);
         }
 
-        .gallery-item i {
-            font-size: 35px;
-        }
+        .gallery-item i { font-size: 35px; }
 
-        /* ================= CTA ================= */
-
-        .cta {
-            padding: 80px 0;
-        }
+        .cta { padding: 80px 0; }
 
         .cta-box {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            background: linear-gradient(135deg, var(--primary-dark), #0e4067, var(--secondary));
             color: white;
             border-radius: 25px;
             padding: 65px 30px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(30, 61, 92, 0.20);
+            box-shadow: 0 20px 50px rgba(10, 45, 77, 0.2);
         }
 
         .cta-box::before,
@@ -671,24 +607,14 @@
             position: absolute;
             width: 180px;
             height: 180px;
-            border: 25px solid rgba(255,255,255,0.06);
+            border: 25px solid rgba(255,255,255,0.07);
             border-radius: 50%;
         }
 
-        .cta-box::before {
-            left: -70px;
-            top: -70px;
-        }
+        .cta-box::before { left: -70px; top: -70px; }
+        .cta-box::after { right: -70px; bottom: -70px; }
 
-        .cta-box::after {
-            right: -70px;
-            bottom: -70px;
-        }
-
-        .cta-box > * {
-            position: relative;
-            z-index: 1;
-        }
+        .cta-box > * { position: relative; z-index: 1; }
 
         .cta-box h2 {
             font-size: 37px;
@@ -707,11 +633,7 @@
             background: white;
         }
 
-        .cta-box .btn:hover {
-            background: #f0f5fa;
-        }
-
-        /* ================= FOOTER ================= */
+        .cta-box .btn:hover { background: #f4efe7; }
 
         footer {
             background: var(--primary-dark);
@@ -727,9 +649,7 @@
         }
 
         footer h3,
-        footer h4 {
-            margin-bottom: 13px;
-        }
+        footer h4 { margin-bottom: 13px; }
 
         footer h3 {
             color: white;
@@ -738,17 +658,12 @@
 
         footer p,
         footer a {
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(255,255,255,0.75);
             font-size: 13px;
         }
 
-        footer ul {
-            list-style: none;
-        }
-
-        footer li {
-            margin-bottom: 7px;
-        }
+        footer ul { list-style: none; }
+        footer li { margin-bottom: 7px; }
 
         footer a:hover {
             color: white;
@@ -773,67 +688,43 @@
             transition: 0.3s;
         }
 
-        .socials a:hover {
-            background: var(--primary);
-        }
+        .socials a:hover { background: var(--secondary); }
 
         .copyright {
             border-top: 1px solid rgba(255,255,255,0.10);
             padding-top: 20px;
             text-align: center;
-            color: rgba(255, 255, 255, 0.60);
+            color: rgba(255,255,255,0.60);
             font-size: 11px;
         }
 
-        /* ================= MOBILE ================= */
-
         @media (max-width: 900px) {
-
             .hero-grid,
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
+            .about-grid { grid-template-columns: 1fr; }
 
-            .hero {
-                padding: 75px 0;
-            }
+            .hero { padding: 75px 0; }
 
             .hero-visual {
                 max-width: 500px;
                 margin: auto;
             }
 
-            .courses-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .speakers-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
+            .courses-grid { grid-template-columns: repeat(2, 1fr); }
+            .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: 1fr; }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 35px;
             }
 
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 700px) {
+            .nav-inner { height: 68px; }
 
-            .nav-inner {
-                height: 68px;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
+            .menu-toggle { display: block; }
 
             .nav-links {
                 position: absolute;
@@ -849,40 +740,21 @@
                 box-shadow: 0 10px 20px rgba(0,0,0,0.06);
             }
 
-            .nav-links.active {
-                display: flex;
-            }
+            .nav-links.active { display: flex; }
 
             .nav-button {
                 width: 100%;
                 text-align: center;
             }
 
-            .hero h1 {
-                font-size: 43px;
-            }
-
-            section {
-                padding: 65px 0;
-            }
+            .hero h1 { font-size: 43px; }
+            section { padding: 65px 0; }
 
             .courses-grid,
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .speakers-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .about-content h2 {
-                font-size: 30px;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-
+            .gallery-grid { grid-template-columns: 1fr; }
+            .speakers-grid { grid-template-columns: 1fr 1fr; }
+            .about-content h2 { font-size: 30px; }
+            .features { grid-template-columns: 1fr; }
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -890,22 +762,10 @@
         }
 
         @media (max-width: 450px) {
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .speakers-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero-buttons { flex-direction: column; }
+            .hero-buttons .btn { width: 100%; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .speakers-grid { grid-template-columns: 1fr; }
         }
 
     </style>
@@ -913,21 +773,14 @@
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
-
 <nav class="navbar">
-
     <div class="container nav-inner">
-
         <a href="#home" class="logo">
-
             <img src="logo.png" alt="B-SCIM Logo">
-
             <div class="logo-text">
                 B-SCIM
                 <span>BUILDING SCIENTIFIC MINDS</span>
             </div>
-
         </a>
 
         <button class="menu-toggle" id="menuToggle">
@@ -935,31 +788,19 @@
         </button>
 
         <ul class="nav-links" id="navLinks">
-
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#courses">Courses</a></li>
             <li><a href="#speakers">Speakers</a></li>
             <li><a href="#gallery">Gallery</a></li>
-            <li>
-                <a href="#join" class="nav-button">Join Us</a>
-            </li>
-
+            <li><a href="#join" class="nav-button">Join Us</a></li>
         </ul>
-
     </div>
-
 </nav>
 
-
-<!-- ================= HERO ================= -->
-
 <section class="hero" id="home">
-
     <div class="container hero-grid">
-
         <div>
-
             <div class="eyebrow">
                 <i class="fas fa-circle"></i>
                 Building Scientific Minds
@@ -978,7 +819,6 @@
             </p>
 
             <div class="hero-buttons">
-
                 <a href="#courses" class="btn btn-primary">
                     Explore Courses
                     <i class="fas fa-arrow-right"></i>
@@ -987,69 +827,38 @@
                 <a href="#about" class="btn btn-outline">
                     Discover B-SCIM
                 </a>
-
             </div>
-
         </div>
-
 
         <div class="hero-visual">
-
             <div class="visual-card">
-
                 <img src="logo.png" alt="B-SCIM">
-
                 <h3>Building Scientific Minds</h3>
-
-                <p>
-                    Knowledge • Skills • Practice • Growth
-                </p>
-
+                <p>Knowledge • Skills • Practice • Growth</p>
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= ABOUT ================= -->
-
 <section class="about" id="about">
-
     <div class="container about-grid">
-
         <div class="about-image">
-
             <img src="logo.png" alt="B-SCIM">
-
         </div>
 
-
         <div class="about-content">
-
-            <div class="section-label">
-                Who We Are
-            </div>
-
-            <h2>
-                Empowering the Next Generation of Leaders
-            </h2>
-
+            <div class="section-label">Who We Are</div>
+            <h2>Empowering the Next Generation of Leaders</h2>
             <p>
-                B-SCIM is more than an educational platform. We are a movement dedicated to bridging the gap between theoretical knowledge and practical skills. Our mission is to help students and graduates navigate the complex landscape of modern education and career development.
+                B-SCIM is more than an educational platform. We are a movement dedicated to bridging the gap between theoretical knowledge and practical skills.
             </p>
-
             <p>
                 Through our comprehensive programs, mentorship, and community support, we help you unlock your true potential and achieve your dreams.
             </p>
 
             <div class="features">
                 <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-book"></i></div>
                     <div>
                         <h4>Quality Content</h4>
                         <p>Expert-curated courses and materials</p>
@@ -1057,9 +866,7 @@
                 </div>
 
                 <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
                     <div>
                         <h4>Expert Mentors</h4>
                         <p>Learn from industry professionals</p>
@@ -1067,9 +874,7 @@
                 </div>
 
                 <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
                     <div>
                         <h4>Certification</h4>
                         <p>Recognized credentials</p>
@@ -1077,29 +882,19 @@
                 </div>
 
                 <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-handshake"></i></div>
                     <div>
                         <h4>Career Support</h4>
                         <p>Guidance for success</p>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= COURSES ================= -->
-
 <section class="courses" id="courses">
-
     <div class="container">
-
         <div class="section-header">
             <div class="section-label">Our Offerings</div>
             <h2>Explore Our Courses</h2>
@@ -1107,11 +902,8 @@
         </div>
 
         <div class="courses-grid">
-
             <div class="course-card">
-                <div class="course-top">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
+                <div class="course-top"><i class="fas fa-laptop-code"></i></div>
                 <div class="course-body">
                     <span class="course-tag">TECHNOLOGY</span>
                     <h3>Web Development</h3>
@@ -1125,9 +917,7 @@
             </div>
 
             <div class="course-card">
-                <div class="course-top">
-                    <i class="fas fa-microscope"></i>
-                </div>
+                <div class="course-top"><i class="fas fa-microscope"></i></div>
                 <div class="course-body">
                     <span class="course-tag">SCIENCE</span>
                     <h3>Data Science</h3>
@@ -1141,9 +931,7 @@
             </div>
 
             <div class="course-card">
-                <div class="course-top">
-                    <i class="fas fa-chart-line"></i>
-                </div>
+                <div class="course-top"><i class="fas fa-chart-line"></i></div>
                 <div class="course-body">
                     <span class="course-tag">BUSINESS</span>
                     <h3>Business Strategy</h3>
@@ -1155,20 +943,12 @@
                     <a href="#" class="btn btn-primary course-button">Enroll Now</a>
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= WHY US ================= -->
-
 <section class="about">
-
     <div class="container">
-
         <div class="section-header">
             <div class="section-label">Why Choose Us</div>
             <h2>What Makes Us Different</h2>
@@ -1176,44 +956,29 @@
         </div>
 
         <div class="why-grid">
-
             <div class="why-card">
-                <div class="why-icon">
-                    <i class="fas fa-rocket"></i>
-                </div>
+                <div class="why-icon"><i class="fas fa-rocket"></i></div>
                 <h3>Innovative Learning</h3>
                 <p>Cutting-edge curriculum designed for the modern world</p>
             </div>
 
             <div class="why-card">
-                <div class="why-icon">
-                    <i class="fas fa-star"></i>
-                </div>
+                <div class="why-icon"><i class="fas fa-star"></i></div>
                 <h3>Expert Instructors</h3>
                 <p>Learn from industry leaders with real-world experience</p>
             </div>
 
             <div class="why-card">
-                <div class="why-icon">
-                    <i class="fas fa-globe"></i>
-                </div>
+                <div class="why-icon"><i class="fas fa-globe"></i></div>
                 <h3>Global Community</h3>
                 <p>Connect and collaborate with learners worldwide</p>
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= SPEAKERS ================= -->
-
 <section class="speakers" id="speakers">
-
     <div class="container">
-
         <div class="section-header">
             <div class="section-label">Our Team</div>
             <h2>Meet Our Expert Speakers</h2>
@@ -1224,54 +989,36 @@
         </p>
 
         <div class="speakers-grid">
-
             <div class="speaker-card">
-                <div class="speaker-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
+                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
                 <h3>Dr. Ahmed Hassan</h3>
                 <p>Lead Scientist & Educator</p>
             </div>
 
             <div class="speaker-card">
-                <div class="speaker-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
+                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
                 <h3>Prof. Layla Mostafa</h3>
                 <p>Tech Innovation Expert</p>
             </div>
 
             <div class="speaker-card">
-                <div class="speaker-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
+                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
                 <h3>Mr. Karim El-Sayed</h3>
                 <p>Business Strategy Consultant</p>
             </div>
 
             <div class="speaker-card">
-                <div class="speaker-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
+                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
                 <h3>Dr. Fatima Al-Zahra</h3>
                 <p>Research & Development Lead</p>
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= STATS ================= -->
-
 <section class="stats">
-
     <div class="container">
-
         <div class="stats-grid">
-
             <div class="stat">
                 <h3>10,000+</h3>
                 <p>Active Learners</p>
@@ -1291,75 +1038,38 @@
                 <h3>25</h3>
                 <p>Countries</p>
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= GALLERY ================= -->
-
 <section class="about" id="gallery">
-
     <div class="container">
-
         <div class="section-header">
             <div class="section-label">Moments</div>
             <h2>Our Community in Action</h2>
         </div>
 
         <div class="gallery-grid">
-
-            <div class="gallery-item">
-                <i class="fas fa-image"></i>
-            </div>
-
-            <div class="gallery-item">
-                <i class="fas fa-images"></i>
-            </div>
-
-            <div class="gallery-item">
-                <i class="fas fa-photo-video"></i>
-            </div>
-
+            <div class="gallery-item"><i class="fas fa-image"></i></div>
+            <div class="gallery-item"><i class="fas fa-images"></i></div>
+            <div class="gallery-item"><i class="fas fa-photo-video"></i></div>
         </div>
-
     </div>
-
 </section>
-
-
-<!-- ================= CTA ================= -->
 
 <section class="cta" id="join">
-
     <div class="container">
-
         <div class="cta-box">
-
             <h2>Ready to Transform Your Future?</h2>
-
             <p>Join thousands of learners who have already started their journey with B-SCIM. Take the first step towards success today.</p>
-
             <a href="#" class="btn btn-primary">Start Your Journey Now</a>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- ================= FOOTER ================= -->
-
 <footer>
-
     <div class="container">
-
         <div class="footer-grid">
-
             <div>
                 <h3>B-SCIM</h3>
                 <p>Building Scientific Minds Initiative - Your gateway to knowledge, skills, and success.</p>
@@ -1387,15 +1097,12 @@
                 <p>Phone: +1 (555) 123-4567</p>
                 <p>Location: Global</p>
             </div>
-
         </div>
 
         <div class="copyright">
             &copy; 2024 B-SCIM. All rights reserved. Building Scientific Minds.
         </div>
-
     </div>
-
 </footer>
 
 <script>
@@ -1406,7 +1113,6 @@
         navLinks.classList.toggle('active');
     });
 
-    // Close menu when a link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -1415,5 +1121,4 @@
 </script>
 
 </body>
-
 </html>
