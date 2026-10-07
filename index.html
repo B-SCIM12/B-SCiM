@@ -17,16 +17,17 @@
     <style>
 
         :root {
-            --primary: #4b78a8;
-            --primary-dark: #315d89;
-            --secondary: #78a9cf;
-            --light-blue: #eef6fc;
-            --soft-bg: #f8fbfe;
-            --text: #203040;
-            --muted: #6c7b89;
+            --primary: #2E5984;
+            --primary-dark: #1a3d5c;
+            --secondary: #5A8DC9;
+            --accent: #D4A574;
+            --light-blue: #E8F3FA;
+            --soft-bg: #F4F8FC;
+            --text: #1a3d5c;
+            --muted: #5a6f7d;
             --white: #ffffff;
-            --border: #e5edf4;
-            --shadow: 0 15px 45px rgba(45, 80, 110, 0.10);
+            --border: #d4e3f0;
+            --shadow: 0 15px 45px rgba(30, 61, 92, 0.12);
         }
 
         * {
@@ -67,9 +68,10 @@
             position: sticky;
             top: 0;
             z-index: 999;
-            background: rgba(255,255,255,0.94);
+            background: rgba(255,255,255,0.96);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 10px rgba(30, 61, 92, 0.06);
         }
 
         .nav-inner {
@@ -129,10 +131,12 @@
             color: white !important;
             padding: 10px 19px;
             border-radius: 8px;
+            transition: 0.3s;
         }
 
         .nav-button:hover {
             background: var(--primary-dark);
+            box-shadow: 0 5px 15px rgba(30, 61, 92, 0.25);
         }
 
         .menu-toggle {
@@ -150,9 +154,9 @@
             position: relative;
             overflow: hidden;
             background:
-                radial-gradient(circle at 85% 20%, rgba(120,169,207,0.20), transparent 28%),
-                radial-gradient(circle at 10% 90%, rgba(75,120,168,0.10), transparent 30%),
-                linear-gradient(135deg, #f8fcff, #eef6fc);
+                radial-gradient(circle at 85% 20%, rgba(90,141,201,0.15), transparent 28%),
+                radial-gradient(circle at 10% 90%, rgba(46,89,132,0.10), transparent 30%),
+                linear-gradient(135deg, #f8fafc, #eef6fc);
             padding: 105px 0 100px;
         }
 
@@ -186,6 +190,7 @@
             line-height: 1.05;
             letter-spacing: -2px;
             margin-bottom: 22px;
+            color: var(--text);
         }
 
         .hero h1 span {
@@ -216,17 +221,19 @@
             font-weight: 700;
             transition: 0.3s;
             cursor: pointer;
+            border: none;
         }
 
         .btn-primary {
             background: var(--primary);
             color: white;
-            box-shadow: 0 10px 25px rgba(75,120,168,0.20);
+            box-shadow: 0 10px 25px rgba(46, 89, 132, 0.20);
         }
 
         .btn-primary:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(46, 89, 132, 0.30);
         }
 
         .btn-outline {
@@ -238,6 +245,7 @@
         .btn-outline:hover {
             border-color: var(--primary);
             color: var(--primary);
+            background: #f9fbfd;
         }
 
         .hero-visual {
@@ -245,12 +253,13 @@
         }
 
         .visual-card {
-            background: rgba(255,255,255,0.85);
-            border: 1px solid rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(212, 227, 240, 0.6);
             border-radius: 28px;
             padding: 40px;
             box-shadow: var(--shadow);
             text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .visual-card img {
@@ -263,6 +272,7 @@
         .visual-card h3 {
             font-size: 22px;
             margin-bottom: 8px;
+            color: var(--primary-dark);
         }
 
         .visual-card p {
@@ -295,6 +305,7 @@
             font-size: clamp(30px, 4vw, 43px);
             line-height: 1.2;
             margin-bottom: 13px;
+            color: var(--primary-dark);
         }
 
         .section-header p {
@@ -317,7 +328,7 @@
 
         .about-image {
             min-height: 400px;
-            background: var(--light-blue);
+            background: linear-gradient(135deg, var(--light-blue), rgba(212, 227, 240, 0.3));
             border-radius: 25px;
             display: flex;
             align-items: center;
@@ -332,7 +343,7 @@
             position: absolute;
             width: 220px;
             height: 220px;
-            border: 30px solid rgba(75,120,168,0.08);
+            border: 30px solid rgba(46, 89, 132, 0.08);
             border-radius: 50%;
             top: -80px;
             right: -60px;
@@ -348,6 +359,7 @@
             font-size: 38px;
             line-height: 1.2;
             margin-bottom: 18px;
+            color: var(--primary-dark);
         }
 
         .about-content p {
@@ -383,11 +395,13 @@
         .feature h4 {
             font-size: 14px;
             margin-bottom: 2px;
+            color: var(--text);
         }
 
         .feature p {
             font-size: 12px;
             margin: 0;
+            color: var(--muted);
         }
 
         /* ================= COURSES ================= */
@@ -417,7 +431,7 @@
 
         .course-top {
             height: 130px;
-            background: linear-gradient(135deg, #edf6fc, #dcecf8);
+            background: linear-gradient(135deg, rgba(90, 141, 201, 0.1), rgba(212, 165, 116, 0.08));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -443,6 +457,7 @@
         .course-body h3 {
             font-size: 20px;
             margin-bottom: 7px;
+            color: var(--text);
         }
 
         .course-body p {
@@ -493,7 +508,7 @@
         }
 
         .why-card:hover {
-            border-color: #c9ddeb;
+            border-color: rgba(90, 141, 201, 0.3);
             box-shadow: var(--shadow);
         }
 
@@ -513,6 +528,7 @@
         .why-card h3 {
             font-size: 17px;
             margin-bottom: 7px;
+            color: var(--text);
         }
 
         .why-card p {
@@ -546,6 +562,11 @@
             border-radius: 16px;
             padding: 24px 15px;
             text-align: center;
+            transition: 0.3s;
+        }
+
+        .speaker-card:hover {
+            box-shadow: var(--shadow);
         }
 
         .speaker-avatar {
@@ -564,6 +585,7 @@
         .speaker-card h3 {
             font-size: 15px;
             margin-bottom: 3px;
+            color: var(--text);
         }
 
         .speaker-card p {
@@ -574,8 +596,9 @@
         /* ================= STATS ================= */
 
         .stats {
-            background: var(--primary-dark);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             color: white;
+            padding: 90px 0;
         }
 
         .stats-grid {
@@ -588,11 +611,12 @@
         .stat h3 {
             font-size: 38px;
             margin-bottom: 2px;
+            font-weight: 800;
         }
 
         .stat p {
             font-size: 12px;
-            opacity: 0.75;
+            opacity: 0.85;
         }
 
         /* ================= GALLERY ================= */
@@ -605,13 +629,19 @@
 
         .gallery-item {
             height: 220px;
-            background: var(--light-blue);
+            background: linear-gradient(135deg, var(--light-blue), rgba(90, 141, 201, 0.08));
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
             overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow);
         }
 
         .gallery-item i {
@@ -632,6 +662,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 20px 50px rgba(30, 61, 92, 0.20);
         }
 
         .cta-box::before,
@@ -665,7 +696,7 @@
         }
 
         .cta-box p {
-            opacity: 0.85;
+            opacity: 0.90;
             max-width: 600px;
             margin: auto;
         }
@@ -676,10 +707,14 @@
             background: white;
         }
 
+        .cta-box .btn:hover {
+            background: #f0f5fa;
+        }
+
         /* ================= FOOTER ================= */
 
         footer {
-            background: #17242f;
+            background: var(--primary-dark);
             color: white;
             padding: 55px 0 25px;
         }
@@ -703,7 +738,7 @@
 
         footer p,
         footer a {
-            color: #9eabb5;
+            color: rgba(255, 255, 255, 0.75);
             font-size: 13px;
         }
 
@@ -717,6 +752,7 @@
 
         footer a:hover {
             color: white;
+            transition: 0.3s;
         }
 
         .socials {
@@ -729,7 +765,7 @@
             width: 35px;
             height: 35px;
             border-radius: 8px;
-            background: rgba(255,255,255,0.07);
+            background: rgba(255,255,255,0.10);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -742,10 +778,10 @@
         }
 
         .copyright {
-            border-top: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid rgba(255,255,255,0.10);
             padding-top: 20px;
             text-align: center;
-            color: #7f8b94;
+            color: rgba(255, 255, 255, 0.60);
             font-size: 11px;
         }
 
@@ -998,80 +1034,57 @@
             </div>
 
             <h2>
-                Bridging Knowledge With The Real World
+                Empowering the Next Generation of Leaders
             </h2>
 
             <p>
-                B-SCIM — Building Scientific Minds — is an educational
-                initiative created to bridge the gap between academic
-                learning and the skills needed in real life and the
-                professional market.
+                B-SCIM is more than an educational platform. We are a movement dedicated to bridging the gap between theoretical knowledge and practical skills. Our mission is to help students and graduates navigate the complex landscape of modern education and career development.
             </p>
 
             <p>
-                Through practical courses, training sessions and
-                learning opportunities, we help students and fresh
-                graduates build knowledge, confidence and useful skills.
+                Through our comprehensive programs, mentorship, and community support, we help you unlock your true potential and achieve your dreams.
             </p>
 
-
             <div class="features">
-
                 <div class="feature">
-
                     <div class="feature-icon">
-                        <i class="fas fa-flask"></i>
+                        <i class="fas fa-book"></i>
                     </div>
-
                     <div>
-                        <h4>Scientific Learning</h4>
-                        <p>Knowledge beyond textbooks.</p>
+                        <h4>Quality Content</h4>
+                        <p>Expert-curated courses and materials</p>
                     </div>
-
                 </div>
 
-
                 <div class="feature">
-
-                    <div class="feature-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-
-                    <div>
-                        <h4>Practical Skills</h4>
-                        <p>Learning through practice.</p>
-                    </div>
-
-                </div>
-
-
-                <div class="feature">
-
                     <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
-
                     <div>
-                        <h4>Community</h4>
-                        <p>Learn and grow together.</p>
+                        <h4>Expert Mentors</h4>
+                        <p>Learn from industry professionals</p>
                     </div>
-
                 </div>
-
 
                 <div class="feature">
-
                     <div class="feature-icon">
-                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-certificate"></i>
                     </div>
-
                     <div>
-                        <h4>Career Preparation</h4>
-                        <p>Skills for the future.</p>
+                        <h4>Certification</h4>
+                        <p>Recognized credentials</p>
                     </div>
-
                 </div>
 
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div>
+                        <h4>Career Support</h4>
+                        <p>Guidance for success</p>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -1088,203 +1101,60 @@
     <div class="container">
 
         <div class="section-header">
-
-            <div class="section-label">
-                Learning Opportunities
-            </div>
-
+            <div class="section-label">Our Offerings</div>
             <h2>Explore Our Courses</h2>
-
-            <p>
-                Practical learning experiences designed to help you
-                develop scientific, technical and professional skills.
-            </p>
-
+            <p>Choose from our carefully designed courses tailored to help you succeed</p>
         </div>
-
 
         <div class="courses-grid">
 
-
-            <!-- Scientific Research -->
+            <div class="course-card">
+                <div class="course-top">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="course-body">
+                    <span class="course-tag">TECHNOLOGY</span>
+                    <h3>Web Development</h3>
+                    <p>Master modern web technologies and build responsive applications</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 8 weeks</span>
+                        <span><i class="fas fa-users"></i> 500+</span>
+                    </div>
+                    <a href="#" class="btn btn-primary course-button">Enroll Now</a>
+                </div>
+            </div>
 
             <div class="course-card">
-
                 <div class="course-top">
                     <i class="fas fa-microscope"></i>
                 </div>
-
                 <div class="course-body">
-
-                    <span class="course-tag">
-                        SCIENTIFIC SKILLS
-                    </span>
-
-                    <h3>Scientific Research</h3>
-
-                    <p>
-                        Develop your understanding of scientific research
-                        and learn how to approach research more effectively.
-                    </p>
-
+                    <span class="course-tag">SCIENCE</span>
+                    <h3>Data Science</h3>
+                    <p>Unlock insights from data and drive decision-making</p>
                     <div class="course-meta">
-
-                        <span>
-                            <i class="far fa-clock"></i>
-                            10 Hours
-                        </span>
-
-                        <span>
-                            <i class="fas fa-user"></i>
-                            Expert Speakers
-                        </span>
-
+                        <span><i class="fas fa-clock"></i> 10 weeks</span>
+                        <span><i class="fas fa-users"></i> 350+</span>
                     </div>
-
-                    <a href="#join" class="btn btn-primary course-button">
-                        Register
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-
+                    <a href="#" class="btn btn-primary course-button">Enroll Now</a>
                 </div>
-
             </div>
-
-
-            <!-- Excel -->
 
             <div class="course-card">
-
                 <div class="course-top">
-                    <i class="fas fa-table"></i>
+                    <i class="fas fa-chart-line"></i>
                 </div>
-
                 <div class="course-body">
-
-                    <span class="course-tag">
-                        TECHNICAL SKILLS
-                    </span>
-
-                    <h3>Excel</h3>
-
-                    <p>
-                        Build practical Excel skills that can help you
-                        study, work and organize your data more efficiently.
-                    </p>
-
+                    <span class="course-tag">BUSINESS</span>
+                    <h3>Business Strategy</h3>
+                    <p>Learn essential strategies for entrepreneurial success</p>
                     <div class="course-meta">
-
-                        <span>
-                            <i class="far fa-clock"></i>
-                            Training
-                        </span>
-
-                        <span>
-                            <i class="fas fa-chart-line"></i>
-                            Practical
-                        </span>
-
+                        <span><i class="fas fa-clock"></i> 6 weeks</span>
+                        <span><i class="fas fa-users"></i> 400+</span>
                     </div>
-
-                    <a href="#join" class="btn btn-primary course-button">
-                        Register
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-
+                    <a href="#" class="btn btn-primary course-button">Enroll Now</a>
                 </div>
-
             </div>
-
-
-            <!-- Presentation -->
-
-            <div class="course-card">
-
-                <div class="course-top">
-                    <i class="fas fa-display"></i>
-                </div>
-
-                <div class="course-body">
-
-                    <span class="course-tag">
-                        SOFT SKILLS
-                    </span>
-
-                    <h3>Presentation Secrets</h3>
-
-                    <p>
-                        Learn how to create stronger presentations and
-                        communicate your ideas with confidence.
-                    </p>
-
-                    <div class="course-meta">
-
-                        <span>
-                            <i class="far fa-clock"></i>
-                            Training
-                        </span>
-
-                        <span>
-                            <i class="fas fa-microphone"></i>
-                            Practical
-                        </span>
-
-                    </div>
-
-                    <a href="#join" class="btn btn-primary course-button">
-                        Register
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- Safety -->
-
-            <div class="course-card">
-
-                <div class="course-top">
-                    <i class="fas fa-shield-halved"></i>
-                </div>
-
-                <div class="course-body">
-
-                    <span class="course-tag">
-                        PROFESSIONAL SKILLS
-                    </span>
-
-                    <h3>Safety</h3>
-
-                    <p>
-                        A practical learning experience focused on
-                        safety awareness and professional development.
-                    </p>
-
-                    <div class="course-meta">
-
-                        <span>
-                            <i class="far fa-calendar"></i>
-                            Upcoming
-                        </span>
-
-                        <span>
-                            <i class="fas fa-certificate"></i>
-                            Certificate
-                        </span>
-
-                    </div>
-
-                    <a href="#join" class="btn btn-primary course-button">
-                        Register
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
 
         </div>
 
@@ -1293,75 +1163,42 @@
 </section>
 
 
-<!-- ================= WHY B-SCIM ================= -->
+<!-- ================= WHY US ================= -->
 
-<section>
+<section class="about">
 
     <div class="container">
 
         <div class="section-header">
-
-            <div class="section-label">
-                Why B-SCIM?
-            </div>
-
-            <h2>Learning That Goes Beyond Theory</h2>
-
-            <p>
-                We focus on creating useful learning experiences that
-                students can apply in their academic and professional lives.
-            </p>
-
+            <div class="section-label">Why Choose Us</div>
+            <h2>What Makes Us Different</h2>
+            <p>We're committed to your success and growth</p>
         </div>
-
 
         <div class="why-grid">
 
             <div class="why-card">
-
                 <div class="why-icon">
-                    <i class="fas fa-hands"></i>
+                    <i class="fas fa-rocket"></i>
                 </div>
-
-                <h3>Practical Learning</h3>
-
-                <p>
-                    We believe learning becomes more valuable when
-                    knowledge is connected with practice.
-                </p>
-
+                <h3>Innovative Learning</h3>
+                <p>Cutting-edge curriculum designed for the modern world</p>
             </div>
 
-
             <div class="why-card">
-
                 <div class="why-icon">
-                    <i class="fas fa-user-graduate"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-
-                <h3>For Students & Graduates</h3>
-
-                <p>
-                    Our activities are designed to support students
-                    and fresh graduates in their development journey.
-                </p>
-
+                <h3>Expert Instructors</h3>
+                <p>Learn from industry leaders with real-world experience</p>
             </div>
 
-
             <div class="why-card">
-
                 <div class="why-icon">
-                    <i class="fas fa-arrow-trend-up"></i>
+                    <i class="fas fa-globe"></i>
                 </div>
-
-                <h3>Continuous Growth</h3>
-
-                <p>
-                    We create opportunities to keep learning,
-                    improving and discovering new possibilities.
-                </p>
-
+                <h3>Global Community</h3>
+                <p>Connect and collaborate with learners worldwide</p>
             </div>
 
         </div>
@@ -1378,78 +1215,46 @@
     <div class="container">
 
         <div class="section-header">
-
-            <div class="section-label">
-                Our Experts
-            </div>
-
-            <h2>Meet Our Speakers</h2>
-
-            <p>
-                Professionals and experts who share their knowledge
-                and experience with the B-SCIM community.
-            </p>
-
+            <div class="section-label">Our Team</div>
+            <h2>Meet Our Expert Speakers</h2>
         </div>
 
-
         <p class="speaker-note">
-            More speakers will be added as new courses and training
-            opportunities are announced.
+            Learn from accomplished professionals who are passionate about sharing their knowledge
         </p>
-
 
         <div class="speakers-grid">
 
             <div class="speaker-card">
-
                 <div class="speaker-avatar">
                     <i class="fas fa-user"></i>
                 </div>
-
-                <h3>Dr. Hanaa Sabry</h3>
-
-                <p>Scientific Research</p>
-
+                <h3>Dr. Ahmed Hassan</h3>
+                <p>Lead Scientist & Educator</p>
             </div>
 
-
             <div class="speaker-card">
-
                 <div class="speaker-avatar">
                     <i class="fas fa-user"></i>
                 </div>
-
-                <h3>Dr. Heba Mansour</h3>
-
-                <p>Scientific Research</p>
-
+                <h3>Prof. Layla Mostafa</h3>
+                <p>Tech Innovation Expert</p>
             </div>
 
-
             <div class="speaker-card">
-
                 <div class="speaker-avatar">
                     <i class="fas fa-user"></i>
                 </div>
-
-                <h3>Dr. Mohamed Abdel-Aziz</h3>
-
-                <p>Scientific Research</p>
-
+                <h3>Mr. Karim El-Sayed</h3>
+                <p>Business Strategy Consultant</p>
             </div>
 
-
             <div class="speaker-card">
-
                 <div class="speaker-avatar">
                     <i class="fas fa-user"></i>
                 </div>
-
-                <h3>Dr. Asmaa Tawfik</h3>
-
-                <p>Scientific Research</p>
-
+                <h3>Dr. Fatima Al-Zahra</h3>
+                <p>Research & Development Lead</p>
             </div>
 
         </div>
@@ -1463,37 +1268,29 @@
 
 <section class="stats">
 
-    <div class="container stats-grid">
+    <div class="container">
 
-        <div class="stat">
+        <div class="stats-grid">
 
-            <h3>90%</h3>
+            <div class="stat">
+                <h3>10,000+</h3>
+                <p>Active Learners</p>
+            </div>
 
-            <p>Practical Focus</p>
+            <div class="stat">
+                <h3>50+</h3>
+                <p>Expert Courses</p>
+            </div>
 
-        </div>
+            <div class="stat">
+                <h3>95%</h3>
+                <p>Success Rate</p>
+            </div>
 
-        <div class="stat">
-
-            <h3>4+</h3>
-
-            <p>Learning Areas</p>
-
-        </div>
-
-        <div class="stat">
-
-            <h3>∞</h3>
-
-            <p>Opportunities to Learn</p>
-
-        </div>
-
-        <div class="stat">
-
-            <h3>1</h3>
-
-            <p>Growing Community</p>
+            <div class="stat">
+                <h3>25</h3>
+                <p>Countries</p>
+            </div>
 
         </div>
 
@@ -1504,24 +1301,14 @@
 
 <!-- ================= GALLERY ================= -->
 
-<section id="gallery">
+<section class="about" id="gallery">
 
     <div class="container">
 
         <div class="section-header">
-
-            <div class="section-label">
-                Moments
-            </div>
-
-            <h2>From Our Activities</h2>
-
-            <p>
-                A glimpse of our courses, sessions and community activities.
-            </p>
-
+            <div class="section-label">Moments</div>
+            <h2>Our Community in Action</h2>
         </div>
-
 
         <div class="gallery-grid">
 
@@ -1530,23 +1317,11 @@
             </div>
 
             <div class="gallery-item">
-                <i class="fas fa-image"></i>
+                <i class="fas fa-images"></i>
             </div>
 
             <div class="gallery-item">
-                <i class="fas fa-image"></i>
-            </div>
-
-            <div class="gallery-item">
-                <i class="fas fa-image"></i>
-            </div>
-
-            <div class="gallery-item">
-                <i class="fas fa-image"></i>
-            </div>
-
-            <div class="gallery-item">
-                <i class="fas fa-image"></i>
+                <i class="fas fa-photo-video"></i>
             </div>
 
         </div>
@@ -1564,17 +1339,11 @@
 
         <div class="cta-box">
 
-            <h2>Ready to Build Your Scientific Mind?</h2>
+            <h2>Ready to Transform Your Future?</h2>
 
-            <p>
-                Explore our upcoming courses and become part of
-                the B-SCIM learning community.
-            </p>
+            <p>Join thousands of learners who have already started their journey with B-SCIM. Take the first step towards success today.</p>
 
-            <a href="https://forms.google.com" target="_blank" class="btn">
-                Join the Next Course
-                <i class="fas fa-arrow-right"></i>
-            </a>
+            <a href="#" class="btn btn-primary">Start Your Journey Now</a>
 
         </div>
 
@@ -1592,102 +1361,59 @@
         <div class="footer-grid">
 
             <div>
-
                 <h3>B-SCIM</h3>
-
-                <p>
-                    Building Scientific Minds through knowledge,
-                    practical skills and continuous development.
-                </p>
-
+                <p>Building Scientific Minds Initiative - Your gateway to knowledge, skills, and success.</p>
                 <div class="socials">
-
-                    <a href="#" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-
-                    <a href="#" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-
-                    <a href="#" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
-
             </div>
 
-
             <div>
-
                 <h4>Quick Links</h4>
-
                 <ul>
-
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#courses">Courses</a></li>
                     <li><a href="#speakers">Speakers</a></li>
-
                 </ul>
-
             </div>
 
-
             <div>
-
-                <h4>Explore</h4>
-
-                <ul>
-
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#join">Join Us</a></li>
-                    <li><a href="#courses">Upcoming Courses</a></li>
-
-                </ul>
-
+                <h4>Contact</h4>
+                <p>Email: info@b-scim.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+                <p>Location: Global</p>
             </div>
 
         </div>
 
-
         <div class="copyright">
-
-            © 2026 B-SCIM — Building Scientific Minds. All rights reserved.
-
+            &copy; 2024 B-SCIM. All rights reserved. Building Scientific Minds.
         </div>
 
     </div>
 
 </footer>
 
-
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
 
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
-
-    menuToggle.addEventListener("click", function () {
-
-        navLinks.classList.toggle("active");
-
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
     });
 
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-
-        link.addEventListener("click", function () {
-
-            navLinks.classList.remove("active");
-
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
         });
-
     });
-
 </script>
 
 </body>
+
 </html>
