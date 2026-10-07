@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>B-SCIM | Building Scientific Minds</title>
+    <meta name="description" content="B-SCIM - Building Scientific Minds Initiative. Learning, skills, science and career development.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        :root {
+            --primary: #4b78a8;
+            --primary-dark: #315d89;
+            --secondary: #78a9cf;
+            --light-blue: #eef6fc;
+            --soft-bg: #f8fbfe;
+            --text: #203040;
+            --muted: #6c7b89;
+            --white: #ffffff;
+            --border: #e5edf4;
+            --shadow: 0 15px 45px rgba(45, 80, 110, 0.10);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1160px, 92%);
+            margin: auto;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(255,255,255,0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--primary-dark);
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            color: #506170;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-button {
+            background: var(--primary);
+            color: white !important;
+            padding: 10px 19px;
+            border-radius: 8px;
+        }
+
+        .nav-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: none;
+            font-size: 24px;
+            color: var(--primary-dark);
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(120,169,207,0.20), transparent 28%),
+                radial-gradient(circle at 10% 90%, rgba(75,120,168,0.10), transparent 30%),
+                linear-gradient(135deg, #f8fcff, #eef6fc);
+            padding: 105px 0 100px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 13px;
+            border-radius: 50px;
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .eyebrow i {
+            font-size: 10px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 70px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text {
+            max-width: 620px;
+            color: var(--muted);
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 13px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 13px 22px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 25px rgba(75,120,168,0.20);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .visual-card {
+            background: rgba(255,255,255,0.85);
+            border: 1px solid rgba(255,255,255,0.9);
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .visual-card img {
+            width: 190px;
+            height: 190px;
+            object-fit: contain;
+            margin: 0 auto 25px;
+        }
+
+        .visual-card h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .visual-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 45px;
+        }
+
+        .section-label {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(30px, 4vw, 43px);
+            line-height: 1.2;
+            margin-bottom: 13px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-image {
+            min-height: 400px;
+            background: var(--light-blue);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 45px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 30px solid rgba(75,120,168,0.08);
+            border-radius: 50%;
+            top: -80px;
+            right: -60px;
+        }
+
+        .about-image img {
+            width: 230px;
+            object-fit: contain;
+            position: relative;
+        }
+
+        .about-content h2 {
+            font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .about-content p {
+            color: var(--muted);
+            margin-bottom: 17px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .feature {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 35px;
+            height: 35px;
+            min-width: 35px;
+            border-radius: 9px;
+            background: var(--light-blue);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature h4 {
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .feature p {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        /* ================= COURSES ================= */
+
+        .courses {
+            background: var(--soft-bg);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .course-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow);
+        }
+
+        .course-top {
+            height: 130px;
+            background: linear-gradient(135deg, #edf6fc, #dcecf8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 42px;
+        }
+
+        .course-body {
+            padding: 24px;
+        }
+
+        .course-tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--primary);
+            background: var(--light-blue);
+            padding: 5px 9px;
+            border-radius: 50px;
+            margin-bottom: 11px;
+        }
+
+        .course-body h3 {
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+
+        .course-body p {
+            color: var(--muted);
+            font-size: 13px;
+            min-height: 47px;
+            margin-bottom: 17px;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-bottom: 18px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .course-meta span {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .course-meta i {
+            color: var(--primary);
+        }
+
+        .course-button {
+            width: 100%;
+        }
+
+        /* ================= WHY US ================= */
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .why-card {
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .why-card:hover {
+            border-color: #c9ddeb;
+            box-shadow: var(--shadow);
+        }
+
+        .why-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-blue);
+            color: var(--primary);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 19px;
+        }
+
+        .why-card h3 {
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .why-card p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* ================= SPEAKERS ================= */
+
+        .speakers {
+            background: var(--soft-bg);
+        }
+
+        .speaker-note {
+            text-align: center;
+            color: var(--muted);
+            max-width: 600px;
+            margin: -20px auto 40px;
+            font-size: 13px;
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .speaker-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 15px;
+            text-align: center;
+        }
+
+        .speaker-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background: var(--light-blue);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+        }
+
+        .speaker-card h3 {
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .speaker-card p {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 38px;
+            margin-bottom: 2px;
+        }
+
+        .stat p {
+            font-size: 12px;
+            opacity: 0.75;
+        }
+
+        /* ================= GALLERY ================= */
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .gallery-item {
+            height: 220px;
+            background: var(--light-blue);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            overflow: hidden;
+        }
+
+        .gallery-item i {
+            font-size: 35px;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            padding: 80px 0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            border-radius: 25px;
+            padding: 65px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before,
+        .cta-box::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 25px solid rgba(255,255,255,0.06);
+            border-radius: 50%;
+        }
+
+        .cta-box::before {
+            left: -70px;
+            top: -70px;
+        }
+
+        .cta-box::after {
+            right: -70px;
+            bottom: -70px;
+        }
+
+        .cta-box > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-box h2 {
+            font-size: 37px;
+            margin-bottom: 12px;
+        }
+
+        .cta-box p {
+            opacity: 0.85;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .cta-box .btn {
+            margin-top: 25px;
+            color: var(--primary-dark);
+            background: white;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #17242f;
+            color: white;
+            padding: 55px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 40px;
+        }
+
+        footer h3,
+        footer h4 {
+            margin-bottom: 13px;
+        }
+
+        footer h3 {
+            color: white;
+            font-size: 20px;
+        }
+
+        footer p,
+        footer a {
+            color: #9eabb5;
+            font-size: 13px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 7px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 17px;
+        }
+
+        .socials a {
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.07);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .socials a:hover {
+            background: var(--primary);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 20px;
+            text-align: center;
+            color: #7f8b94;
+            font-size: 11px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 900px) {
+
+            .hero-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 75px 0;
+            }
+
+            .hero-visual {
+                max-width: 500px;
+                margin: auto;
+            }
+
+            .courses-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .speakers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 35px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .nav-inner {
+                height: 68px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 68px;
+                left: 0;
+                right: 0;
+                background: white;
+                display: none;
+                flex-direction: column;
+                padding: 20px;
+                gap: 18px;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .courses-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .speakers-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-content h2 {
+                font-size: 30px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .speakers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="container nav-inner">
+
+        <a href="#home" class="logo">
+
+            <img src="logo.png" alt="B-SCIM Logo">
+
+            <div class="logo-text">
+                B-SCIM
+                <span>BUILDING SCIENTIFIC MINDS</span>
+            </div>
+
+        </a>
+
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li>
+                <a href="#join" class="nav-button">Join Us</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+        <div>
+
+            <div class="eyebrow">
+                <i class="fas fa-circle"></i>
+                Building Scientific Minds
+            </div>
+
+            <h1>
+                Learn.
+                <span>Grow.</span>
+                Make an Impact.
+            </h1>
+
+            <p class="hero-text">
+                B-SCIM is an educational initiative that connects academic
+                knowledge with practical skills, helping students and
+                graduates become ready for the real world.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#courses" class="btn btn-primary">
+                    Explore Courses
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+                <a href="#about" class="btn btn-outline">
+                    Discover B-SCIM
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="visual-card">
+
+                <img src="logo.png" alt="B-SCIM">
+
+                <h3>Building Scientific Minds</h3>
+
+                <p>
+                    Knowledge • Skills • Practice • Growth
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-image">
+
+            <img src="logo.png" alt="B-SCIM">
+
+        </div>
+
+
+        <div class="about-content">
+
+            <div class="section-label">
+                Who We Are
+            </div>
+
+            <h2>
+                Bridging Knowledge With The Real World
+            </h2>
+
+            <p>
+                B-SCIM — Building Scientific Minds — is an educational
+                initiative created to bridge the gap between academic
+                learning and the skills needed in real life and the
+                professional market.
+            </p>
+
+            <p>
+                Through practical courses, training sessions and
+                learning opportunities, we help students and fresh
+                graduates build knowledge, confidence and useful skills.
+            </p>
+
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+
+                    <div>
+                        <h4>Scientific Learning</h4>
+                        <p>Knowledge beyond textbooks.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+
+                    <div>
+                        <h4>Practical Skills</h4>
+                        <p>Learning through practice.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+
+                    <div>
+                        <h4>Community</h4>
+                        <p>Learn and grow together.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+
+                    <div>
+                        <h4>Career Preparation</h4>
+                        <p>Skills for the future.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COURSES ================= -->
+
+<section class="courses" id="courses">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                Learning Opportunities
+            </div>
+
+            <h2>Explore Our Courses</h2>
+
+            <p>
+                Practical learning experiences designed to help you
+                develop scientific, technical and professional skills.
+            </p>
+
+        </div>
+
+
+        <div class="courses-grid">
+
+
+            <!-- Scientific Research -->
+
+            <div class="course-card">
+
+                <div class="course-top">
+                    <i class="fas fa-microscope"></i>
+                </div>
+
+                <div class="course-body">
+
+                    <span class="course-tag">
+                        SCIENTIFIC SKILLS
+                    </span>
+
+                    <h3>Scientific Research</h3>
+
+                    <p>
+                        Develop your understanding of scientific research
+                        and learn how to approach research more effectively.
+                    </p>
+
+                    <div class="course-meta">
+
+                        <span>
+                            <i class="far fa-clock"></i>
+                            10 Hours
+                        </span>
+
+                        <span>
+                            <i class="fas fa-user"></i>
+                            Expert Speakers
+                        </span>
+
+                    </div>
+
+                    <a href="#join" class="btn btn-primary course-button">
+                        Register
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Excel -->
+
+            <div class="course-card">
+
+                <div class="course-top">
+                    <i class="fas fa-table"></i>
+                </div>
+
+                <div class="course-body">
+
+                    <span class="course-tag">
+                        TECHNICAL SKILLS
+                    </span>
+
+                    <h3>Excel</h3>
+
+                    <p>
+                        Build practical Excel skills that can help you
+                        study, work and organize your data more efficiently.
+                    </p>
+
+                    <div class="course-meta">
+
+                        <span>
+                            <i class="far fa-clock"></i>
+                            Training
+                        </span>
+
+                        <span>
+                            <i class="fas fa-chart-line"></i>
+                            Practical
+                        </span>
+
+                    </div>
+
+                    <a href="#join" class="btn btn-primary course-button">
+                        Register
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Presentation -->
+
+            <div class="course-card">
+
+                <div class="course-top">
+                    <i class="fas fa-display"></i>
+                </div>
+
+                <div class="course-body">
+
+                    <span class="course-tag">
+                        SOFT SKILLS
+                    </span>
+
+                    <h3>Presentation Secrets</h3>
+
+                    <p>
+                        Learn how to create stronger presentations and
+                        communicate your ideas with confidence.
+                    </p>
+
+                    <div class="course-meta">
+
+                        <span>
+                            <i class="far fa-clock"></i>
+                            Training
+                        </span>
+
+                        <span>
+                            <i class="fas fa-microphone"></i>
+                            Practical
+                        </span>
+
+                    </div>
+
+                    <a href="#join" class="btn btn-primary course-button">
+                        Register
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Safety -->
+
+            <div class="course-card">
+
+                <div class="course-top">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+
+                <div class="course-body">
+
+                    <span class="course-tag">
+                        PROFESSIONAL SKILLS
+                    </span>
+
+                    <h3>Safety</h3>
+
+                    <p>
+                        A practical learning experience focused on
+                        safety awareness and professional development.
+                    </p>
+
+                    <div class="course-meta">
+
+                        <span>
+                            <i class="far fa-calendar"></i>
+                            Upcoming
+                        </span>
+
+                        <span>
+                            <i class="fas fa-certificate"></i>
+                            Certificate
+                        </span>
+
+                    </div>
+
+                    <a href="#join" class="btn btn-primary course-button">
+                        Register
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY B-SCIM ================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                Why B-SCIM?
+            </div>
+
+            <h2>Learning That Goes Beyond Theory</h2>
+
+            <p>
+                We focus on creating useful learning experiences that
+                students can apply in their academic and professional lives.
+            </p>
+
+        </div>
+
+
+        <div class="why-grid">
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    <i class="fas fa-hands"></i>
+                </div>
+
+                <h3>Practical Learning</h3>
+
+                <p>
+                    We believe learning becomes more valuable when
+                    knowledge is connected with practice.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+
+                <h3>For Students & Graduates</h3>
+
+                <p>
+                    Our activities are designed to support students
+                    and fresh graduates in their development journey.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    <i class="fas fa-arrow-trend-up"></i>
+                </div>
+
+                <h3>Continuous Growth</h3>
+
+                <p>
+                    We create opportunities to keep learning,
+                    improving and discovering new possibilities.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SPEAKERS ================= -->
+
+<section class="speakers" id="speakers">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                Our Experts
+            </div>
+
+            <h2>Meet Our Speakers</h2>
+
+            <p>
+                Professionals and experts who share their knowledge
+                and experience with the B-SCIM community.
+            </p>
+
+        </div>
+
+
+        <p class="speaker-note">
+            More speakers will be added as new courses and training
+            opportunities are announced.
+        </p>
+
+
+        <div class="speakers-grid">
+
+            <div class="speaker-card">
+
+                <div class="speaker-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <h3>Dr. Hanaa Sabry</h3>
+
+                <p>Scientific Research</p>
+
+            </div>
+
+
+            <div class="speaker-card">
+
+                <div class="speaker-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <h3>Dr. Heba Mansour</h3>
+
+                <p>Scientific Research</p>
+
+            </div>
+
+
+            <div class="speaker-card">
+
+                <div class="speaker-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <h3>Dr. Mohamed Abdel-Aziz</h3>
+
+                <p>Scientific Research</p>
+
+            </div>
+
+
+            <div class="speaker-card">
+
+                <div class="speaker-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <h3>Dr. Asmaa Tawfik</h3>
+
+                <p>Scientific Research</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+    <div class="container stats-grid">
+
+        <div class="stat">
+
+            <h3>90%</h3>
+
+            <p>Practical Focus</p>
+
+        </div>
+
+        <div class="stat">
+
+            <h3>4+</h3>
+
+            <p>Learning Areas</p>
+
+        </div>
+
+        <div class="stat">
+
+            <h3>∞</h3>
+
+            <p>Opportunities to Learn</p>
+
+        </div>
+
+        <div class="stat">
+
+            <h3>1</h3>
+
+            <p>Growing Community</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GALLERY ================= -->
+
+<section id="gallery">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                Moments
+            </div>
+
+            <h2>From Our Activities</h2>
+
+            <p>
+                A glimpse of our courses, sessions and community activities.
+            </p>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+                <i class="fas fa-image"></i>
+            </div>
+
+            <div class="gallery-item">
+                <i class="fas fa-image"></i>
+            </div>
+
+            <div class="gallery-item">
+                <i class="fas fa-image"></i>
+            </div>
+
+            <div class="gallery-item">
+                <i class="fas fa-image"></i>
+            </div>
+
+            <div class="gallery-item">
+                <i class="fas fa-image"></i>
+            </div>
+
+            <div class="gallery-item">
+                <i class="fas fa-image"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta" id="join">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <h2>Ready to Build Your Scientific Mind?</h2>
+
+            <p>
+                Explore our upcoming courses and become part of
+                the B-SCIM learning community.
+            </p>
+
+            <a href="https://forms.google.com" target="_blank" class="btn">
+                Join the Next Course
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <h3>B-SCIM</h3>
+
+                <p>
+                    Building Scientific Minds through knowledge,
+                    practical skills and continuous development.
+                </p>
+
+                <div class="socials">
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h4>Quick Links</h4>
+
+                <ul>
+
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#speakers">Speakers</a></li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>Explore</h4>
+
+                <ul>
+
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#join">Join Us</a></li>
+                    <li><a href="#courses">Upcoming Courses</a></li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 B-SCIM — Building Scientific Minds. All rights reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", function () {
+
+        navLinks.classList.toggle("active");
+
+    });
+
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+        link.addEventListener("click", function () {
+
+            navLinks.classList.remove("active");
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
