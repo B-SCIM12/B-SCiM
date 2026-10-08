@@ -537,6 +537,13 @@
             color: var(--primary);
             overflow: hidden;
             position: relative;
+            object-fit: cover;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .course-image::after {
@@ -999,33 +1006,29 @@
                 Building Scientific Minds
             </div>
 
-            <h1>
-                Learn.
-                <span>Grow.</span>
-                Succeed.
-            </h1>
+            <h1>Your Journey to <span>Professional Excellence</span> Starts Here</h1>
 
             <p class="hero-text">
-                B-SCIM offers world-class courses in English, Microsoft Excel, Scientific Research, and Design. Learn from expert instructors and transform your skills today.
+                Join our expert-led courses and transform your skills in English, Excel, Research, and Design. Learn from industry professionals with years of experience.
             </p>
 
             <div class="hero-buttons">
-                <a href="#courses" class="btn btn-primary">
+                <button class="btn btn-primary" onclick="document.getElementById('courses').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-graduation-cap"></i>
                     Explore Courses
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-
-                <a href="#contact" class="btn btn-outline">
+                </button>
+                <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-envelope"></i>
                     Get in Touch
-                </a>
+                </button>
             </div>
         </div>
 
         <div class="hero-visual">
             <div class="visual-card">
-                <img src="logo.png" alt="B-SCIM">
-                <h3>Expert Learning</h3>
-                <p>Professional Courses & Expert Instructors</p>
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=500&fit=crop" alt="Education">
+                <h3>Online Learning</h3>
+                <p>Flexible, comprehensive courses tailored to your pace and schedule</p>
             </div>
         </div>
     </div>
@@ -1034,49 +1037,56 @@
 <section class="about" id="about">
     <div class="container about-grid">
         <div class="about-image">
-            <img src="logo.png" alt="B-SCIM">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=500&fit=crop" alt="About B-SCIM">
         </div>
 
         <div class="about-content">
-            <div class="section-label">Who We Are</div>
-            <h2>Empowering the Next Generation</h2>
+            <h2>About B-SCIM</h2>
             <p>
-                B-SCIM is dedicated to bridging the gap between theoretical knowledge and practical skills. We provide comprehensive courses designed to help you succeed in today's competitive world.
+                Building Scientific Minds Initiative is dedicated to fostering excellence in professional development. Our comprehensive courses are designed to equip learners with practical skills and knowledge needed in today's competitive world.
             </p>
             <p>
-                Established in 2026, our initiative brings together industry professionals and educators to create transformative learning experiences. With expert instructors and hands-on training, we ensure every student achieves their goals.
+                With a team of expert instructors and a commitment to quality education, we've helped hundreds of learners achieve their career goals and professional aspirations.
             </p>
 
             <div class="features">
                 <div class="feature">
-                    <div class="feature-icon"><i class="fas fa-book"></i></div>
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
                     <div>
-                        <h4>Expert Courses</h4>
-                        <p>Professional curriculum</p>
+                        <h4>Expert Curriculum</h4>
+                        <p>Carefully designed courses with real-world applications</p>
                     </div>
                 </div>
 
                 <div class="feature">
-                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
                     <div>
-                        <h4>Expert Trainers</h4>
-                        <p>Industry professionals</p>
+                        <h4>Recognized Certifications</h4>
+                        <p>Earn certificates upon successful course completion</p>
                     </div>
                 </div>
 
                 <div class="feature">
-                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
                     <div>
-                        <h4>Certification</h4>
-                        <p>Recognized credentials</p>
+                        <h4>Supportive Community</h4>
+                        <p>Connect with fellow learners and industry professionals</p>
                     </div>
                 </div>
 
                 <div class="feature">
-                    <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                    <div class="feature-icon">
+                        <i class="fas fa-24"></i>
+                    </div>
                     <div>
-                        <h4>Career Support</h4>
-                        <p>Lifetime guidance</p>
+                        <h4>Lifetime Access</h4>
+                        <p>Access course materials anytime, anywhere on any device</p>
                     </div>
                 </div>
             </div>
@@ -1087,200 +1097,79 @@
 <section class="courses" id="courses">
     <div class="container">
         <div class="section-header">
-            <div class="section-label">Our Offerings</div>
-            <h2>Professional Courses</h2>
-            <p>Explore our comprehensive courses taught by industry experts. Click on any course to see details.</p>
+            <div class="section-label">Our Courses</div>
+            <h2>Professional Development Programs</h2>
+            <p>Choose from our expertly crafted courses designed to elevate your career</p>
         </div>
 
         <div class="courses-grid">
-
-            <!-- Course 1: English Edge -->
-            <div class="course-card" onclick="openModal('english')">
+            <div class="course-card">
                 <div class="course-image">
-                    <i class="fas fa-language"></i>
+                    <img src="https://images.unsplash.com/photo-1553446881-d282d3f896fa?w=500&h=300&fit=crop" alt="English Course">
                 </div>
                 <div class="course-body">
                     <span class="course-tag">LANGUAGE</span>
-                    <h3>English Edge Course</h3>
-                    <p>Master English language skills with our comprehensive program designed for all proficiency levels.</p>
-                    <a href="#" class="btn btn-primary course-button" onclick="event.stopPropagation()">View Details</a>
+                    <h3>Professional English</h3>
+                    <p>Master business communication, presentation skills, and professional writing. Perfect for professionals looking to advance their careers internationally.</p>
+                    <button class="btn btn-primary course-button" onclick="showCourseDetails('Professional English')">
+                        Explore
+                    </button>
                 </div>
             </div>
 
-            <!-- Course 2: Microsoft Excel -->
-            <div class="course-card" onclick="openModal('excel')">
+            <div class="course-card">
                 <div class="course-image">
-                    <i class="fas fa-table"></i>
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop" alt="Excel Course">
                 </div>
                 <div class="course-body">
-                    <span class="course-tag">BUSINESS</span>
-                    <h3>Microsoft Excel</h3>
-                    <p>From basics to advanced analytics, become an Excel expert and boost your career prospects.</p>
-                    <a href="#" class="btn btn-primary course-button" onclick="event.stopPropagation()">View Details</a>
+                    <span class="course-tag">DATA</span>
+                    <h3>Advanced Excel Mastery</h3>
+                    <p>Learn data analysis, pivot tables, VBA, and advanced formulas. Transform raw data into actionable insights with Excel like a professional analyst.</p>
+                    <button class="btn btn-primary course-button" onclick="showCourseDetails('Advanced Excel Mastery')">
+                        Explore
+                    </button>
                 </div>
             </div>
 
-            <!-- Course 3: Scientific Research -->
-            <div class="course-card" onclick="openModal('research')">
+            <div class="course-card">
                 <div class="course-image">
-                    <i class="fas fa-flask"></i>
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=300&fit=crop" alt="Research Course">
                 </div>
                 <div class="course-body">
-                    <span class="course-tag">SCIENCE</span>
-                    <h3>Scientific Research</h3>
-                    <p>Learn research methodology, data collection, and analysis techniques for academic excellence.</p>
-                    <a href="#" class="btn btn-primary course-button" onclick="event.stopPropagation()">View Details</a>
+                    <span class="course-tag">RESEARCH</span>
+                    <h3>Research & Analysis</h3>
+                    <p>Develop research methodologies, literature review techniques, and statistical analysis skills for academic and professional research projects.</p>
+                    <button class="btn btn-primary course-button" onclick="showCourseDetails('Research & Analysis')">
+                        Explore
+                    </button>
                 </div>
             </div>
 
-            <!-- Course 4: Photoshop -->
-            <div class="course-card" onclick="openModal('photoshop')">
+            <div class="course-card">
                 <div class="course-image">
-                    <i class="fas fa-palette"></i>
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=300&fit=crop" alt="Design Course">
                 </div>
                 <div class="course-body">
                     <span class="course-tag">DESIGN</span>
-                    <h3>Photoshop</h3>
-                    <p>Master digital design and photo editing skills with hands-on training from industry experts.</p>
-                    <a href="#" class="btn btn-primary course-button" onclick="event.stopPropagation()">View Details</a>
+                    <h3>Graphic Design Fundamentals</h3>
+                    <p>Learn design principles, Adobe Creative Suite, and visual communication. Create stunning graphics and presentations that captivate your audience.</p>
+                    <button class="btn btn-primary course-button" onclick="showCourseDetails('Graphic Design Fundamentals')">
+                        Explore
+                    </button>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
-<!-- MODALS -->
-
-<div id="englishModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2><i class="fas fa-language"></i> English Edge Course</h2>
-            <button class="close-btn" onclick="closeModal('english')">✕</button>
-        </div>
-        
-        <div class="modal-section">
-            <h3>📚 Course Sessions</h3>
-            <ul>
-                <li>Session 1: Grammar Fundamentals & Language Basics</li>
-                <li>Session 2: Conversation Skills & Fluency</li>
-                <li>Session 3: Business English & Professional Communication</li>
-                <li>Session 4: Advanced Communication & Mastery</li>
-            </ul>
-        </div>
-
-        <div class="modal-section">
-            <h3>👨‍🏫 Expert Instructors</h3>
-            <ul>
-                <li>Mohammed Ghouneim</li>
-                <li>Marwa Amir</li>
-                <li>Heba Ramadan</li>
-                <li>Eman El Sayed</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="excelModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2><i class="fas fa-table"></i> Microsoft Excel</h2>
-            <button class="close-btn" onclick="closeModal('excel')">✕</button>
-        </div>
-        
-        <div class="modal-section">
-            <h3>📊 Course Sessions</h3>
-            <ul>
-                <li>Session 1: Excel Basics & Navigation Interface</li>
-                <li>Session 2: Formulas, Functions & Data Manipulation</li>
-                <li>Session 3: Data Analysis, Pivot Tables & Visualization</li>
-                <li>Session 4: Advanced Reporting & Business Solutions</li>
-            </ul>
-        </div>
-
-        <div class="modal-section">
-            <h3>👨‍🏫 Expert Instructors</h3>
-            <ul>
-                <li>Eng. Abdelazim Shaheen</li>
-                <li>Eng. Manar Gamal</li>
-                <li>Eng. Abdelrahman Khaled</li>
-                <li>Acc. Mahmoud Amin</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="researchModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2><i class="fas fa-flask"></i> Scientific Research</h2>
-            <button class="close-btn" onclick="closeModal('research')">✕</button>
-        </div>
-        
-        <div class="modal-section">
-            <h3>🔬 Course Sessions</h3>
-            <ul>
-                <li>Session 1: Research Methodology & Scientific Approach</li>
-                <li>Session 2: Literature Review & Source Management</li>
-                <li>Session 3: Data Collection, Analysis & Interpretation</li>
-                <li>Session 4: Writing, Publication & Presentation</li>
-            </ul>
-        </div>
-
-        <div class="modal-section">
-            <h3>👨‍🏫 Expert Instructors</h3>
-            <ul>
-                <li>Dr. Hanaa Sabry</li>
-                <li>Dr. Heba Mansour</li>
-                <li>Dr. Mohamed Abdel-aziz</li>
-                <li>Dr. Asmaa Tawfik</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="photoshopModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2><i class="fas fa-palette"></i> Photoshop</h2>
-            <button class="close-btn" onclick="closeModal('photoshop')">✕</button>
-        </div>
-        
-        <div class="modal-section">
-            <h3>🎨 Course Sessions</h3>
-            <ul>
-                <li>Session 1: Interface Mastery & Tools Introduction</li>
-                <li>Session 2: Photo Editing & Color Correction Techniques</li>
-                <li>Session 3: Design Projects & Creative Composition</li>
-                <li>Session 4: Advanced Effects, Finishes & Professional Output</li>
-            </ul>
-        </div>
-
-        <div class="modal-section">
-            <h3>👨‍🏫 Expert Instructors</h3>
-            <ul>
-                <li>Rehab Mohamed</li>
-                <li>Jaser Saeed</li>
-                <li>Ahmed Yousry</li>
-                <li>Shimaa Mohamed</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- SPEAKERS INTRO SECTION -->
-
-<section class="speakers-intro">
+<section class="speakers-intro" id="speakers">
     <div class="container speakers-intro-content">
-        <div class="section-label" style="text-align: center;">OUR EXCELLENCE</div>
-        <h2>Exceptional Instructors Leading Your Learning Journey</h2>
+        <h2>Meet Our Expert Instructors</h2>
         <p>
-            At B-SCIM, we believe that exceptional education comes from exceptional educators. Our instructors are carefully selected industry professionals with years of experience and proven expertise in their fields.
+            Learn from industry-leading professionals with years of practical experience and a passion for teaching. Our instructors bring real-world knowledge into every lesson.
         </p>
         <div class="speakers-highlight">
-            <p>
-                Since our establishment in <strong>2026</strong>, we have partnered with over <strong>16 distinguished instructors</strong> across four core disciplines, each dedicated to providing world-class education and mentorship. Our commitment to excellence ensures that every student receives guidance from the very best in their industry.
-            </p>
+            <strong>16+ Expert Instructors</strong> | Specializing in diverse fields to provide comprehensive learning experiences
         </div>
     </div>
 </section>
@@ -1289,23 +1178,18 @@
     <div class="container">
         <div class="stats-grid">
             <div class="stat">
-                <h3>16</h3>
-                <p>Expert Instructors</p>
-            </div>
-
-            <div class="stat">
-                <h3>4</h3>
-                <p>Professional Courses</p>
-            </div>
-
-            <div class="stat">
-                <h3>2026</h3>
-                <p>Established</p>
+                <h3>16 Sessions</h3>
+                <p>Available Throughout Year</p>
             </div>
 
             <div class="stat">
                 <h3>100%</h3>
                 <p>Quality Guaranteed</p>
+            </div>
+
+            <div class="stat">
+                <h3>∞</h3>
+                <p>Lifetime Impact</p>
             </div>
         </div>
     </div>
@@ -1316,7 +1200,7 @@
         <div class="footer-grid">
             <div>
                 <h3>B-SCIM</h3>
-                <p>Building Scientific Minds Initiative - Your gateway to professional excellence and lifelong learning. Established in 2026 with a mission to empower the next generation.</p>
+                <p>Building Scientific Minds Initiative - Your gateway to professional excellence and lifelong learning.</p>
                 <div class="socials">
                     <a href="https://www.facebook.com/share/17UwKCnp9i/" target="_blank" title="Facebook">
                         <i class="fab fa-facebook-f"></i>
@@ -1333,6 +1217,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#courses">Courses</a></li>
+                    <li><a href="#speakers">Instructors</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -1357,13 +1242,22 @@
         </div>
 
         <div class="copyright">
-            &copy; 2024-2026 B-SCIM. All rights reserved. Building Scientific Minds Initiative.
+            B-SCIM. All rights reserved. Building Scientific Minds Initiative.
         </div>
     </div>
 </footer>
 
+<div id="courseModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Course Details</h2>
+            <button class="close-btn" onclick="closeCourseModal()">&times;</button>
+        </div>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
 <script>
-    // Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
@@ -1377,7 +1271,7 @@
         });
     });
 
-    // Smooth scroll
+    // Smooth scroll animation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -1388,44 +1282,133 @@
         });
     });
 
-    // Modal Functions
-    function openModal(courseType) {
-        const modals = {
-            'english': document.getElementById('englishModal'),
-            'excel': document.getElementById('excelModal'),
-            'research': document.getElementById('researchModal'),
-            'photoshop': document.getElementById('photoshopModal')
-        };
-        
-        if (modals[courseType]) {
-            modals[courseType].classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    function closeModal(courseType) {
-        const modals = {
-            'english': document.getElementById('englishModal'),
-            'excel': document.getElementById('excelModal'),
-            'research': document.getElementById('researchModal'),
-            'photoshop': document.getElementById('photoshopModal')
-        };
-        
-        if (modals[courseType]) {
-            modals[courseType].classList.remove('show');
-            document.body.style.overflow = 'auto';
-        }
-    }
-
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-        const modals = document.querySelectorAll('.modal');
-        modals.forEach(modal => {
-            if (event.target == modal) {
-                modal.classList.remove('show');
-                document.body.style.overflow = 'auto';
+    function showCourseDetails(courseName) {
+        const details = {
+            'Professional English': {
+                sections: [
+                    {
+                        title: 'Course Content',
+                        items: [
+                            'Business Communication Essentials',
+                            'Professional Writing & Email Etiquette',
+                            'Presentation & Public Speaking Skills',
+                            'Cross-Cultural Communication',
+                            'Interview Preparation'
+                        ]
+                    },
+                    {
+                        title: 'What You\'ll Learn',
+                        items: [
+                            'Communicate confidently in professional settings',
+                            'Write compelling business documents',
+                            'Deliver impactful presentations',
+                            'Enhance negotiation skills',
+                            'Build professional relationships'
+                        ]
+                    }
+                ]
+            },
+            'Advanced Excel Mastery': {
+                sections: [
+                    {
+                        title: 'Course Content',
+                        items: [
+                            'Advanced Formulas & Functions',
+                            'Data Analysis & Pivot Tables',
+                            'VBA Programming Basics',
+                            'Financial Modeling',
+                            'Automation & Macros'
+                        ]
+                    },
+                    {
+                        title: 'What You\'ll Learn',
+                        items: [
+                            'Master complex Excel formulas',
+                            'Analyze large datasets efficiently',
+                            'Create interactive dashboards',
+                            'Automate repetitive tasks',
+                            'Build professional financial models'
+                        ]
+                    }
+                ]
+            },
+            'Research & Analysis': {
+                sections: [
+                    {
+                        title: 'Course Content',
+                        items: [
+                            'Research Methodology & Design',
+                            'Literature Review Techniques',
+                            'Data Collection Methods',
+                            'Statistical Analysis',
+                            'Academic Writing & Citations'
+                        ]
+                    },
+                    {
+                        title: 'What You\'ll Learn',
+                        items: [
+                            'Design rigorous research projects',
+                            'Conduct effective literature reviews',
+                            'Apply statistical methods',
+                            'Analyze research data',
+                            'Publish your findings'
+                        ]
+                    }
+                ]
+            },
+            'Graphic Design Fundamentals': {
+                sections: [
+                    {
+                        title: 'Course Content',
+                        items: [
+                            'Design Principles & Color Theory',
+                            'Typography Mastery',
+                            'Adobe Photoshop Essentials',
+                            'Adobe Illustrator Fundamentals',
+                            'Brand Identity Design'
+                        ]
+                    },
+                    {
+                        title: 'What You\'ll Learn',
+                        items: [
+                            'Create visually stunning designs',
+                            'Master Adobe Creative Suite',
+                            'Understand visual hierarchy',
+                            'Design for different mediums',
+                            'Build a professional portfolio'
+                        ]
+                    }
+                ]
             }
-        });
+        };
+
+        const courseData = details[courseName] || { sections: [] };
+        const modal = document.getElementById('courseModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+
+        modalTitle.textContent = courseName;
+        modalBody.innerHTML = courseData.sections.map(section => `
+            <div class="modal-section">
+                <h3>${section.title}</h3>
+                <ul>
+                    ${section.items.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+            </div>
+        `).join('');
+
+        modal.classList.add('show');
+    }
+
+    function closeCourseModal() {
+        document.getElementById('courseModal').classList.remove('show');
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('courseModal');
+        if (event.target == modal) {
+            modal.classList.remove('show');
+        }
     }
 </script>
 
