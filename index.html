@@ -1240,7 +1240,7 @@
         </div>
 
         <div class="copyright">
-            &copy; 2024 B-SCIM. All rights reserved. Building Scientific Minds Initiative.
+            &copy; 2026 B-SCIM. All rights reserved. Building Scientific Minds Initiative.
         </div>
     </div>
 </footer>
@@ -1282,122 +1282,102 @@
 
     function showCourseDetails(courseName) {
         const details = {
-            'Professional English': {
-                sections: [
-                    {
-                        title: 'Course Content',
-                        items: [
-                            'Business Communication Essentials',
-                            'Professional Writing & Email Etiquette',
-                            'Presentation & Public Speaking Skills',
-                            'Cross-Cultural Communication',
-                            'Interview Preparation'
-                        ]
-                    },
-                    {
-                        title: 'What You\'ll Learn',
-                        items: [
-                            'Communicate confidently in professional settings',
-                            'Write compelling business documents',
-                            'Deliver impactful presentations',
-                            'Enhance negotiation skills',
-                            'Build professional relationships'
-                        ]
-                    }
-                ]
-            },
-            'Advanced Excel Mastery': {
-                sections: [
-                    {
-                        title: 'Course Content',
-                        items: [
-                            'Advanced Formulas & Functions',
-                            'Data Analysis & Pivot Tables',
-                            'VBA Programming Basics',
-                            'Financial Modeling',
-                            'Automation & Macros'
-                        ]
-                    },
-                    {
-                        title: 'What You\'ll Learn',
-                        items: [
-                            'Master complex Excel formulas',
-                            'Analyze large datasets efficiently',
-                            'Create interactive dashboards',
-                            'Automate repetitive tasks',
-                            'Build professional financial models'
-                        ]
-                    }
-                ]
-            },
-            'Research & Analysis': {
-                sections: [
-                    {
-                        title: 'Course Content',
-                        items: [
-                            'Research Methodology & Design',
-                            'Literature Review Techniques',
-                            'Data Collection Methods',
-                            'Statistical Analysis',
-                            'Academic Writing & Citations'
-                        ]
-                    },
-                    {
-                        title: 'What You\'ll Learn',
-                        items: [
-                            'Design rigorous research projects',
-                            'Conduct effective literature reviews',
-                            'Apply statistical methods',
-                            'Analyze research data',
-                            'Publish your findings'
-                        ]
-                    }
-                ]
-            },
-            'Graphic Design Fundamentals': {
-                sections: [
-                    {
-                        title: 'Course Content',
-                        items: [
-                            'Design Principles & Color Theory',
-                            'Typography Mastery',
-                            'Adobe Photoshop Essentials',
-                            'Adobe Illustrator Fundamentals',
-                            'Brand Identity Design'
-                        ]
-                    },
-                    {
-                        title: 'What You\'ll Learn',
-                        items: [
-                            'Create visually stunning designs',
-                            'Master Adobe Creative Suite',
-                            'Understand visual hierarchy',
-                            'Design for different mediums',
-                            'Build a professional portfolio'
-                        ]
-                    }
-                ]
-            }
-        };
+            function showCourseDetails(courseName) {
+    const details = {
 
-        const courseData = details[courseName] || { sections: [] };
-        const modal = document.getElementById('courseModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalBody = document.getElementById('modalBody');
+        'Professional English': {
+            sessions: [
+                'Grammar Fundamentals & Language Basics',
+                'Conversation Skills & Fluency',
+                'Business English & Professional Communication',
+                'Advanced Communication & Mastery'
+            ],
+            instructors: [
+                'Mohammed Ghouneim',
+                'Marwa Amir',
+                'Heba Ramadan',
+                'Eman El Sayed'
+            ]
+        },
 
-        modalTitle.textContent = courseName;
-        modalBody.innerHTML = courseData.sections.map(section => `
-            <div class="modal-section">
-                <h3>${section.title}</h3>
-                <ul>
-                    ${section.items.map(item => `<li>${item}</li>`).join('')}
-                </ul>
-            </div>
-        `).join('');
+       'Microsoft Excel for Beginners': {
+    sessions: [
+        'Excel Basics & Interface',
+        'Data Entry & Basic Formatting',
+        'Basic Formulas & Functions',
+        'Tables, Charts & Simple Data Analysis'
+    ],
+    instructors: [
+        'Eng. Abdelazim Shaheen',
+        'Eng. Manar Gamal',
+        'Eng. Abdelrahman Khaled',
+        'Acc. Mahmoud Amin'
+    ]
+},
+            ]
+        },
 
-        modal.classList.add('show');
-    }
+        'Research & Analysis': {
+            sessions: [
+                'Research Methodology & Scientific Approach',
+                'Literature Review & Source Management',
+                'Data Collection, Analysis & Interpretation',
+                'Writing, Publication & Presentation'
+            ],
+            instructors: [
+                'Dr. Hanaa Sabry',
+                'Dr. Heba Mansour',
+                'Dr. Mohamed Abdel-aziz',
+                'Dr. Asmaa Tawfik'
+            ]
+        },
 
+        'Graphic Design Fundamentals': {
+            sessions: [
+                'Interface Mastery & Tools Introduction',
+                'Photo Editing & Color Correction Techniques',
+                'Design Projects & Creative Composition',
+                'Advanced Effects, Finishes & Professional Output'
+            ],
+            instructors: [
+                'Rehab Mohamed',
+                'Jaser Saeed',
+                'Ahmed Yousry',
+                'Shimaa Mohamed'
+            ]
+        }
+    };
+
+    const courseData = details[courseName];
+
+    const modal = document.getElementById('courseModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+
+    modalTitle.textContent = courseName;
+
+    modalBody.innerHTML = `
+        <div class="modal-section">
+            <h3>📚 Course Sessions</h3>
+            <ul>
+                ${courseData.sessions.map((session, index) =>
+                    `<li><strong>Session ${index + 1}:</strong> ${session}</li>`
+                ).join('')}
+            </ul>
+        </div>
+
+        <div class="modal-section">
+            <h3>👨‍🏫 Instructors</h3>
+            <ul>
+                ${courseData.instructors.map(instructor =>
+                    `<li>${instructor}</li>`
+                ).join('')}
+            </ul>
+        </div>
+    `;
+
+    modal.classList.add('show');
+}
     function closeCourseModal() {
         document.getElementById('courseModal').classList.remove('show');
     }
