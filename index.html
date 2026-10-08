@@ -589,130 +589,169 @@
             line-height: 1.6;
         }
 
-        .course-sessions {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: var(--light-blue);
-            border-radius: 10px;
-            border-left: 4px solid var(--secondary);
-        }
-
-        .course-sessions h4 {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .course-sessions ul {
-            list-style: none;
-            font-size: 13px;
-            color: var(--muted);
-            line-height: 1.8;
-        }
-
-        .course-sessions li::before {
-            content: '→ ';
-            color: var(--secondary);
-            font-weight: 700;
-            margin-right: 5px;
-        }
-
-        .course-speakers {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: rgba(201, 151, 61, 0.08);
-            border-radius: 10px;
-            border-left: 4px solid var(--secondary);
-        }
-
-        .course-speakers h4 {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .course-speakers ul {
-            list-style: none;
-            font-size: 13px;
-            color: var(--muted);
-            line-height: 1.8;
-        }
-
-        .course-speakers li::before {
-            content: '👤 ';
-            margin-right: 5px;
-        }
-
         .course-button {
             width: 100%;
             margin-top: auto;
         }
 
-        /* ================= SPEAKERS ================= */
+        /* ================= MODAL ================= */
 
-        .speakers { background: var(--soft-bg); }
-
-        .speakers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
         }
 
-        .speaker-card {
+        .modal.show { display: flex; }
+
+        .modal-content {
             background: white;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px 20px;
-            text-align: center;
-            transition: 0.3s;
-            animation: fadeInUp 0.6s ease;
-            box-shadow: 0 5px 15px rgba(10, 45, 77, 0.08);
+            margin: auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 80px rgba(10, 45, 77, 0.25);
+            animation: slideUp 0.4s ease;
         }
 
-        .speaker-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 18px 45px rgba(10, 45, 77, 0.12);
-            border-color: var(--secondary);
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .speaker-avatar {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            margin: 0 auto 18px;
-            background: linear-gradient(135deg, var(--primary), #164f7b);
-            color: white;
+        .modal-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            box-shadow: 0 8px 20px rgba(10, 45, 77, 0.2);
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            font-size: 28px;
+            color: var(--primary-dark);
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .close-btn {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--muted);
+            cursor: pointer;
+            transition: 0.3s;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .close-btn:hover {
+            color: var(--secondary);
+            transform: rotate(90deg);
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-section h3 {
+            font-size: 16px;
+            font-weight: 800;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), #164f7b);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-section li {
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            background: var(--light-blue);
+            border-left: 4px solid var(--secondary);
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.6;
             transition: 0.3s;
         }
 
-        .speaker-card:hover .speaker-avatar {
-            transform: scale(1.1);
-            background: linear-gradient(135deg, var(--secondary), #b8832d);
+        .modal-section li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(10, 45, 77, 0.1);
         }
 
-        .speaker-card h3 {
-            font-size: 17px;
-            margin-bottom: 5px;
-            color: var(--text);
-            font-weight: 700;
+        .modal-section li::before {
+            content: '✓ ';
+            color: var(--secondary);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* ================= SPEAKERS SECTION ================= */
+
+        .speakers-intro {
+            background: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .speakers-intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .speakers-intro h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.3;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
             font-family: 'Playfair Display', serif;
+            font-weight: 800;
         }
 
-        .speaker-card p {
+        .speakers-intro p {
+            font-size: 18px;
             color: var(--muted);
-            font-size: 12px;
-            line-height: 1.6;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .speakers-highlight {
+            background: linear-gradient(135deg, var(--light-blue), rgba(201, 151, 61, 0.08));
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--secondary);
+            margin-top: 30px;
+        }
+
+        .speakers-highlight strong {
+            color: var(--secondary);
+            font-size: 18px;
         }
 
         /* ================= STATS ================= */
@@ -876,8 +915,12 @@
             .hero-visual { max-width: 500px; margin: auto; }
 
             .courses-grid { grid-template-columns: repeat(2, 1fr); }
-            .speakers-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr 1fr; }
+            
+            .modal-content {
+                width: 95%;
+                padding: 30px;
+            }
         }
 
         @media (max-width: 700px) {
@@ -904,10 +947,14 @@
             .hero h1 { font-size: 45px; }
             section { padding: 70px 0; }
 
-            .courses-grid,
-            .speakers-grid { grid-template-columns: 1fr; }
+            .courses-grid { grid-template-columns: 1fr; }
             .about-content h2 { font-size: 30px; }
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            
+            .modal-content {
+                border-radius: 15px;
+                max-height: 90vh;
+            }
         }
 
         @media (max-width: 450px) {
@@ -939,7 +986,6 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#courses">Courses</a></li>
-            <li><a href="#speakers">Speakers</a></li>
             <li><a href="#contact" class="nav-button">Contact</a></li>
         </ul>
     </div>
@@ -998,7 +1044,7 @@
                 B-SCIM is dedicated to bridging the gap between theoretical knowledge and practical skills. We provide comprehensive courses designed to help you succeed in today's competitive world.
             </p>
             <p>
-                With expert instructors and hands-on training, we ensure every student achieves their goals and unlocks their true potential.
+                Established in 2026, our initiative brings together industry professionals and educators to create transformative learning experiences. With expert instructors and hands-on training, we ensure every student achieves their goals.
             </p>
 
             <div class="features">
@@ -1043,13 +1089,13 @@
         <div class="section-header">
             <div class="section-label">Our Offerings</div>
             <h2>Professional Courses</h2>
-            <p>Explore our comprehensive courses taught by industry experts</p>
+            <p>Explore our comprehensive courses taught by industry experts. Click on any course to see details.</p>
         </div>
 
         <div class="courses-grid">
 
             <!-- Course 1: English Edge -->
-            <div class="course-card">
+            <div class="course-card" onclick="openModal('english')">
                 <div class="course-image">
                     <i class="fas fa-language"></i>
                 </div>
@@ -1057,33 +1103,12 @@
                     <span class="course-tag">LANGUAGE</span>
                     <h3>English Edge Course</h3>
                     <p>Master English language skills with our comprehensive program designed for all proficiency levels.</p>
-                    
-                    <div class="course-sessions">
-                        <h4>📚 4 Sessions</h4>
-                        <ul>
-                            <li>Session 1: Grammar Fundamentals</li>
-                            <li>Session 2: Conversation Skills</li>
-                            <li>Session 3: Business English</li>
-                            <li>Session 4: Advanced Communication</li>
-                        </ul>
-                    </div>
-
-                    <div class="course-speakers">
-                        <h4>👨‍🏫 Instructors</h4>
-                        <ul>
-                            <li>Mohammed Ghouneim</li>
-                            <li>Marwa Amir</li>
-                            <li>Heba Ramadan</li>
-                            <li>Eman El Sayed</li>
-                        </ul>
-                    </div>
-
-                    <a href="#" class="btn btn-primary course-button">Enroll Now</a>
+                    <a href="#" class="btn btn-primary course-button" onclick="event.stopPropagation()">View Details</a>
                 </div>
             </div>
 
             <!-- Course 2: Microsoft Excel -->
-            <div class="course-card">
+            <div class="course-card" onclick="openModal('excel')">
                 <div class="course-image">
                     <i class="fas fa-table"></i>
                 </div>
@@ -1091,33 +1116,12 @@
                     <span class="course-tag">BUSINESS</span>
                     <h3>Microsoft Excel</h3>
                     <p>From basics to advanced analytics, become an Excel expert and boost your career prospects.</p>
-                    
-                    <div class="course-sessions">
-                        <h4>📊 4 Sessions</h4>
-                        <ul>
-                            <li>Session 1: Excel Basics & Navigation</li>
-                            <li>Session 2: Formulas & Functions</li>
-                            <li>Session 3: Data Analysis & Pivot Tables</li>
-                            <li>Session 4: Advanced Reporting</li>
-                        </ul>
-                    </div>
-
-                    <div class="course-speakers">
-                        <h4>👨‍🏫 Instructors</h4>
-                        <ul>
-                            <li>Eng. Abdelazim Shaheen</li>
-                            <li>Eng. Manar Gamal</li>
-                            <li>Eng. Abdelrahman Khaled</li>
-                            <li>Acc. Mahmoud Amin</li>
-                        </ul>
-                    </div>
-
-                    <a href="#" class="btn btn-primary course-button">Enroll Now</a>
+                    <a href="#" class="btn btn-primary course-button" onclick="event.stopPropagation()">View Details</a>
                 </div>
             </div>
 
             <!-- Course 3: Scientific Research -->
-            <div class="course-card">
+            <div class="course-card" onclick="openModal('research')">
                 <div class="course-image">
                     <i class="fas fa-flask"></i>
                 </div>
@@ -1125,33 +1129,12 @@
                     <span class="course-tag">SCIENCE</span>
                     <h3>Scientific Research</h3>
                     <p>Learn research methodology, data collection, and analysis techniques for academic excellence.</p>
-                    
-                    <div class="course-sessions">
-                        <h4>🔬 4 Sessions</h4>
-                        <ul>
-                            <li>Session 1: Research Methodology</li>
-                            <li>Session 2: Literature Review</li>
-                            <li>Session 3: Data Collection & Analysis</li>
-                            <li>Session 4: Writing & Publication</li>
-                        </ul>
-                    </div>
-
-                    <div class="course-speakers">
-                        <h4>👨‍🏫 Instructors</h4>
-                        <ul>
-                            <li>Dr. Hanaa Sabry</li>
-                            <li>Dr. Heba Mansour</li>
-                            <li>Dr. Mohamed Abdel-aziz</li>
-                            <li>Dr. Asmaa Tawfik</li>
-                        </ul>
-                    </div>
-
-                    <a href="#" class="btn btn-primary course-button">Enroll Now</a>
+                    <a href="#" class="btn btn-primary course-button" onclick="event.stopPropagation()">View Details</a>
                 </div>
             </div>
 
             <!-- Course 4: Photoshop -->
-            <div class="course-card">
+            <div class="course-card" onclick="openModal('photoshop')">
                 <div class="course-image">
                     <i class="fas fa-palette"></i>
                 </div>
@@ -1159,28 +1142,7 @@
                     <span class="course-tag">DESIGN</span>
                     <h3>Photoshop</h3>
                     <p>Master digital design and photo editing skills with hands-on training from industry experts.</p>
-                    
-                    <div class="course-sessions">
-                        <h4>🎨 4 Sessions</h4>
-                        <ul>
-                            <li>Session 1: Interface & Tools Mastery</li>
-                            <li>Session 2: Photo Editing Techniques</li>
-                            <li>Session 3: Design Projects</li>
-                            <li>Session 4: Advanced Effects & Finishing</li>
-                        </ul>
-                    </div>
-
-                    <div class="course-speakers">
-                        <h4>👨‍🏫 Instructors</h4>
-                        <ul>
-                            <li>Rehab Mohamed</li>
-                            <li>Jaser Saeed</li>
-                            <li>Ahmed Yousry</li>
-                            <li>Shimaa Mohamed</li>
-                        </ul>
-                    </div>
-
-                    <a href="#" class="btn btn-primary course-button">Enroll Now</a>
+                    <a href="#" class="btn btn-primary course-button" onclick="event.stopPropagation()">View Details</a>
                 </div>
             </div>
 
@@ -1188,110 +1150,137 @@
     </div>
 </section>
 
-<section class="speakers" id="speakers">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label">Our Team</div>
-            <h2>Meet Our Expert Instructors</h2>
-            <p>Learn from experienced professionals dedicated to your success</p>
+<!-- MODALS -->
+
+<div id="englishModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-language"></i> English Edge Course</h2>
+            <button class="close-btn" onclick="closeModal('english')">✕</button>
+        </div>
+        
+        <div class="modal-section">
+            <h3>📚 Course Sessions</h3>
+            <ul>
+                <li>Session 1: Grammar Fundamentals & Language Basics</li>
+                <li>Session 2: Conversation Skills & Fluency</li>
+                <li>Session 3: Business English & Professional Communication</li>
+                <li>Session 4: Advanced Communication & Mastery</li>
+            </ul>
         </div>
 
-        <div class="speakers-grid">
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Mohammed Ghouneim</h3>
-                <p>English Edge Instructor</p>
-            </div>
+        <div class="modal-section">
+            <h3>👨‍🏫 Expert Instructors</h3>
+            <ul>
+                <li>Mohammed Ghouneim</li>
+                <li>Marwa Amir</li>
+                <li>Heba Ramadan</li>
+                <li>Eman El Sayed</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Marwa Amir</h3>
-                <p>English Edge Instructor</p>
-            </div>
+<div id="excelModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-table"></i> Microsoft Excel</h2>
+            <button class="close-btn" onclick="closeModal('excel')">✕</button>
+        </div>
+        
+        <div class="modal-section">
+            <h3>📊 Course Sessions</h3>
+            <ul>
+                <li>Session 1: Excel Basics & Navigation Interface</li>
+                <li>Session 2: Formulas, Functions & Data Manipulation</li>
+                <li>Session 3: Data Analysis, Pivot Tables & Visualization</li>
+                <li>Session 4: Advanced Reporting & Business Solutions</li>
+            </ul>
+        </div>
 
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Heba Ramadan</h3>
-                <p>English Edge Instructor</p>
-            </div>
+        <div class="modal-section">
+            <h3>👨‍🏫 Expert Instructors</h3>
+            <ul>
+                <li>Eng. Abdelazim Shaheen</li>
+                <li>Eng. Manar Gamal</li>
+                <li>Eng. Abdelrahman Khaled</li>
+                <li>Acc. Mahmoud Amin</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Eman El Sayed</h3>
-                <p>English Edge Instructor</p>
-            </div>
+<div id="researchModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-flask"></i> Scientific Research</h2>
+            <button class="close-btn" onclick="closeModal('research')">✕</button>
+        </div>
+        
+        <div class="modal-section">
+            <h3>🔬 Course Sessions</h3>
+            <ul>
+                <li>Session 1: Research Methodology & Scientific Approach</li>
+                <li>Session 2: Literature Review & Source Management</li>
+                <li>Session 3: Data Collection, Analysis & Interpretation</li>
+                <li>Session 4: Writing, Publication & Presentation</li>
+            </ul>
+        </div>
 
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Eng. Abdelazim Shaheen</h3>
-                <p>Excel Expert</p>
-            </div>
+        <div class="modal-section">
+            <h3>👨‍🏫 Expert Instructors</h3>
+            <ul>
+                <li>Dr. Hanaa Sabry</li>
+                <li>Dr. Heba Mansour</li>
+                <li>Dr. Mohamed Abdel-aziz</li>
+                <li>Dr. Asmaa Tawfik</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Eng. Manar Gamal</h3>
-                <p>Excel Expert</p>
-            </div>
+<div id="photoshopModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-palette"></i> Photoshop</h2>
+            <button class="close-btn" onclick="closeModal('photoshop')">✕</button>
+        </div>
+        
+        <div class="modal-section">
+            <h3>🎨 Course Sessions</h3>
+            <ul>
+                <li>Session 1: Interface Mastery & Tools Introduction</li>
+                <li>Session 2: Photo Editing & Color Correction Techniques</li>
+                <li>Session 3: Design Projects & Creative Composition</li>
+                <li>Session 4: Advanced Effects, Finishes & Professional Output</li>
+            </ul>
+        </div>
 
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Eng. Abdelrahman Khaled</h3>
-                <p>Excel Expert</p>
-            </div>
+        <div class="modal-section">
+            <h3>👨‍🏫 Expert Instructors</h3>
+            <ul>
+                <li>Rehab Mohamed</li>
+                <li>Jaser Saeed</li>
+                <li>Ahmed Yousry</li>
+                <li>Shimaa Mohamed</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Acc. Mahmoud Amin</h3>
-                <p>Excel Specialist</p>
-            </div>
+<!-- SPEAKERS INTRO SECTION -->
 
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Dr. Hanaa Sabry</h3>
-                <p>Research Expert</p>
-            </div>
-
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Dr. Heba Mansour</h3>
-                <p>Research Expert</p>
-            </div>
-
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Dr. Mohamed Abdel-aziz</h3>
-                <p>Research Expert</p>
-            </div>
-
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Dr. Asmaa Tawfik</h3>
-                <p>Research Expert</p>
-            </div>
-
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Rehab Mohamed</h3>
-                <p>Photoshop Designer</p>
-            </div>
-
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Jaser Saeed</h3>
-                <p>Photoshop Expert</p>
-            </div>
-
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Ahmed Yousry</h3>
-                <p>Design Specialist</p>
-            </div>
-
-            <div class="speaker-card">
-                <div class="speaker-avatar"><i class="fas fa-user"></i></div>
-                <h3>Shimaa Mohamed</h3>
-                <p>Creative Designer</p>
-            </div>
+<section class="speakers-intro">
+    <div class="container speakers-intro-content">
+        <div class="section-label" style="text-align: center;">OUR EXCELLENCE</div>
+        <h2>Exceptional Instructors Leading Your Learning Journey</h2>
+        <p>
+            At B-SCIM, we believe that exceptional education comes from exceptional educators. Our instructors are carefully selected industry professionals with years of experience and proven expertise in their fields.
+        </p>
+        <div class="speakers-highlight">
+            <p>
+                Since our establishment in <strong>2026</strong>, we have partnered with over <strong>16 distinguished instructors</strong> across four core disciplines, each dedicated to providing world-class education and mentorship. Our commitment to excellence ensures that every student receives guidance from the very best in their industry.
+            </p>
         </div>
     </div>
 </section>
@@ -1310,8 +1299,8 @@
             </div>
 
             <div class="stat">
-                <h3>16</h3>
-                <p>Sessions Offered</p>
+                <h3>2026</h3>
+                <p>Established</p>
             </div>
 
             <div class="stat">
@@ -1327,7 +1316,7 @@
         <div class="footer-grid">
             <div>
                 <h3>B-SCIM</h3>
-                <p>Building Scientific Minds Initiative - Your gateway to professional excellence and lifelong learning.</p>
+                <p>Building Scientific Minds Initiative - Your gateway to professional excellence and lifelong learning. Established in 2026 with a mission to empower the next generation.</p>
                 <div class="socials">
                     <a href="https://www.facebook.com/share/17UwKCnp9i/" target="_blank" title="Facebook">
                         <i class="fab fa-facebook-f"></i>
@@ -1344,7 +1333,6 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#courses">Courses</a></li>
-                    <li><a href="#speakers">Instructors</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -1369,12 +1357,13 @@
         </div>
 
         <div class="copyright">
-            &copy; 2024 B-SCIM. All rights reserved. Building Scientific Minds Initiative.
+            &copy; 2024-2026 B-SCIM. All rights reserved. Building Scientific Minds Initiative.
         </div>
     </div>
 </footer>
 
 <script>
+    // Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
@@ -1388,7 +1377,7 @@
         });
     });
 
-    // Smooth scroll animation
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -1398,6 +1387,46 @@
             }
         });
     });
+
+    // Modal Functions
+    function openModal(courseType) {
+        const modals = {
+            'english': document.getElementById('englishModal'),
+            'excel': document.getElementById('excelModal'),
+            'research': document.getElementById('researchModal'),
+            'photoshop': document.getElementById('photoshopModal')
+        };
+        
+        if (modals[courseType]) {
+            modals[courseType].classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeModal(courseType) {
+        const modals = {
+            'english': document.getElementById('englishModal'),
+            'excel': document.getElementById('excelModal'),
+            'research': document.getElementById('researchModal'),
+            'photoshop': document.getElementById('photoshopModal')
+        };
+        
+        if (modals[courseType]) {
+            modals[courseType].classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            if (event.target == modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
 </script>
 
 </body>
