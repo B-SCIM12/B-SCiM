@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>B-SCIM | Building Scientific Minds</title>
-    <meta name="description" content="B-SCIM - Building Scientific Minds Initiative. Expert courses in English, Excel, Research, and Design.">
+    <meta name="description" content="B-SCIM - Building Scientific Minds Initiative. Professional sessions, expert instructors, leadership, and committees.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -904,6 +904,54 @@
             letter-spacing: 1px;
         }
 
+
+        /* ================= SESSIONS / TEAM SECTIONS ================= */
+        .sessions { background: var(--soft-bg); }
+        .sessions-grid, .team-grid, .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        .session-card, .team-card, .committee-card {
+            background: #fff; border: 1px solid var(--border); border-radius: 16px;
+            padding: 26px; box-shadow: 0 7px 22px rgba(10,45,77,.07); transition: .3s;
+        }
+        .session-card { display:flex; flex-direction:column; align-items:flex-start; }
+        .session-card:hover, .team-card:hover, .committee-card:hover {
+            transform: translateY(-6px); border-color: var(--secondary); box-shadow: var(--shadow);
+        }
+        .session-card .session-icon, .team-icon, .committee-icon {
+            width: 48px; height: 48px; display:flex; align-items:center; justify-content:center;
+            border-radius: 13px; color:#fff; background:linear-gradient(135deg,var(--primary),#164f7b);
+            font-size:20px; margin-bottom:17px;
+        }
+        .session-card h3, .team-card h3, .committee-card h3 { color:var(--primary-dark); font-size:19px; line-height:1.45; margin-bottom:10px; }
+        .session-card p, .team-card p, .committee-card p { color:var(--muted); font-size:14px; line-height:1.8; }
+        .session-card .session-speaker { font-weight:700; color:var(--secondary); margin: 3px 0 16px; }
+        .session-card .btn { margin-top:auto; width:100%; padding:11px 16px; font-size:14px; }
+        .team-role { color:var(--secondary); font-size:12px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; margin-bottom:9px; }
+        .team-card .bio { margin-top:10px; }
+        .board { background:linear-gradient(135deg,#f8fbff,#eef5fb); }
+        .board-card { text-align:center; }
+        .board-card .team-icon { margin:0 auto 15px; width:64px; height:64px; border-radius:50%; font-size:24px; }
+        .committee-card ul { list-style:none; margin-top:12px; }
+        .committee-card li { color:var(--muted); padding:6px 0; border-bottom:1px solid var(--border); font-size:14px; }
+        .committee-card li:last-child { border-bottom:0; }
+        .detail-modal { display:none; position:fixed; inset:0; z-index:1100; padding:20px; background:rgba(4,19,34,.72); }
+        .detail-modal.show { display:flex; }
+        .detail-modal-content { background:white; margin:auto; width:min(760px,100%); max-height:90vh; overflow:auto; padding:32px; border-radius:20px; box-shadow:0 30px 80px rgba(0,0,0,.25); }
+        .detail-modal-head { display:flex; justify-content:space-between; gap:18px; align-items:flex-start; padding-bottom:18px; margin-bottom:20px; border-bottom:2px solid var(--light-blue); }
+        .detail-modal-head h2 { color:var(--primary-dark); font-family:'Playfair Display',serif; font-size:clamp(22px,4vw,30px); line-height:1.35; }
+        .detail-close { border:0; background:var(--light-blue); color:var(--primary); border-radius:50%; width:38px; height:38px; flex-shrink:0; cursor:pointer; font-size:23px; }
+        .detail-block { margin:20px 0; }
+        .detail-block h3 { color:var(--primary); font-size:16px; margin-bottom:10px; }
+        .detail-block p { color:var(--muted); line-height:1.9; }
+        .detail-block ul { padding-inline-start:22px; color:var(--muted); }
+        .detail-block li { margin:7px 0; line-height:1.7; }
+        .rtl-copy { direction:rtl; text-align:right; }
+        .rtl-copy ul { padding-right:22px; padding-left:0; }
+        @media(max-width:700px) { .detail-modal-content { padding:23px; } }
+
         /* ================= RESPONSIVE ================= */
 
         @media (max-width: 900px) {
@@ -986,6 +1034,10 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#courses">Courses</a></li>
+            <li><a href="#sessions">Sessions</a></li>
+            <li><a href="#instructors">Instructors</a></li>
+            <li><a href="#board">Board</a></li>
+            <li><a href="#committees">Committees</a></li>
             <li><a href="#contact" class="nav-button">Contact</a></li>
         </ul>
     </div>
@@ -1167,6 +1219,67 @@
     </div>
 </section>
 
+
+<section class="sessions" id="sessions">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Learning Events</div>
+      <h2>Our Sessions</h2>
+      <p>Explore practical sessions led by experienced speakers. Select any session to view its topics and speaker profile.</p>
+    </div>
+    <div class="sessions-grid" id="sessionsGrid"></div>
+  </div>
+</section>
+
+<section id="instructors" class="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Meet the Experts</div>
+      <h2>Our Instructors</h2>
+      <p>Meet the speakers and professionals sharing their knowledge with the B-SCIM community.</p>
+    </div>
+    <div class="team-grid" id="instructorsGrid"></div>
+  </div>
+</section>
+
+<section class="board" id="board">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Leadership</div>
+      <h2>Our Board</h2>
+      <p>The team leading B-SCIM and supporting its mission.</p>
+    </div>
+    <div class="team-grid">
+      <article class="team-card board-card">
+        <div class="team-icon"><i class="fas fa-user-tie"></i></div>
+        <div class="team-role">CEO</div><h3>Mohamed Salah</h3>
+      </article>
+      <article class="team-card board-card">
+        <div class="team-icon"><i class="fas fa-users"></i></div>
+        <div class="team-role">General Manager</div><h3>Habiba Mohamed</h3>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="committees" class="sessions">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Our Teams</div>
+      <h2>B-SCIM Committees</h2>
+      <p>Different teams working together to create meaningful learning experiences and content.</p>
+    </div>
+    <div class="committee-grid">
+      <article class="committee-card"><div class="committee-icon"><i class="fas fa-palette"></i></div><h3>Graphic Design</h3><p>Creates visual identities, social media designs, and promotional materials.</p></article>
+      <article class="committee-card"><div class="committee-icon"><i class="fas fa-film"></i></div><h3>Video Editing</h3><p>Edits videos and prepares visual content for courses and initiative activities.</p></article>
+      <article class="committee-card"><div class="committee-icon"><i class="fas fa-microphone"></i></div><h3>Voice Over</h3><p>Provides voice recordings and narration for initiative media and educational content.</p></article>
+      <article class="committee-card"><div class="committee-icon"><i class="fas fa-bullhorn"></i></div><h3>Marketing</h3><p>Supports campaign planning, outreach, and promotion of B-SCIM activities.</p></article>
+      <article class="committee-card"><div class="committee-icon"><i class="fas fa-handshake"></i></div><h3>Public Relations (PR)</h3><p>Builds relationships and coordinates communication with partners and the community.</p></article>
+      <article class="committee-card"><div class="committee-icon"><i class="fas fa-people-group"></i></div><h3>Human Resources (HR)</h3><p>Supports recruitment, team coordination, member engagement, and development.</p></article>
+    </div>
+  </div>
+</section>
+
 <section class="stats">
     <div class="container">
         <div class="stats-grid">
@@ -1181,8 +1294,8 @@
             </div>
 
             <div class="stat">
-                <h3>16</h3>
-                <p>Sessions Offered</p>
+                <h3>7</h3>
+                <p>Featured Sessions</p>
             </div>
 
             <div class="stat">
@@ -1215,7 +1328,10 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#courses">Courses</a></li>
-                    <li><a href="#speakers">Instructors</a></li>
+                    <li><a href="#sessions">Sessions</a></li>
+                    <li><a href="#instructors">Instructors</a></li>
+                    <li><a href="#board">Board</a></li>
+                    <li><a href="#committees">Committees</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -1244,6 +1360,14 @@
         </div>
     </div>
 </footer>
+
+
+<div id="sessionModal" class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="sessionModalTitle">
+  <div class="detail-modal-content">
+    <div class="detail-modal-head"><h2 id="sessionModalTitle">Session Details</h2><button class="detail-close" onclick="closeSessionModal()" aria-label="Close">&times;</button></div>
+    <div id="sessionModalBody"></div>
+  </div>
+</div>
 
 <div id="courseModal" class="modal">
     <div class="modal-content">
@@ -1279,6 +1403,95 @@
             }
         });
     });
+
+
+    const sessionData = [
+      {
+        title: 'سوق العمل في 2026 لا ينتظر.. تعلمي كيف تصيغين سيرتك الذاتية لتصل لمسؤول التوظيف مباشرة!',
+        speaker: 'رحاب علام | Rehab Allam',
+        bio: 'خبير توظيف بخبرة تتجاوز 10 سنوات في قطاع الموارد البشرية والتوظيف، عبر شركات وصناعات مختلفة. مستشارة مهنية ومطورة سير ذاتية مستقلة، تساعد المحترفين وحديثي التخرج على بناء هوية مهنية قوية ومتوافقة مع أنظمة ATS وسوق العمل الحديث. لديها خبرة في فحص ومعاينة آلاف السير الذاتية.',
+        topics: ['مقدمة', 'ما هو نظام ATS وكيف يعمل؟', 'عناصر السيرة الذاتية الاحترافية المتوافقة مع ATS', 'الأخطاء الشائعة التي تؤدي إلى رفض السيرة الذاتية', 'كيفية اختيار الكلمات المفتاحية المناسبة', 'أمثلة عملية: قبل وبعد', 'أدوات مفيدة وقوالب بسيطة للاستخدام', 'الخاتمة والأسئلة'], rtl: true
+      },
+      {
+        title: 'From Lab to Industry', speaker: 'د. علاء الدسوقي | Dr. Alaa El-Desouky',
+        bio: 'أستاذ باحث مساعد بالمركز القومي للبحوث (NRC). حاصل على دكتوراه في الكيمياء التطبيقية من جامعة الأزهر. خبير في تكنولوجيا البوليمرات وتطوير المنتجات، ولديه خبرة في الإنتاج والجودة والبحث والتطوير (R&D) بالقطاع الصناعي. متخصص في تأهيل طلاب العلوم لسوق العمل وربط الدراسة الأكاديمية بالتطبيق الصناعي.',
+        topics: ['التعرف على طبيعة العمل في الشركات والمصانع لخريجي كلية العلوم', 'الفجوة بين الدراسة الأكاديمية ومتطلبات سوق العمل وكيفية تجاوزها', 'أهم المهارات الفنية والشخصية التي يبحث عنها أصحاب العمل', 'الأقسام المختلفة داخل المصانع ودور كل منها: Production, Quality, R&D, QC', 'كيفية الاستعداد لسوق العمل وبناء بداية مهنية قوية', 'نصائح عملية من واقع الخبرة الصناعية لزيادة فرص القبول والتميز'], rtl: true
+      },
+      {
+        title: 'Presentation Secrets They Never Teach You', speaker: 'Mohamed Salah',
+        bio: 'Founder & CEO of B-SCIM. More than two years of experience in presentation skills.',
+        topics: ['Presentation skills and practical techniques'], rtl: false
+      },
+      {
+        title: 'Planning Your Presentation', speaker: 'Speaker details to be added',
+        bio: 'Presenter information has not been provided yet.',
+        topics: ['Slide Design Basics', 'Public Speaking Skills', 'Body Language & Confidence', 'Audience Engagement', 'Q&A Handling'], rtl: false
+      },
+      {
+        title: 'من طالب إلى مُحترف.. رحلة الـ Soft Skills', speaker: 'أسماء أبو العلا | Asmaa Abu El-Ela',
+        bio: 'باحثة ومدربة في الاتصال والعلاقات العامة بجامعة المنصورة.',
+        topics: ['التواصل الفعال', 'الذكاء العاطفي', 'إدارة الوقت وتنظيم الأولويات', 'العمل الجماعي', 'حل المشكلات واتخاذ القرار', 'التفاوض', 'الاحترافية وأخلاقيات العمل', 'بناء العلامة الشخصية'], rtl: true
+      },
+      {
+        title: 'Self-Learning & English Learning Strategies', speaker: 'أحمد موسى مختار | Ahmed Mousa Mokhtar',
+        bio: 'Self-Learning Coach and Learning Experience Designer; Founder of MiniLearn.',
+        topics: ['ليه أغلب محاولات تعلم الإنجليزي بتفشل رغم الحماس', 'إزاي تحدد هدف تعلم واضح', 'إزاي تختار مصادر تعلم تناسب وقتك ومستواك', 'إزاي تبني نظام تعلم بسيط تقدر تستمر عليه فعلًا'], rtl: true
+      },
+      {
+        title: 'AI Journey', speaker: 'أحمد مرزوق | Ahmed Marzouk',
+        bio: 'مهندس ذكاء اصطناعي ومطور ويب بخبرة تمتد إلى 3 سنوات في تطوير تطبيقات الويب وواجهات المستخدم (Frontend) وبناء أنظمة متعددة المنصات قابلة للتوسع. لديه خبرة عملية في الذكاء الاصطناعي، تحليل البيانات، نماذج الذكاء الاصطناعي، تعلم الآلة، الرؤية الحاسوبية، ومعالجة اللغة الطبيعية. يعمل على تحسين الأداء وتصميم الأنظمة المعيارية والحلول الجاهزة للإنتاج، ولديه خلفية في قواعد البيانات والشبكات والأمن السيبراني. يدرس حاليًا بكلية الذكاء الاصطناعي بجامعة المنوفية الأهلية بتقدير عام جيد جدًا، وشارك متحدثًا في فعاليات تقنية ومبادرات لدعم المبتدئين في البرمجة. حصل على دورات وشهادات منها PMP وPMA، ويسعى لتمكين الجيل القادم من المهندسين من استخدام أدوات الذكاء الاصطناعي لبناء حلول أكثر ذكاءً وكفاءة.',
+        topics: ['Artificial Intelligence', 'AI Modeling and Machine Learning', 'Computer Vision and NLP', 'Web Development and Frontend', 'Data Analysis and practical AI tools'], rtl: true
+      }
+    ];
+
+    function openSession(index) {
+      const item = sessionData[index];
+      if (!item) return;
+      document.getElementById('sessionModalTitle').textContent = item.title;
+      const body = document.getElementById('sessionModalBody');
+      body.innerHTML = `
+        <div class="detail-block ${item.rtl ? 'rtl-copy' : ''}">
+          <h3>${item.rtl ? 'محاور السيشن' : 'Session Topics'}</h3>
+          <ul>${item.topics.map(topic => `<li>${topic}</li>`).join('')}</ul>
+        </div>
+        <div class="detail-block ${item.rtl ? 'rtl-copy' : ''}">
+          <h3>${item.rtl ? 'عن المحاضر' : 'About the Speaker'}</h3>
+          <p><strong>${item.speaker}</strong></p><p>${item.bio}</p>
+        </div>`;
+      document.getElementById('sessionModal').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSessionModal() {
+      document.getElementById('sessionModal').classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('sessionModal').addEventListener('click', function(e) {
+      if (e.target === this) closeSessionModal();
+    });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSessionModal(); });
+
+    const sessionsGrid = document.getElementById('sessionsGrid');
+    sessionsGrid.innerHTML = sessionData.map((item, index) => `
+      <article class="session-card">
+        <div class="session-icon"><i class="fas ${['fa-file-lines','fa-flask','fa-person-chalkboard','fa-display','fa-people-group','fa-book-open','fa-robot'][index]}"></i></div>
+        <h3 class="${item.rtl ? 'rtl-copy' : ''}">${item.title}</h3>
+        <p class="session-speaker ${item.rtl ? 'rtl-copy' : ''}">${item.speaker}</p>
+        <button class="btn btn-primary" onclick="openSession(${index})">View Session Details</button>
+      </article>`).join('');
+
+    const instructorProfiles = [
+      {name:'رحاب علام | Rehab Allam', role:'Recruitment & Career Consultant', bio:'أكثر من 10 سنوات في الموارد البشرية والتوظيف، واستشارات مهنية وتطوير سير ذاتية متوافقة مع ATS.'},
+      {name:'د. علاء الدسوقي | Dr. Alaa El-Desouky', role:'Assistant Research Professor, NRC', bio:'دكتوراه في الكيمياء التطبيقية، وخبرة في تكنولوجيا البوليمرات والإنتاج والجودة والبحث والتطوير الصناعي.'},
+      {name:'Mohamed Salah', role:'Founder & CEO of B-SCIM', bio:'More than two years of experience in presentation skills.'},
+      {name:'أسماء أبو العلا | Asmaa Abu El-Ela', role:'Communication & Public Relations Researcher and Trainer', bio:'باحثة ومدربة في الاتصال والعلاقات العامة بجامعة المنصورة.'},
+      {name:'أحمد موسى مختار | Ahmed Mousa Mokhtar', role:'Self-Learning Coach & Learning Experience Designer', bio:'Founder of MiniLearn.'},
+      {name:'أحمد مرزوق | Ahmed Marzouk', role:'AI Engineer & Web Developer', bio:'خبرة في تطوير الويب والذكاء الاصطناعي وتعلم الآلة وتحليل البيانات وتقنيات متعددة.'}
+    ];
+    document.getElementById('instructorsGrid').innerHTML = instructorProfiles.map(person => `
+      <article class="team-card">
+        <div class="team-icon"><i class="fas fa-user-graduate"></i></div>
+        <div class="team-role">${person.role}</div><h3>${person.name}</h3><p class="bio">${person.bio}</p>
+      </article>`).join('');
 
     function showCourseDetails(courseName) {
         const details = {
