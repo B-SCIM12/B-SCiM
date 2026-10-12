@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>B-SCIM | Building Scientific Minds</title>
+    <meta name="description" content="B-SCIM - Building Scientific Minds Initiative. Professional sessions, expert instructors, leadership, and committees.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        :root {
+            --primary: #0a2d4d;
+            --primary-dark: #071d35;
+            --secondary: #c9973d;
+            --accent: #e8c77a;
+            --light-blue: #ebf4fb;
+            --soft-bg: #f7f3ee;
+            --text: #183b5c;
+            --muted: #5a7282;
+            --white: #ffffff;
+            --border: #dfe9f1;
+            --shadow: 0 15px 45px rgba(10, 45, 77, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.8;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        .container {
+            width: min(1160px, 92%);
+            margin: auto;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 15px rgba(10, 45, 77, 0.08);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .nav-inner {
+            height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--primary-dark);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--secondary);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            color: #506170;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, var(--primary), #164f7b);
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-weight: 700;
+        }
+
+        .nav-button:hover {
+            background: linear-gradient(135deg, var(--secondary), #b8832d);
+            box-shadow: 0 8px 20px rgba(201, 151, 61, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: none;
+            font-size: 24px;
+            color: var(--primary-dark);
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(201, 151, 61, 0.18), transparent 28%),
+                radial-gradient(circle at 10% 90%, rgba(10, 45, 77, 0.08), transparent 30%),
+                linear-gradient(135deg, #f8fbff, #eef5fb);
+            padding: 120px 0 100px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 50px;
+            background: white;
+            border: 1.5px solid var(--secondary);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 75px);
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+            color: var(--text);
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero h1 span {
+            color: var(--secondary);
+            display: inline-block;
+        }
+
+        .hero-text {
+            max-width: 620px;
+            color: var(--muted);
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #164f7b);
+            color: white;
+            box-shadow: 0 12px 30px rgba(10, 45, 77, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--secondary), #b8832d);
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(201, 151, 61, 0.3);
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1.5px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--secondary);
+            color: var(--primary-dark);
+            background: #faf8f3;
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 0.8s ease 0.4s both;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .visual-card {
+            background: rgba(255,255,255,0.92);
+            border: 1.5px solid rgba(201, 151, 61, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(10, 45, 77, 0.12);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .visual-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(10, 45, 77, 0.18);
+        }
+
+        .visual-card img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin: 0 auto 20px;
+        }
+
+        .visual-card h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+        }
+
+        .visual-card p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        section { padding: 100px 0; }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-label {
+            color: var(--secondary);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .section-header h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.2;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.6;
+            animation: fadeInUp 0.6s ease 0.4s both;
+        }
+
+        .about { background: white; }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-image {
+            min-height: 400px;
+            background: linear-gradient(135deg, var(--light-blue), rgba(201, 151, 61, 0.08));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 45px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInLeft 0.8s ease;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .about-image::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 30px solid rgba(10, 45, 77, 0.08);
+            border-radius: 50%;
+            top: -80px;
+            right: -60px;
+        }
+
+        .about-image img {
+            width: 230px;
+            object-fit: contain;
+            position: relative;
+        }
+
+        .about-content h2 {
+            font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .about-content p {
+            color: var(--muted);
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.8;
+            animation: fadeInUp 0.6s ease 0.4s both;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            padding: 20px;
+            background: var(--light-blue);
+            border-radius: 12px;
+            transition: 0.3s;
+            animation: fadeInUp 0.6s ease 0.6s both;
+        }
+
+        .feature:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(10, 45, 77, 0.1);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 10px;
+            background: var(--secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .feature h4 {
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .feature p {
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* ================= COURSES ================= */
+
+        .courses { background: var(--soft-bg); }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .course-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: 0.4s;
+            animation: fadeInUp 0.6s ease;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(10, 45, 77, 0.08);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(10, 45, 77, 0.15);
+            border-color: var(--secondary);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--light-blue), rgba(201,151,61,0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--primary);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .course-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 45, 77, 0.05);
+            transition: 0.3s;
+        }
+
+        .course-card:hover .course-image::after {
+            background: rgba(10, 45, 77, 0.15);
+        }
+
+        .course-body {
+            padding: 28px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 800;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), #164f7b);
+            padding: 6px 12px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .course-body h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--text);
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+        }
+
+        .course-body p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .course-button {
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* ================= MODAL ================= */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show { display: flex; }
+
+        .modal-content {
+            background: white;
+            margin: auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 80px rgba(10, 45, 77, 0.25);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            font-size: 28px;
+            color: var(--primary-dark);
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .close-btn {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--muted);
+            cursor: pointer;
+            transition: 0.3s;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .close-btn:hover {
+            color: var(--secondary);
+            transform: rotate(90deg);
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-section h3 {
+            font-size: 16px;
+            font-weight: 800;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), #164f7b);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-section li {
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            background: var(--light-blue);
+            border-left: 4px solid var(--secondary);
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.6;
+            transition: 0.3s;
+        }
+
+        .modal-section li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(10, 45, 77, 0.1);
+        }
+
+        .modal-section li::before {
+            content: '✓ ';
+            color: var(--secondary);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* ================= SPEAKERS SECTION ================= */
+
+        .speakers-intro {
+            background: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .speakers-intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .speakers-intro h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.3;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+        }
+
+        .speakers-intro p {
+            font-size: 18px;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .speakers-highlight {
+            background: linear-gradient(135deg, var(--light-blue), rgba(201, 151, 61, 0.08));
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--secondary);
+            margin-top: 30px;
+        }
+
+        .speakers-highlight strong {
+            color: var(--secondary);
+            font-size: 18px;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 500px;
+            height: 500px;
+            background: rgba(201, 151, 61, 0.05);
+            border-radius: 50%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .stat h3 {
+            font-size: 45px;
+            margin-bottom: 8px;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat p {
+            font-size: 15px;
+            opacity: 0.9;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 60px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 40px;
+        }
+
+        footer h3,
+        footer h4 {
+            margin-bottom: 18px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        footer h3 {
+            color: white;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        footer h4 {
+            color: var(--accent);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        footer p,
+        footer a {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        footer ul { list-style: none; }
+        footer li { margin-bottom: 10px; }
+
+        footer a {
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+            transform: translateX(3px);
+        }
+
+        .socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .socials a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        .socials a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-contact {
+            margin-top: 20px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.12);
+            padding-top: 25px;
+            text-align: center;
+            color: rgba(255,255,255,0.65);
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+
+        /* ================= SESSIONS / TEAM SECTIONS ================= */
+        .sessions { background: var(--soft-bg); }
+        .sessions-grid, .team-grid, .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        .session-card, .team-card, .committee-card {
+            background: #fff; border: 1px solid var(--border); border-radius: 16px;
+            padding: 26px; box-shadow: 0 7px 22px rgba(10,45,77,.07); transition: .3s;
+        }
+        .session-card { display:flex; flex-direction:column; align-items:flex-start; }
+        .session-card:hover, .team-card:hover, .committee-card:hover {
+            transform: translateY(-6px); border-color: var(--secondary); box-shadow: var(--shadow);
+        }
+        .session-card .session-icon, .team-icon, .committee-icon {
+            width: 48px; height: 48px; display:flex; align-items:center; justify-content:center;
+            border-radius: 13px; color:#fff; background:linear-gradient(135deg,var(--primary),#164f7b);
+            font-size:20px; margin-bottom:17px;
+        }
+        .session-card h3, .team-card h3, .committee-card h3 { color:var(--primary-dark); font-size:19px; line-height:1.45; margin-bottom:10px; }
+        .session-card p, .team-card p, .committee-card p { color:var(--muted); font-size:14px; line-height:1.8; }
+        .session-card .session-speaker { font-weight:700; color:var(--secondary); margin: 3px 0 16px; }
+        .session-card .btn { margin-top:auto; width:100%; padding:11px 16px; font-size:14px; }
+        .team-role { color:var(--secondary); font-size:12px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; margin-bottom:9px; }
+        .team-card .bio { margin-top:10px; }
+        .board { background:linear-gradient(135deg,#f8fbff,#eef5fb); }
+        .board-card { text-align:center; }
+        .board-card .team-icon { margin:0 auto 15px; width:64px; height:64px; border-radius:50%; font-size:24px; }
+        .committee-card ul { list-style:none; margin-top:12px; }
+        .committee-card li { color:var(--muted); padding:6px 0; border-bottom:1px solid var(--border); font-size:14px; }
+        .committee-card li:last-child { border-bottom:0; }
+        .detail-modal { display:none; position:fixed; inset:0; z-index:1100; padding:20px; background:rgba(4,19,34,.72); }
+        .detail-modal.show { display:flex; }
+        .detail-modal-content { background:white; margin:auto; width:min(760px,100%); max-height:90vh; overflow:auto; padding:32px; border-radius:20px; box-shadow:0 30px 80px rgba(0,0,0,.25); }
+        .detail-modal-head { display:flex; justify-content:space-between; gap:18px; align-items:flex-start; padding-bottom:18px; margin-bottom:20px; border-bottom:2px solid var(--light-blue); }
+        .detail-modal-head h2 { color:var(--primary-dark); font-family:'Playfair Display',serif; font-size:clamp(22px,4vw,30px); line-height:1.35; }
+        .detail-close { border:0; background:var(--light-blue); color:var(--primary); border-radius:50%; width:38px; height:38px; flex-shrink:0; cursor:pointer; font-size:23px; }
+        .detail-block { margin:20px 0; }
+        .detail-block h3 { color:var(--primary); font-size:16px; margin-bottom:10px; }
+        .detail-block p { color:var(--muted); line-height:1.9; }
+        .detail-block ul { padding-inline-start:22px; color:var(--muted); }
+        .detail-block li { margin:7px 0; line-height:1.7; }
+        .rtl-copy { direction:rtl; text-align:right; }
+        .rtl-copy ul { padding-right:22px; padding-left:0; }
+        @media(max-width:700px) { .detail-modal-content { padding:23px; } }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+            .hero-grid,
+            .about-grid { grid-template-columns: 1fr; }
+
+            .hero { padding: 80px 0; }
+
+            .hero-visual { max-width: 500px; margin: auto; }
+
+            .courses-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            
+            .modal-content {
+                width: 95%;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .nav-inner { height: 68px; }
+            .menu-toggle { display: block; }
+
+            .nav-links {
+                position: absolute;
+                top: 68px;
+                left: 0;
+                right: 0;
+                background: white;
+                display: none;
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active { display: flex; }
+            .nav-button { width: 100%; text-align: center; }
+
+            .hero h1 { font-size: 45px; }
+            section { padding: 70px 0; }
+
+            .courses-grid { grid-template-columns: 1fr; }
+            .about-content h2 { font-size: 30px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            
+            .modal-content {
+                border-radius: 15px;
+                max-height: 90vh;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .hero-buttons { flex-direction: column; }
+            .hero-buttons .btn { width: 100%; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="container nav-inner">
+        <a href="#home" class="logo">
+            <img src="logo.png" alt="B-SCIM Logo">
+            <div class="logo-text">
+                B-SCIM
+                <span>Building Scientific Minds</span>
+            </div>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#sessions">Sessions</a></li>
+            <li><a href="#instructors">Instructors</a></li>
+            <li><a href="#board">Board</a></li>
+            <li><a href="#committees">Committees</a></li>
+            <li><a href="#contact" class="nav-button">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero" id="home">
+    <div class="container hero-grid">
+        <div>
+            <div class="eyebrow">
+                <i class="fas fa-circle"></i>
+                Building Scientific Minds
+            </div>
+
+            <h1>Your Journey to <span>Professional Excellence</span> Starts Here</h1>
+
+            <p class="hero-text">
+                Join our expert-led courses and transform your skills in English, Excel, Research, and Design. Learn from industry professionals with years of experience.
+            </p>
+
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('courses').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-graduation-cap"></i>
+                    Explore Courses
+                </button>
+                <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-envelope"></i>
+                    Get in Touch
+                </button>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="visual-card">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=500&fit=crop" alt="Education">
+                <h3>Online Learning</h3>
+                <p>Flexible, comprehensive courses tailored to your pace and schedule</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container about-grid">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=500&fit=crop" alt="About B-SCIM">
+        </div>
+
+        <div class="about-content">
+            <h2>About B-SCIM</h2>
+            <p>
+                Building Scientific Minds Initiative is dedicated to fostering excellence in professional development. Our comprehensive courses are designed to equip learners with practical skills and knowledge needed in today's competitive world.
+            </p>
+            <p>
+                With a team of expert instructors and a commitment to quality education, we've helped hundreds of learners achieve their career goals and professional aspirations.
+            </p>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div>
+                        <h4>Expert Curriculum</h4>
+                        <p>Carefully designed courses with real-world applications</p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div>
+                        <h4>Recognized Certifications</h4>
+                        <p>Earn certificates upon successful course completion</p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <h4>Supportive Community</h4>
+                        <p>Connect with fellow learners and industry professionals</p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-24"></i>
+                    </div>
+                    <div>
+                        <h4>Lifetime Access</h4>
+                        <p>Access course materials anytime, anywhere on any device</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="courses" id="courses">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Our Courses</div>
+            <h2>Professional Development Programs</h2>
+            <p>Choose from our expertly crafted courses designed to elevate your career</p>
+        </div>
+
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="course-image">
+                    <i class="fas fa-language"></i>
+                </div>
+                <div class="course-body">
+                    <span class="course-tag">LANGUAGE</span>
+                    <h3>Professional English</h3>
+                    <p>Master business communication, presentation skills, and professional writing. Perfect for professionals looking to advance their careers internationally.</p>
+                    <button class="btn btn-primary course-button" onclick="showCourseDetails('Professional English')">
+                        Explore
+                    </button>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image">
+                    <i class="fas fa-table"></i>
+                </div>
+                <div class="course-body">
+                    <span class="course-tag">DATA</span>
+                    <h3>Microsoft Excel for Beginners</h3>
+                    <p>Learn data analysis, pivot tables, VBA, and advanced formulas. Transform raw data into actionable insights with Excel like a professional analyst.</p>
+                    <button class="btn btn-primary course-button" onclick="showCourseDetails('Microsoft Excel for Beginners')">
+                        Explore
+                    </button>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="course-body">
+                    <span class="course-tag">RESEARCH</span>
+                    <h3>Research & Analysis</h3>
+                    <p>Develop research methodologies, literature review techniques, and statistical analysis skills for academic and professional research projects.</p>
+                    <button class="btn btn-primary course-button" onclick="showCourseDetails('Research & Analysis')">
+                        Explore
+                    </button>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <div class="course-body">
+                    <span class="course-tag">DESIGN</span>
+                    <h3>Graphic Design Fundamentals</h3>
+                    <p>Learn design principles, Adobe Creative Suite, and visual communication. Create stunning graphics and presentations that captivate your audience.</p>
+                    <button class="btn btn-primary course-button" onclick="showCourseDetails('Graphic Design Fundamentals')">
+                        Explore
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="speakers-intro" id="speakers">
+    <div class="container speakers-intro-content">
+        <h2>Meet Our Expert Instructors</h2>
+        <p>
+            Learn from industry-leading professionals with years of practical experience and a passion for teaching. Our instructors bring real-world knowledge into every lesson.
+        </p>
+        <div class="speakers-highlight">
+            <strong>16+ Expert Instructors</strong> | Specializing in diverse fields to provide comprehensive learning experiences
+        </div>
+    </div>
+</section>
+
+
+<section class="sessions" id="sessions">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Learning Events</div>
+      <h2>Our Sessions</h2>
+      <p>Explore practical sessions led by experienced speakers. Select any session to view its topics and speaker profile.</p>
+    </div>
+    <div class="sessions-grid" id="sessionsGrid"></div>
+  </div>
+</section>
+
+<section id="instructors" class="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Meet the Experts</div>
+      <h2>Our Instructors</h2>
+      <p>Meet the speakers and professionals sharing their knowledge with the B-SCIM community.</p>
+    </div>
+    <div class="team-grid" id="instructorsGrid"></div>
+  </div>
+</section>
+
+<section class="board" id="board">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Leadership</div>
+      <h2>Our Board</h2>
+      <p>The team leading B-SCIM and supporting its mission.</p>
+    </div>
+    <div class="team-grid">
+      <article class="team-card board-card">
+        <div class="team-icon"><i class="fas fa-user-tie"></i></div>
+        <div class="team-role">CEO</div><h3>Mohamed Salah</h3>
+      </article>
+      <article class="team-card board-card">
+        <div class="team-icon"><i class="fas fa-users"></i></div>
+        <div class="team-role">General Manager</div><h3>Habiba Mohamed</h3>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="committees" class="sessions">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Our Teams</div>
+      <h2>B-SCIM Committees</h2>
+      <p>Different teams working together to create meaningful learning experiences and content.</p>
+    </div>
+    <div class="committee-grid">
+      <article class="committee-card"><div class="committee-icon"><i class="fas fa-palette"></i></div><h3>Graphic Design</h3><p>Creates visual identities, social media designs, and promotional materials.</p></article>
+      <article class="committee-card"><div class="committee-icon"><i class="fas fa-film"></i></div><h3>Video Editing</h3><p>Edits videos and prepares visual content for courses and initiative activities.</p></article>
+      <article class="committee-card"><div class="committee-icon"><i class="fas fa-microphone"></i></div><h3>Voice Over</h3><p>Provides voice recordings and narration for initiative media and educational content.</p></article>
+      <article class="committee-card"><div class="committee-icon"><i class="fas fa-bullhorn"></i></div><h3>Marketing</h3><p>Supports campaign planning, outreach, and promotion of B-SCIM activities.</p></article>
+      <article class="committee-card"><div class="committee-icon"><i class="fas fa-handshake"></i></div><h3>Public Relations (PR)</h3><p>Builds relationships and coordinates communication with partners and the community.</p></article>
+      <article class="committee-card"><div class="committee-icon"><i class="fas fa-people-group"></i></div><h3>Human Resources (HR)</h3><p>Supports recruitment, team coordination, member engagement, and development.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat">
+                <h3>16</h3>
+                <p>Expert Instructors</p>
+            </div>
+
+            <div class="stat">
+                <h3>4</h3>
+                <p>Professional Courses</p>
+            </div>
+
+            <div class="stat">
+                <h3>7</h3>
+                <p>Featured Sessions</p>
+            </div>
+
+            <div class="stat">
+                <h3>100%</h3>
+                <p>Quality Guaranteed</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h3>B-SCIM</h3>
+                <p>Building Scientific Minds Initiative - Your gateway to professional excellence and lifelong learning.</p>
+                <div class="socials">
+                    <a href="https://www.facebook.com/share/17UwKCnp9i/" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/b-scim-academy/" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#sessions">Sessions</a></li>
+                    <li><a href="#instructors">Instructors</a></li>
+                    <li><a href="#board">Board</a></li>
+                    <li><a href="#committees">Committees</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Get in Touch</h4>
+                <div class="footer-contact">
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:01515716968">01515716968</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@bscim.com">info@bscim.com</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-globe"></i>
+                        <span>Global Community</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2026 B-SCIM. All rights reserved. Building Scientific Minds Initiative.
+        </div>
+    </div>
+</footer>
+
+
+<div id="sessionModal" class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="sessionModalTitle">
+  <div class="detail-modal-content">
+    <div class="detail-modal-head"><h2 id="sessionModalTitle">Session Details</h2><button class="detail-close" onclick="closeSessionModal()" aria-label="Close">&times;</button></div>
+    <div id="sessionModalBody"></div>
+  </div>
+</div>
+
+<div id="courseModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Course Details</h2>
+            <button class="close-btn" onclick="closeCourseModal()">&times;</button>
+        </div>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Smooth scroll animation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+
+    const sessionData = [
+      {
+        title: 'سوق العمل في 2026 لا ينتظر.. تعلمي كيف تصيغين سيرتك الذاتية لتصل لمسؤول التوظيف مباشرة!',
+        speaker: 'رحاب علام | Rehab Allam',
+        bio: 'خبير توظيف بخبرة تتجاوز 10 سنوات في قطاع الموارد البشرية والتوظيف، عبر شركات وصناعات مختلفة. مستشارة مهنية ومطورة سير ذاتية مستقلة، تساعد المحترفين وحديثي التخرج على بناء هوية مهنية قوية ومتوافقة مع أنظمة ATS وسوق العمل الحديث. لديها خبرة في فحص ومعاينة آلاف السير الذاتية.',
+        topics: ['مقدمة', 'ما هو نظام ATS وكيف يعمل؟', 'عناصر السيرة الذاتية الاحترافية المتوافقة مع ATS', 'الأخطاء الشائعة التي تؤدي إلى رفض السيرة الذاتية', 'كيفية اختيار الكلمات المفتاحية المناسبة', 'أمثلة عملية: قبل وبعد', 'أدوات مفيدة وقوالب بسيطة للاستخدام', 'الخاتمة والأسئلة'], rtl: true
+      },
+      {
+        title: 'From Lab to Industry', speaker: 'د. علاء الدسوقي | Dr. Alaa El-Desouky',
+        bio: 'أستاذ باحث مساعد بالمركز القومي للبحوث (NRC). حاصل على دكتوراه في الكيمياء التطبيقية من جامعة الأزهر. خبير في تكنولوجيا البوليمرات وتطوير المنتجات، ولديه خبرة في الإنتاج والجودة والبحث والتطوير (R&D) بالقطاع الصناعي. متخصص في تأهيل طلاب العلوم لسوق العمل وربط الدراسة الأكاديمية بالتطبيق الصناعي.',
+        topics: ['التعرف على طبيعة العمل في الشركات والمصانع لخريجي كلية العلوم', 'الفجوة بين الدراسة الأكاديمية ومتطلبات سوق العمل وكيفية تجاوزها', 'أهم المهارات الفنية والشخصية التي يبحث عنها أصحاب العمل', 'الأقسام المختلفة داخل المصانع ودور كل منها: Production, Quality, R&D, QC', 'كيفية الاستعداد لسوق العمل وبناء بداية مهنية قوية', 'نصائح عملية من واقع الخبرة الصناعية لزيادة فرص القبول والتميز'], rtl: true
+      },
+      {
+        title: 'Presentation Secrets They Never Teach You', speaker: 'Mohamed Salah',
+        bio: 'Founder & CEO of B-SCIM. More than two years of experience in presentation skills.',
+        topics: ['Presentation skills and practical techniques'], rtl: false
+      },
+      {
+        title: 'Planning Your Presentation', speaker: 'Speaker details to be added',
+        bio: 'Presenter information has not been provided yet.',
+        topics: ['Slide Design Basics', 'Public Speaking Skills', 'Body Language & Confidence', 'Audience Engagement', 'Q&A Handling'], rtl: false
+      },
+      {
+        title: 'من طالب إلى مُحترف.. رحلة الـ Soft Skills', speaker: 'أسماء أبو العلا | Asmaa Abu El-Ela',
+        bio: 'باحثة ومدربة في الاتصال والعلاقات العامة بجامعة المنصورة.',
+        topics: ['التواصل الفعال', 'الذكاء العاطفي', 'إدارة الوقت وتنظيم الأولويات', 'العمل الجماعي', 'حل المشكلات واتخاذ القرار', 'التفاوض', 'الاحترافية وأخلاقيات العمل', 'بناء العلامة الشخصية'], rtl: true
+      },
+      {
+        title: 'Self-Learning & English Learning Strategies', speaker: 'أحمد موسى مختار | Ahmed Mousa Mokhtar',
+        bio: 'Self-Learning Coach and Learning Experience Designer; Founder of MiniLearn.',
+        topics: ['ليه أغلب محاولات تعلم الإنجليزي بتفشل رغم الحماس', 'إزاي تحدد هدف تعلم واضح', 'إزاي تختار مصادر تعلم تناسب وقتك ومستواك', 'إزاي تبني نظام تعلم بسيط تقدر تستمر عليه فعلًا'], rtl: true
+      },
+      {
+        title: 'AI Journey', speaker: 'أحمد مرزوق | Ahmed Marzouk',
+        bio: 'مهندس ذكاء اصطناعي ومطور ويب بخبرة تمتد إلى 3 سنوات في تطوير تطبيقات الويب وواجهات المستخدم (Frontend) وبناء أنظمة متعددة المنصات قابلة للتوسع. لديه خبرة عملية في الذكاء الاصطناعي، تحليل البيانات، نماذج الذكاء الاصطناعي، تعلم الآلة، الرؤية الحاسوبية، ومعالجة اللغة الطبيعية. يعمل على تحسين الأداء وتصميم الأنظمة المعيارية والحلول الجاهزة للإنتاج، ولديه خلفية في قواعد البيانات والشبكات والأمن السيبراني. يدرس حاليًا بكلية الذكاء الاصطناعي بجامعة المنوفية الأهلية بتقدير عام جيد جدًا، وشارك متحدثًا في فعاليات تقنية ومبادرات لدعم المبتدئين في البرمجة. حصل على دورات وشهادات منها PMP وPMA، ويسعى لتمكين الجيل القادم من المهندسين من استخدام أدوات الذكاء الاصطناعي لبناء حلول أكثر ذكاءً وكفاءة.',
+        topics: ['Artificial Intelligence', 'AI Modeling and Machine Learning', 'Computer Vision and NLP', 'Web Development and Frontend', 'Data Analysis and practical AI tools'], rtl: true
+      }
+    ];
+
+    function openSession(index) {
+      const item = sessionData[index];
+      if (!item) return;
+      document.getElementById('sessionModalTitle').textContent = item.title;
+      const body = document.getElementById('sessionModalBody');
+      body.innerHTML = `
+        <div class="detail-block ${item.rtl ? 'rtl-copy' : ''}">
+          <h3>${item.rtl ? 'محاور السيشن' : 'Session Topics'}</h3>
+          <ul>${item.topics.map(topic => `<li>${topic}</li>`).join('')}</ul>
+        </div>
+        <div class="detail-block ${item.rtl ? 'rtl-copy' : ''}">
+          <h3>${item.rtl ? 'عن المحاضر' : 'About the Speaker'}</h3>
+          <p><strong>${item.speaker}</strong></p><p>${item.bio}</p>
+        </div>`;
+      document.getElementById('sessionModal').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSessionModal() {
+      document.getElementById('sessionModal').classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('sessionModal').addEventListener('click', function(e) {
+      if (e.target === this) closeSessionModal();
+    });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSessionModal(); });
+
+    const sessionsGrid = document.getElementById('sessionsGrid');
+    sessionsGrid.innerHTML = sessionData.map((item, index) => `
+      <article class="session-card">
+        <div class="session-icon"><i class="fas ${['fa-file-lines','fa-flask','fa-person-chalkboard','fa-display','fa-people-group','fa-book-open','fa-robot'][index]}"></i></div>
+        <h3 class="${item.rtl ? 'rtl-copy' : ''}">${item.title}</h3>
+        <p class="session-speaker ${item.rtl ? 'rtl-copy' : ''}">${item.speaker}</p>
+        <button class="btn btn-primary" onclick="openSession(${index})">View Session Details</button>
+      </article>`).join('');
+
+    const instructorProfiles = [
+      {name:'رحاب علام | Rehab Allam', role:'Recruitment & Career Consultant', bio:'أكثر من 10 سنوات في الموارد البشرية والتوظيف، واستشارات مهنية وتطوير سير ذاتية متوافقة مع ATS.'},
+      {name:'د. علاء الدسوقي | Dr. Alaa El-Desouky', role:'Assistant Research Professor, NRC', bio:'دكتوراه في الكيمياء التطبيقية، وخبرة في تكنولوجيا البوليمرات والإنتاج والجودة والبحث والتطوير الصناعي.'},
+      {name:'Mohamed Salah', role:'Founder & CEO of B-SCIM', bio:'More than two years of experience in presentation skills.'},
+      {name:'أسماء أبو العلا | Asmaa Abu El-Ela', role:'Communication & Public Relations Researcher and Trainer', bio:'باحثة ومدربة في الاتصال والعلاقات العامة بجامعة المنصورة.'},
+      {name:'أحمد موسى مختار | Ahmed Mousa Mokhtar', role:'Self-Learning Coach & Learning Experience Designer', bio:'Founder of MiniLearn.'},
+      {name:'أحمد مرزوق | Ahmed Marzouk', role:'AI Engineer & Web Developer', bio:'خبرة في تطوير الويب والذكاء الاصطناعي وتعلم الآلة وتحليل البيانات وتقنيات متعددة.'}
+    ];
+    document.getElementById('instructorsGrid').innerHTML = instructorProfiles.map(person => `
+      <article class="team-card">
+        <div class="team-icon"><i class="fas fa-user-graduate"></i></div>
+        <div class="team-role">${person.role}</div><h3>${person.name}</h3><p class="bio">${person.bio}</p>
+      </article>`).join('');
+
+    function showCourseDetails(courseName) {
+        const details = {
+            
+        'Professional English': {
+            sessions: [
+                'Grammar Fundamentals & Language Basics',
+                'Conversation Skills & Fluency',
+                'Business English & Professional Communication',
+                'Advanced Communication & Mastery'
+            ],
+            instructors: [
+                'Mohammed Ghouneim',
+                'Marwa Amir',
+                'Heba Ramadan',
+                'Eman El Sayed'
+            ]
+        },
+
+              'Microsoft Excel for Beginners': {
+            sessions: [
+                'Excel Basics & Interface',
+                'Data Entry & Basic Formatting',
+                'Basic Formulas & Functions',
+                'Tables, Charts & Simple Data Analysis'
+            ],
+            instructors: [
+                'Eng. Abdelazim Shaheen',
+                'Eng. Manar Gamal',
+                'Eng. Abdelrahman Khaled',
+                'Acc. Mahmoud Amin'
+            ]
+        },
+
+        'Research & Analysis': {
+            sessions: [
+                'Research Methodology & Scientific Approach',
+                'Literature Review & Source Management',
+                'Data Collection, Analysis & Interpretation',
+                'Writing, Publication & Presentation'
+            ],
+            instructors: [
+                'Dr. Hanaa Sabry',
+                'Dr. Heba Mansour',
+                'Dr. Mohamed Abdel-aziz',
+                'Dr. Asmaa Tawfik'
+            ]
+        },
+
+        'Graphic Design Fundamentals': {
+            sessions: [
+                'Interface Mastery & Tools Introduction',
+                'Photo Editing & Color Correction Techniques',
+                'Design Projects & Creative Composition',
+                'Advanced Effects, Finishes & Professional Output'
+            ],
+            instructors: [
+                'Rehab Mohamed',
+                'Jaser Saeed',
+                'Ahmed Yousry',
+                'Shimaa Mohamed'
+            ]
+        }
+    };
+
+    const courseData = details[courseName];
+
+    const modal = document.getElementById('courseModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+
+    modalTitle.textContent = courseName;
+
+    modalBody.innerHTML = `
+        <div class="modal-section">
+            <h3>📚 Course Sessions</h3>
+            <ul>
+                ${courseData.sessions.map((session, index) =>
+                    `<li><strong>Session ${index + 1}:</strong> ${session}</li>`
+                ).join('')}
+            </ul>
+        </div>
+
+        <div class="modal-section">
+            <h3>👨‍🏫 Instructors</h3>
+            <ul>
+                ${courseData.instructors.map(instructor =>
+                    `<li>${instructor}</li>`
+                ).join('')}
+            </ul>
+        </div>
+    `;
+
+    modal.classList.add('show');
+}
+    function closeCourseModal() {
+        document.getElementById('courseModal').classList.remove('show');
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('courseModal');
+        if (event.target == modal) {
+            modal.classList.remove('show');
+        }
+    }
+</script>
+
+</body>
+</html>
