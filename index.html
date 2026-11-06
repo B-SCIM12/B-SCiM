@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102a43">
   <title>B-SCIM | Building Scientific Minds</title>
   <style>
-    html, body { margin: 0; min-height: 100%; }
+    html, body { margin: 0; min-height: 100%; background: #f7f9fc; }
     #original-site { display: block; width: 100%; height: 100vh; border: 0; }
   </style>
 </head>
 <body>
-  <!-- Keep the existing site design and add video behavior to its existing modals. -->
+  <!-- Keep the existing B-SCIM website layout and enhance its colors and video modals. -->
   <iframe id="original-site" src="B-SCIM_updated_sessions_team.html" title="B-SCIM website"></iframe>
   <script>
     const siteFrame = document.getElementById('original-site');
@@ -27,34 +28,66 @@
       const doc = site.document;
       if (doc.documentElement.dataset.videoFeaturesInstalled === 'true') return;
       doc.documentElement.dataset.videoFeaturesInstalled = 'true';
+      doc.documentElement.lang = 'en';
+
+      // Refresh the existing site's palette without changing its layout or sections.
+      const polish = doc.createElement('style');
+      polish.textContent = `
+        :root {
+          --primary: #176b70 !important;
+          --primary-dark: #102a43 !important;
+          --secondary: #d29b3d !important;
+          --accent: #f0c66e !important;
+          --light-blue: #eaf3f5 !important;
+          --soft-bg: #f5f8fa !important;
+          --text: #243b53 !important;
+          --muted: #627d98 !important;
+          --border: #d9e2ec !important;
+          --shadow: 0 16px 42px rgba(16, 42, 67, .12) !important;
+        }
+        body { background:#fbfcfe !important; color:#243b53 !important; }
+        .navbar { background:rgba(255,255,255,.97) !important; border-bottom-color:#d9e2ec !important; }
+        .hero { background:radial-gradient(circle at 85% 20%,rgba(210,155,61,.15),transparent 28%),linear-gradient(135deg,#f8fbff,#edf5f6) !important; }
+        .course-card,.session-card,.team-card,.committee-card { border-color:#d9e2ec !important; box-shadow:0 8px 26px rgba(16,42,67,.07) !important; }
+        .course-card:hover,.session-card:hover,.team-card:hover,.committee-card:hover { box-shadow:0 18px 42px rgba(16,42,67,.14) !important; }
+        .btn-primary,.nav-button { background:linear-gradient(135deg,#176b70,#21858a) !important; }
+        .btn-primary:hover,.nav-button:hover { background:linear-gradient(135deg,#d29b3d,#bd8429) !important; }
+        .detail-modal-content { border:1px solid #d9e2ec !important; }
+        .bscim-inline-video iframe { box-shadow:0 8px 24px rgba(16,42,67,.16); }
+        .bscim-video-row { border:1px solid #d9e2ec; transition:transform .2s,box-shadow .2s; }
+        .bscim-video-row:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(16,42,67,.08); }
+        .bscim-video-heading { letter-spacing:.04em; }
+        @media(max-width:700px) { .detail-modal-content { padding:20px !important; } }
+      `;
+      doc.head.appendChild(polish);
 
       const courseVideos = {
         'Professional English': [
-          { title: 'السيشن 1', id: '1OBxgPy5ZuO5uY2Qfdtceie84pS5PEP1s' },
-          { title: 'السيشن 2', id: '1tK-XWWp3TXrHXCo2mysb1RbbKCxfN8Go' },
-          { title: 'السيشن 3', id: '1samiHybl8pm5M8KMOMYyhYMTyN8OWU4v' },
-          { title: 'السيشن 4', id: '16oE29O94m0N8nv2o20RV8yL5kJZVy-CO' }
+          { title: 'Session 1', id: '1OBxgPy5ZuO5uY2Qfdtceie84pS5PEP1s' },
+          { title: 'Session 2', id: '1tK-XWWp3TXrHXCo2mysb1RbbKCxfN8Go' },
+          { title: 'Session 3', id: '1samiHybl8pm5M8KMOMYyhYMTyN8OWU4v' },
+          { title: 'Session 4', id: '16oE29O94m0N8nv2o20RV8yL5kJZVy-CO' }
         ],
         'Microsoft Excel for Beginners': [
-          { title: 'السيشن 1', soon: true },
-          { title: 'السيشن 2', id: '1-R0u5YWEPuxFMOBbvYB2I2N3MfUTHdvh' },
-          { title: 'السيشن 3', id: '1KnVDd5bMYFvZQ8zeB-z_XMIBVkzFnbTT' },
-          { title: 'السيشن 4', id: '1Iu8a5qf36HJxk6kMpyLQGX_Rxyz4sbK2' }
+          { title: 'Session 1', soon: true },
+          { title: 'Session 2', id: '1-R0u5YWEPuxFMOBbvYB2I2N3MfUTHdvh' },
+          { title: 'Session 3', id: '1KnVDd5bMYFvZQ8zeB-z_XMIBVkzFnbTT' },
+          { title: 'Session 4', id: '1Iu8a5qf36HJxk6kMpyLQGX_Rxyz4sbK2' }
         ],
         'Research & Analysis': [
-          { title: 'السيشن 1', id: '1WlqgNT0Ci4Ejcl-wucllOp8ZtF1khl9e' },
-          { title: 'السيشن 2', id: '1P3OWGkMLFnZf2SG8vvNtaeBZBnHICiXq' },
-          { title: 'السيشن 3', id: '1cB6ytQLB1sdPkAriHV54IOt8nlUGRNRl' },
-          { title: 'السيشن 4 — الجزء الأول', id: '1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0' },
-          { title: 'السيشن 4 — الجزء الثاني', id: '1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0', note: 'رابط الجزء الثاني المرسل هو نفسه رابط الجزء الأول.' },
-          { title: 'السيشن 5', id: '1KE6rUfyTSwwASz_AfZVAeXyIV6foaRoA' }
+          { title: 'Session 1', id: '1WlqgNT0Ci4Ejcl-wucllOp8ZtF1khl9e' },
+          { title: 'Session 2', id: '1P3OWGkMLFnZf2SG8vvNtaeBZBnHICiXq' },
+          { title: 'Session 3', id: '1cB6ytQLB1sdPkAriHV54IOt8nlUGRNRl' },
+          { title: 'Session 4 — Part 1', id: '1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0' },
+          { title: 'Session 4 — Part 2', id: '1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0', note: 'The link provided for Part 2 is the same as Part 1.' },
+          { title: 'Session 5', id: '1KE6rUfyTSwwASz_AfZVAeXyIV6foaRoA' }
         ],
         'Graphic Design Fundamentals': [
-          { title: 'السيشن 1', id: '1mXYYNbOmiJ-eIyI0Tl1OD1XOLwIidQRB' },
-          { title: 'السيشن 2', soon: true },
-          { title: 'السيشن 3', soon: true },
-          { title: 'السيشن 4', id: '1UR0eUMdckbnfsuwz4z9jYmFRCNUjFiKB' },
-          { title: 'السيشن 5', id: '1JirhIHtrN4jxSRfG6uCVZaNKc_F32xJb' }
+          { title: 'Session 1', id: '1mXYYNbOmiJ-eIyI0Tl1OD1XOLwIidQRB' },
+          { title: 'Session 2', soon: true },
+          { title: 'Session 3', soon: true },
+          { title: 'Session 4', id: '1UR0eUMdckbnfsuwz4z9jYmFRCNUjFiKB' },
+          { title: 'Session 5', id: '1JirhIHtrN4jxSRfG6uCVZaNKc_F32xJb' }
         ]
       };
 
@@ -68,23 +101,31 @@
         frame.allow = 'autoplay; fullscreen';
         frame.allowFullscreen = true;
         frame.loading = 'lazy';
-        frame.style.cssText = 'display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#102b42;';
+        frame.style.cssText = 'display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#102a43;';
         wrapper.appendChild(frame);
         return wrapper;
+      }
+
+      function addRegistrationNote(parent) {
+        const note = doc.createElement('small');
+        note.textContent = 'Certificate registration link will be added soon.';
+        note.style.cssText = 'display:block;margin-top:10px;color:#627d98;font-size:13px;';
+        parent.appendChild(note);
       }
 
       function addVideoButton(parent, video, courseName) {
         const button = doc.createElement('button');
         button.type = 'button';
         button.className = 'btn btn-primary';
-        button.textContent = 'مشاهدة الفيديو';
-        button.style.cssText = 'display:block;margin-top:8px;';
+        button.textContent = 'Watch Video';
+        button.style.cssText = 'display:block;margin-top:10px;';
         const player = makePlayer(video.id, courseName + ' — ' + video.title);
         button.addEventListener('click', function () {
           player.style.display = 'block';
-          button.textContent = 'الفيديو بالأسفل';
+          button.textContent = 'Video is ready below';
         });
         parent.append(button, player);
+        addRegistrationNote(parent);
       }
 
       const originalShowCourseDetails = site.showCourseDetails;
@@ -94,45 +135,46 @@
         const body = doc.getElementById('modalBody');
         if (!videos || !body) return;
 
-        // The original modal lists session names at the top. Remove that list so each
-        // session appears only once here, next to its video action.
+        // Remove the original session-name list; show each session once with its video action.
         const originalSections = body.querySelectorAll('.modal-section');
         if (originalSections.length) originalSections[0].remove();
 
         const section = doc.createElement('div');
         section.className = 'modal-section';
         const heading = doc.createElement('h3');
-        heading.textContent = '🎬 السيشنات';
+        heading.className = 'bscim-video-heading';
+        heading.textContent = 'Course Sessions';
         section.appendChild(heading);
         const list = doc.createElement('ul');
         list.style.cssText = 'list-style:none;padding:0;';
 
         videos.forEach(function (video) {
           const item = doc.createElement('li');
-          item.style.cssText = 'padding:12px 16px;margin:10px 0;background:#ebf4fb;border-radius:8px;';
+          item.className = 'bscim-video-row';
+          item.style.cssText = 'padding:14px 16px;margin:10px 0;background:#f3f7f9;border-radius:10px;border-left:3px solid #d29b3d;';
           const label = doc.createElement('strong');
           label.textContent = video.title;
           item.appendChild(label);
 
           if (video.soon) {
             const status = doc.createElement('span');
-            status.textContent = ' — قريبًا';
-            status.style.cssText = 'display:block;margin-top:6px;color:#5a7282;font-weight:700;';
+            status.textContent = 'Coming Soon';
+            status.style.cssText = 'display:block;margin-top:5px;color:#627d98;font-size:13px;font-weight:700;';
             item.appendChild(status);
             const placeholder = doc.createElement('button');
             placeholder.type = 'button';
             placeholder.className = 'btn btn-primary';
-            placeholder.textContent = 'مشاهدة الفيديو';
+            placeholder.textContent = 'Watch Video';
             placeholder.disabled = true;
-            placeholder.setAttribute('aria-label', video.title + ' — الفيديو قريبًا');
-            placeholder.style.cssText = 'display:block;margin-top:8px;opacity:.55;cursor:not-allowed;';
+            placeholder.setAttribute('aria-label', video.title + ' — coming soon');
+            placeholder.style.cssText = 'display:block;margin-top:9px;opacity:.5;cursor:not-allowed;';
             item.appendChild(placeholder);
           } else {
             addVideoButton(item, video, courseName);
             if (video.note) {
               const note = doc.createElement('small');
               note.textContent = video.note;
-              note.style.cssText = 'display:block;margin-top:8px;color:#5a7282;';
+              note.style.cssText = 'display:block;margin-top:8px;color:#627d98;';
               item.appendChild(note);
             }
           }
@@ -164,9 +206,10 @@
         const block = doc.createElement('div');
         block.className = 'detail-block';
         const heading = doc.createElement('h3');
-        heading.textContent = '🎬 مشاهدة الفيديو';
+        heading.textContent = 'Session Video';
         const item = doc.createElement('div');
-        item.style.cssText = 'padding:12px 16px;background:#ebf4fb;border-radius:8px;';
+        item.className = 'bscim-video-row';
+        item.style.cssText = 'padding:14px 16px;background:#f3f7f9;border-radius:10px;border-left:3px solid #d29b3d;';
         const label = doc.createElement('strong');
         label.textContent = video.title;
         item.appendChild(label);
