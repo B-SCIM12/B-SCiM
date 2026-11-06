@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="شاهد سيشنات وكورسات B-SCIM التعليمية داخل الموقع.">
-  <title>فيديوهات الكورسات والسيشنات | B-SCIM</title>
+  <meta name="description" content="اختاري سيشن أو كورس B-SCIM وشاهدي الفيديو داخل الموقع.">
+  <title>السيشنات والكورسات | B-SCIM</title>
   <style>
     :root{--navy:#0a2d4d;--gold:#c9973d;--ink:#183b5c;--muted:#5a7282;--pale:#ebf4fb;--bg:#f7f3ee;--border:#dfe9f1}
     *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.75}
@@ -12,60 +12,88 @@
     main{width:min(1100px,92%);margin:38px auto 70px}.notice{background:#fff8e9;border-right:4px solid var(--gold);padding:14px 18px;border-radius:8px;margin-bottom:26px;color:#604718}
     nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:24px 0 38px}nav a,.back{display:inline-block;text-decoration:none;background:var(--pale);color:var(--navy);padding:9px 16px;border-radius:30px;font-weight:bold}
     section{margin:44px 0;scroll-margin-top:20px}h2{color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:8px}.course{background:var(--bg);padding:22px;border-radius:16px;margin:20px 0}.course h3{margin:0 0 16px;color:var(--navy)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}.card{background:white;border:1px solid var(--border);border-radius:13px;padding:16px;box-shadow:0 5px 16px #0a2d4d12}.card h4{margin:0 0 12px}.video{aspect-ratio:16/9;background:#102b42;border-radius:9px;overflow:hidden}.video iframe{width:100%;height:100%;border:0}.upcoming{aspect-ratio:16/9;background:var(--pale);display:grid;place-items:center;border-radius:9px;color:var(--muted);font-weight:bold;font-size:20px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}.card{background:white;border:1px solid var(--border);border-radius:13px;padding:18px;box-shadow:0 5px 16px #0a2d4d12;display:flex;flex-direction:column;align-items:stretch}.card h4{margin:0 0 12px;color:var(--navy)}
+    .watch{border:0;border-radius:9px;background:linear-gradient(135deg,var(--navy),#164f7b);color:#fff;padding:12px 16px;font-size:15px;font-weight:bold;cursor:pointer}.watch:hover{background:var(--gold)}.coming{background:var(--pale);color:var(--muted);padding:10px 14px;border-radius:8px;text-align:center;font-weight:bold}
     .reg{margin:14px 0 0;padding:10px 12px;background:#f4f7f9;border-radius:8px;color:var(--muted);font-size:14px}.reg strong{color:var(--navy)}.part{font-size:13px;color:var(--gold);font-weight:bold}
+    .player-modal{display:none;position:fixed;inset:0;z-index:10;background:#041322cc;padding:18px;align-items:center;justify-content:center}.player-modal.show{display:flex}.player{background:white;width:min(850px,100%);max-height:92vh;overflow:auto;border-radius:16px;padding:20px}.player-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.player-head h2{border:0;margin:0;padding:0}.close{border:0;border-radius:50%;width:40px;height:40px;font-size:25px;cursor:pointer;background:var(--pale);color:var(--navy)}.video{aspect-ratio:16/9;background:#102b42;border-radius:10px;overflow:hidden;margin:16px 0}.video iframe{width:100%;height:100%;border:0}.player .reg{margin-top:12px}
     footer{text-align:center;background:var(--navy);color:white;padding:22px}footer a{color:#f3d795}
-    @media(max-width:500px){header{padding:24px 5%}main{margin-top:24px}.course{padding:15px}.card{padding:12px}}
+    @media(max-width:500px){header{padding:24px 5%}main{margin-top:24px}.course{padding:15px}.card{padding:14px}}
   </style>
 </head>
 <body>
-  <header>
-    <h1>فيديوهات B-SCIM</h1>
-    <p>اختاري السيشن أو الكورس وشاهدي الفيديو هنا داخل الموقع.</p>
-  </header>
+  <header><h1>سيشنات وكورسات B-SCIM</h1><p>اختاري السيشن أو الكورس واضغطي «شاهد الفيديو» — سيعمل الفيديو داخل الموقع.</p></header>
   <main>
-    <div class="notice"><strong>ملاحظة:</strong> الفيديوهات مستضافة على Google Drive وتُعرض داخل الصفحة. يجب أن تكون صلاحية كل فيديو «أي شخص لديه الرابط — مشاهد». رابط التسجيل للشهادة لم يصلنا بعد، لذلك سيظهر مكانه تنبيه مؤقت.</div>
-    <nav aria-label="روابط الأقسام">
-      <a href="#sessions">السيشنات</a><a href="#photoshop">Photoshop Basics</a><a href="#english">English Edge</a><a href="#research">Scientific Research</a><a href="#excel">Microsoft Excel</a>
-    </nav>
-
-    <section id="sessions"><h2>السيشنات</h2><div class="grid">
-      <article class="card"><h4>AI Journey</h4><div class="video"><iframe src="https://drive.google.com/file/d/191lFjaDUl8GClBEpjnnIwj4vCQmK70EE/preview" title="AI Journey" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>Presentation Skills</h4><div class="video"><iframe src="https://drive.google.com/file/d/11Q2BSIEQqMQWTJB-NDhIEBorr6kpjHPN/preview" title="Presentation Skills" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-    </div></section>
-
-    <section id="photoshop"><h2>كورس Photoshop Basics</h2><div class="grid">
-      <article class="card"><h4>السيشن 1</h4><div class="video"><iframe src="https://drive.google.com/file/d/1mXYYNbOmiJ-eIyI0Tl1OD1XOLwIidQRB/preview" title="Photoshop Basics - Session 1" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>السيشن 2</h4><div class="upcoming">قريبًا</div></article>
-      <article class="card"><h4>السيشن 3</h4><div class="upcoming">قريبًا</div></article>
-      <article class="card"><h4>السيشن 4</h4><div class="video"><iframe src="https://drive.google.com/file/d/1UR0eUMdckbnfsuwz4z9jYmFRCNUjFiKB/preview" title="Photoshop Basics - Session 4" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>السيشن 5</h4><div class="video"><iframe src="https://drive.google.com/file/d/1JirhIHtrN4jxSRfG6uCVZaNKc_F32xJb/preview" title="Photoshop Basics - Session 5" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-    </div></section>
-
-    <section id="english"><h2>كورس English Edge</h2><div class="grid">
-      <article class="card"><h4>السيشن 1</h4><div class="video"><iframe src="https://drive.google.com/file/d/1OBxgPy5ZuO5uY2Qfdtceie84pS5PEP1s/preview" title="English Edge - Session 1" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>السيشن 2</h4><div class="video"><iframe src="https://drive.google.com/file/d/1tK-XWWp3TXrHXCo2mysb1RbbKCxfN8Go/preview" title="English Edge - Session 2" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>السيشن 3</h4><div class="video"><iframe src="https://drive.google.com/file/d/1samiHybl8pm5M8KMOMYyhYMTyN8OWU4v/preview" title="English Edge - Session 3" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>السيشن 4</h4><div class="video"><iframe src="https://drive.google.com/file/d/16oE29O94m0N8nv2o20RV8yL5kJZVy-CO/preview" title="English Edge - Session 4" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-    </div></section>
-
-    <section id="research"><h2>كورس Scientific Research</h2><div class="grid">
-      <article class="card"><h4>السيشن 1</h4><div class="video"><iframe src="https://drive.google.com/file/d/1WlqgNT0Ci4Ejcl-wucllOp8ZtF1khl9e/preview" title="Scientific Research - Session 1" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>السيشن 2</h4><div class="video"><iframe src="https://drive.google.com/file/d/1P3OWGkMLFnZf2SG8vvNtaeBZBnHICiXq/preview" title="Scientific Research - Session 2" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>السيشن 3</h4><div class="video"><iframe src="https://drive.google.com/file/d/1cB6ytQLB1sdPkAriHV54IOt8nlUGRNRl/preview" title="Scientific Research - Session 3" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>السيشن 4</h4><div class="video"><iframe src="https://drive.google.com/file/d/1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0/preview" title="Scientific Research - Session 4, Part 1" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="part">الجزء الأول</p><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>السيشن 4 — الجزء الثاني</h4><div class="video"><iframe src="https://drive.google.com/file/d/1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0/preview" title="Scientific Research - Session 4, Part 2" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="part">الجزء الثاني — استخدمت الرابط الذي أرسلتيه لبارت ٢، وهو نفس رابط الجزء الأول.</p><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>السيشن 5</h4><div class="video"><iframe src="https://drive.google.com/file/d/1KE6rUfyTSwwASz_AfZVAeXyIV6foaRoA/preview" title="Scientific Research - Session 5" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-    </div></section>
-
-    <section id="excel"><h2>كورس Microsoft Excel</h2><div class="grid">
-      <article class="card"><h4>السيشن 1</h4><div class="upcoming">قريبًا</div></article>
-      <article class="card"><h4>السيشن 2</h4><div class="video"><iframe src="https://drive.google.com/file/d/1-R0u5YWEPuxFMOBbvYB2I2N3MfUTHdvh/preview" title="Microsoft Excel - Session 2" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>السيشن 3</h4><div class="video"><iframe src="https://drive.google.com/file/d/1KnVDd5bMYFvZQ8zeB-z_XMIBVkzFnbTT/preview" title="Microsoft Excel - Session 3" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-      <article class="card"><h4>السيشن 4</h4><div class="video"><iframe src="https://drive.google.com/file/d/1Iu8a5qf36HJxk6kMpyLQGX_Rxyz4sbK2/preview" title="Microsoft Excel - Session 4" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.</p></article>
-    </div></section>
+    <div class="notice"><strong>مهم:</strong> يجب ضبط فيديوهات Google Drive على «أي شخص لديه الرابط — مشاهد». رابط التسجيل للشهادة لم يتم إرساله بعد؛ سيظهر مكانه تنبيه مؤقت تحت الفيديو.</div>
+    <nav aria-label="روابط الأقسام"><a href="#sessions">السيشنات</a><a href="#photoshop">Photoshop Basics</a><a href="#english">English Edge</a><a href="#research">Scientific Research</a><a href="#excel">Microsoft Excel</a></nav>
+    <section id="sessions"><h2>السيشنات</h2><div class="grid" id="sessions-list"></div></section>
+    <section id="photoshop"><h2>كورس Photoshop Basics</h2><div class="grid" id="photoshop-list"></div></section>
+    <section id="english"><h2>كورس English Edge</h2><div class="grid" id="english-list"></div></section>
+    <section id="research"><h2>كورس Scientific Research</h2><div class="grid" id="research-list"></div></section>
+    <section id="excel"><h2>كورس Microsoft Excel</h2><div class="grid" id="excel-list"></div></section>
     <a class="back" href="index.html">العودة إلى موقع B-SCIM</a>
   </main>
+  <div class="player-modal" id="player-modal" role="dialog" aria-modal="true" aria-labelledby="player-title">
+    <div class="player"><div class="player-head"><h2 id="player-title"></h2><button class="close" type="button" aria-label="إغلاق" onclick="closePlayer()">&times;</button></div><div class="video" id="player-frame"></div><p class="reg"><strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف هنا عند إرساله.</p></div>
+  </div>
   <footer>© B-SCIM — <a href="index.html">الصفحة الرئيسية</a></footer>
+  <script>
+    const videoGroups = {
+      'sessions-list': [
+        {title:'AI Journey', id:'191lFjaDUl8GClBEpjnnIwj4vCQmK70EE'},
+        {title:'Presentation Skills', id:'11Q2BSIEQqMQWTJB-NDhIEBorr6kpjHPN'}
+      ],
+      'photoshop-list': [
+        {title:'السيشن 1', id:'1mXYYNbOmiJ-eIyI0Tl1OD1XOLwIidQRB'},
+        {title:'السيشن 2', soon:true}, {title:'السيشن 3', soon:true},
+        {title:'السيشن 4', id:'1UR0eUMdckbnfsuwz4z9jYmFRCNUjFiKB'},
+        {title:'السيشن 5', id:'1JirhIHtrN4jxSRfG6uCVZaNKc_F32xJb'}
+      ],
+      'english-list': [
+        {title:'السيشن 1', id:'1OBxgPy5ZuO5uY2Qfdtceie84pS5PEP1s'},
+        {title:'السيشن 2', id:'1tK-XWWp3TXrHXCo2mysb1RbbKCxfN8Go'},
+        {title:'السيشن 3', id:'1samiHybl8pm5M8KMOMYyhYMTyN8OWU4v'},
+        {title:'السيشن 4', id:'16oE29O94m0N8nv2o20RV8yL5kJZVy-CO'}
+      ],
+      'research-list': [
+        {title:'السيشن 1', id:'1WlqgNT0Ci4Ejcl-wucllOp8ZtF1khl9e'},
+        {title:'السيشن 2', id:'1P3OWGkMLFnZf2SG8vvNtaeBZBnHICiXq'},
+        {title:'السيشن 3', id:'1cB6ytQLB1sdPkAriHV54IOt8nlUGRNRl'},
+        {title:'السيشن 4 — الجزء الأول', id:'1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0'},
+        {title:'السيشن 4 — الجزء الثاني', id:'1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0', note:'ملاحظة: رابط الجزء الثاني الذي وصلني هو نفس رابط الجزء الأول.'},
+        {title:'السيشن 5', id:'1KE6rUfyTSwwASz_AfZVAeXyIV6foaRoA'}
+      ],
+      'excel-list': [
+        {title:'السيشن 1', soon:true},
+        {title:'السيشن 2', id:'1-R0u5YWEPuxFMOBbvYB2I2N3MfUTHdvh'},
+        {title:'السيشن 3', id:'1KnVDd5bMYFvZQ8zeB-z_XMIBVkzFnbTT'},
+        {title:'السيشن 4', id:'1Iu8a5qf36HJxk6kMpyLQGX_Rxyz4sbK2'}
+      ]
+    };
+    function openPlayer(title,id){
+      document.getElementById('player-title').textContent=title;
+      const frame=document.createElement('iframe');
+      frame.src='https://drive.google.com/file/d/'+encodeURIComponent(id)+'/preview';
+      frame.title=title; frame.allow='autoplay; fullscreen'; frame.allowFullscreen=true; frame.loading='eager';
+      const holder=document.getElementById('player-frame'); holder.replaceChildren(frame);
+      document.getElementById('player-modal').classList.add('show'); document.body.style.overflow='hidden';
+    }
+    function closePlayer(){document.getElementById('player-modal').classList.remove('show');document.getElementById('player-frame').replaceChildren();document.body.style.overflow='';}
+    document.getElementById('player-modal').addEventListener('click',e=>{if(e.target.id==='player-modal')closePlayer()});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closePlayer()});
+    Object.entries(videoGroups).forEach(([containerId,items])=>{
+      const container=document.getElementById(containerId);
+      items.forEach(item=>{
+        const card=document.createElement('article'); card.className='card';
+        const heading=document.createElement('h4'); heading.textContent=item.title; card.append(heading);
+        if(item.soon){const upcoming=document.createElement('div');upcoming.className='coming';upcoming.textContent='قريبًا';card.append(upcoming)}
+        else{
+          const button=document.createElement('button');button.className='watch';button.type='button';button.textContent='شاهد الفيديو';button.addEventListener('click',()=>openPlayer(item.title,item.id));card.append(button);
+          if(item.note){const note=document.createElement('p');note.className='part';note.textContent=item.note;card.append(note)}
+          const registration=document.createElement('p');registration.className='reg';registration.innerHTML='<strong>التسجيل للشهادة:</strong> رابط التسجيل سيضاف قريبًا.';card.append(registration);
+        }
+        container.append(card);
+      });
+    });
+  </script>
 </body>
 </html>
