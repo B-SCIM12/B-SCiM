@@ -1,465 +1,186 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>B-SCIM | Building Scientific Minds</title>
-  <meta name="description" content="B-SCIM - videos and courses inside the website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    :root {
-      --primary:#0a2d4d; --primary-dark:#071d35; --secondary:#c9973d; --accent:#e8c77a;
-      --light-blue:#ebf4fb; --soft-bg:#f7f3ee; --text:#183b5c; --muted:#5a7282;
-      --white:#ffffff; --border:#dfe9f1; --shadow:0 15px 45px rgba(10,45,77,.12);
-    }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body {
-      margin:0; font-family:'Poppins',sans-serif; background:var(--white); color:var(--text);
-      line-height:1.8;
-    }
-    a { text-decoration:none; color:inherit; }
-    .container { width:min(1160px,92%); margin:auto; }
-    .navbar {
-      position:sticky; top:0; z-index:1000; background:rgba(255,255,255,.97);
-      backdrop-filter:blur(12px); border-bottom:1px solid var(--border);
-      box-shadow:0 2px 15px rgba(10,45,77,.08);
-    }
-    .nav-inner {
-      height:78px; display:flex; align-items:center; justify-content:space-between;
-    }
-    .logo { display:flex; align-items:center; gap:12px; }
-    .logo-text { font-size:22px; font-weight:800; letter-spacing:1.5px; color:var(--primary-dark); font-family:'Playfair Display',serif; }
-    .logo-text span { display:block; font-size:9px; font-weight:600; letter-spacing:2px; color:var(--secondary); font-family:'Poppins',sans-serif; }
-    .nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
-    .nav-links a { font-size:14px; font-weight:600; color:#506170; position:relative; }
-    .nav-links a::after { content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:var(--secondary); transition:0.3s; }
-    .nav-links a:hover::after { width:100%; }
-    .nav-links a:hover { color:var(--primary); }
-    .nav-button {
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      background:linear-gradient(135deg,var(--primary),#164f7b); color:white; padding:10px 22px; border-radius:8px;
-      font-weight:700;
-    }
-    .hero {
-      position:relative; overflow:hidden; background:radial-gradient(circle at 85% 20%, rgba(201,151,61,.18), transparent 28%), radial-gradient(circle at 10% 90%, rgba(10,45,77,.08), transparent 30%), linear-gradient(135deg,#f8fbff,#eef5fb); padding:110px 0 90px;
-    }
-    .hero-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center; }
-    .eyebrow {
-      display:inline-flex; align-items:center; gap:8px; padding:8px 16px; border-radius:50px; background:white; border:1.5px solid var(--secondary); color:var(--primary); font-size:12px; font-weight:700; margin-bottom:20px;
-    }
-    .hero h1 {
-      font-size:clamp(40px,6vw,72px); line-height:1.08; letter-spacing:-2px; margin:0 0 20px; color:var(--text); font-family:'Playfair Display',serif; font-weight:800;
-    }
-    .hero h1 span { color:var(--secondary); display:inline-block; }
-    .hero p { max-width:620px; color:var(--muted); font-size:18px; margin:0 0 30px; }
-    .hero-actions { display:flex; gap:15px; flex-wrap:wrap; }
-    .btn {
-      display:inline-flex; align-items:center; justify-content:center; gap:8px; border:none; border-radius:10px; padding:14px 28px; cursor:pointer; font-weight:700; font-family:'Poppins',sans-serif; transition:0.3s;
-    }
-    .btn-primary { background:linear-gradient(135deg,var(--primary),#164f7b); color:white; box-shadow:0 12px 30px rgba(10,45,77,.2); }
-    .btn-primary:hover { background:linear-gradient(135deg,var(--secondary),#b8832d); transform:translateY(-3px); }
-    .btn-light { background:white; border:1.5px solid var(--border); color:var(--text); }
-    .hero-visual { display:flex; justify-content:center; }
-    .visual-card {
-      background:rgba(255,255,255,.92); border:1.5px solid rgba(201,151,61,.2); border-radius:20px; padding:38px; text-align:center; box-shadow:0 20px 60px rgba(10,45,77,.12); width:min(440px,100%);
-    }
-    .visual-card i { font-size:72px; color:var(--secondary); margin-bottom:18px; }
-    .visual-card h3 { font-size:24px; margin:0 0 8px; color:var(--primary-dark); font-family:'Playfair Display',serif; font-weight:800; }
-    .visual-card p { margin:0; color:var(--muted); }
-
-    section { padding:100px 0; }
-    .section-header { text-align:center; max-width:700px; margin:0 auto 50px; }
-    .section-label { color:var(--secondary); font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
-    .section-header h2 { font-size:clamp(30px,5vw,46px); line-height:1.2; margin:0 0 12px; color:var(--primary-dark); font-family:'Playfair Display',serif; font-weight:800; }
-    .section-header p { margin:0; color:var(--muted); }
-
-    .courses { background:var(--soft-bg); }
-    .courses-grid {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:28px;
-    }
-    .course-card {
-      background:white; border:1px solid var(--border); border-radius:18px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 5px 16px rgba(10,45,77,.08); transition:0.25s; height:100%;
-    }
-    .course-card:hover { transform:translateY(-8px); border-color:var(--secondary); box-shadow:var(--shadow); }
-    .course-image {
-      height:180px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--light-blue), rgba(201,151,61,.08)); color:var(--primary); font-size:54px; position:relative;
-    }
-    .course-body { padding:26px; display:flex; flex-direction:column; flex:1; }
-    .course-tag { display:inline-block; width:max-content; padding:6px 12px; background:linear-gradient(135deg,var(--primary),#164f7b); color:white; border-radius:50px; font-size:11px; font-weight:800; }
-    .course-body h3 { margin:14px 0 10px; color:var(--text); font-family:'Playfair Display',serif; font-size:24px; }
-    .course-body p { margin:0 0 18px; color:var(--muted); flex:1; font-size:14px; }
-    .course-button { width:100%; }
-
-    .modal {
-      display:none; position:fixed; inset:0; z-index:2000; background:rgba(0,0,0,.6);
-      align-items:center; justify-content:center; padding:20px;
-    }
-    .modal.show { display:flex; }
-    .modal-box {
-      background:white; width:min(760px,100%); max-height:92vh; overflow:auto; border-radius:20px; padding:28px; box-shadow:0 30px 80px rgba(0,0,0,.25);
-    }
-    .modal-head {
-      display:flex; justify-content:space-between; align-items:center; gap:12px; padding-bottom:12px; border-bottom:2px solid var(--light-blue); margin-bottom:18px;
-    }
-    .modal-head h2 { margin:0; color:var(--primary-dark); font-family:'Playfair Display',serif; font-size:30px; }
-    .close-btn {
-      border:none; background:var(--light-blue); color:var(--primary); border-radius:50%; width:40px; height:40px; cursor:pointer; font-size:22px;
-    }
-    .lesson-list { list-style:none; padding:0; margin:0; }
-    .lesson-item {
-      background:var(--light-blue); border:1px solid var(--border); border-radius:10px; padding:14px 16px; margin:12px 0;
-    }
-    .lesson-item .label { font-weight:700; color:var(--primary); }
-    .lesson-item .soon { color:var(--muted); font-weight:700; }
-    .player-wrap { display:none; margin-top:10px; }
-    .player-wrap iframe {
-      width:100%; border:0; border-radius:10px; aspect-ratio:16/9; background:#102b42;
-    }
-    .reg-note {
-      margin-top:10px; background:#f4f7f9; color:var(--muted); padding:10px 12px; border-radius:8px; font-size:14px;
-    }
-    footer { background:var(--primary-dark); color:white; padding:28px; text-align:center; }
-
-    @media (max-width: 700px) {
-      .nav-inner { height:68px; }
-      .nav-links { gap:12px; flex-wrap:wrap; }
-      .hero-grid { grid-template-columns:1fr; }
-      .section-header h2 { font-size:32px; }
-      .courses-grid { grid-template-columns:1fr; }
-    }
+    html, body { margin: 0; min-height: 100%; }
+    #original-site { display: block; width: 100%; height: 100vh; border: 0; }
   </style>
 </head>
 <body>
-  <header class="navbar">
-    <div class="container nav-inner">
-      <div class="logo">
-        <div class="logo-text">B-SCIM<span>BUILDING SCIENTIFIC MINDS</span></div>
-      </div>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#courses">الكورسات</a>
-        <a href="#sessions">السيشنات</a>
-        <a href="#contact">تواصل</a>
-        <a class="nav-button" href="#courses">ابدئي التعلم</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow"><i class="fas fa-graduation-cap"></i> B-SCIM Learning Hub</div>
-          <h1>رحلتك للتعلم تبدأ <span>من هنا</span></h1>
-          <p>اختاري الكورس أو السيشن، وشاهدي الفيديو مباشرة داخل الموقع بدون فتح Google Drive في تبويب جديد.</p>
-          <div class="hero-actions">
-            <a href="#courses" class="btn btn-primary"><i class="fas fa-arrow-down"></i> استكشف الكورسات</a>
-            <a href="#sessions" class="btn btn-light"><i class="fas fa-video"></i> شاهد السيشنات</a>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <div class="visual-card">
-            <i class="fas fa-brain"></i>
-            <h3>Build Your Skills</h3>
-            <p>تعلّمي، اكتشفّي، وطبقي مهاراتك في اللغة، التصميم، البحث، وإدارة البيانات.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="courses" id="courses">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">Our Programs</div>
-          <h2>الكورسات</h2>
-          <p>اضغطي على أي كورس لعرض السيشنات والفيديوهات داخل نفس الصفحة.</p>
-        </div>
-        <div class="courses-grid" id="coursesGrid"></div>
-      </div>
-    </section>
-
-    <section id="sessions">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-label">Sessions</div>
-          <h2>السيشنات</h2>
-          <p>شاهد الفيديوهات مباشرة داخل الموقع.</p>
-        </div>
-        <div class="courses-grid" id="sessionsGrid"></div>
-      </div>
-    </section>
-  </main>
-
-  <div class="modal" id="courseModal" aria-hidden="true">
-    <div class="modal-box">
-      <div class="modal-head">
-        <h2 id="modalTitle">عنوان الكورس</h2>
-        <button class="close-btn" type="button" aria-label="إغلاق" data-close>&times;</button>
-      </div>
-      <div id="modalContent"></div>
-    </div>
-  </div>
-
-  <footer id="contact">© 2026 B-SCIM — Building Scientific Minds Initiative</footer>
-
+  <!-- Load the original site so its existing design and sections remain unchanged. -->
+  <iframe id="original-site" src="B-SCIM_updated_sessions_team.html" title="B-SCIM website"></iframe>
   <script>
-    const courseData = [
-      {
-        name: 'Professional English',
-        tag: 'LANGUAGE',
-        icon: 'fa-language',
-        description: 'تعلمي التواصل المهني، كتابة الرسائل، والعروض التقديمية.',
-        lessons: [
+    const siteFrame = document.getElementById('original-site');
+
+    function installVideoFeatures() {
+      let site;
+      try {
+        site = siteFrame.contentWindow;
+        if (!site || !site.document || !site.showCourseDetails || !site.openSession) return;
+      } catch (error) {
+        return;
+      }
+
+      const doc = site.document;
+      if (doc.documentElement.dataset.videoFeaturesInstalled === 'true') return;
+      doc.documentElement.dataset.videoFeaturesInstalled = 'true';
+
+      const courseVideos = {
+        'Professional English': [
           { title: 'السيشن 1', id: '1OBxgPy5ZuO5uY2Qfdtceie84pS5PEP1s' },
           { title: 'السيشن 2', id: '1tK-XWWp3TXrHXCo2mysb1RbbKCxfN8Go' },
           { title: 'السيشن 3', id: '1samiHybl8pm5M8KMOMYyhYMTyN8OWU4v' },
           { title: 'السيشن 4', id: '16oE29O94m0N8nv2o20RV8yL5kJZVy-CO' }
-        ]
-      },
-      {
-        name: 'Microsoft Excel for Beginners',
-        tag: 'DATA',
-        icon: 'fa-table',
-        description: 'تعلمي Excel من الأساسيات إلى الجداول والفورمulas والعرض البصري.',
-        lessons: [
+        ],
+        'Microsoft Excel for Beginners': [
           { title: 'السيشن 1', soon: true },
           { title: 'السيشن 2', id: '1-R0u5YWEPuxFMOBbvYB2I2N3MfUTHdvh' },
           { title: 'السيشن 3', id: '1KnVDd5bMYFvZQ8zeB-z_XMIBVkzFnbTT' },
           { title: 'السيشن 4', id: '1Iu8a5qf36HJxk6kMpyLQGX_Rxyz4sbK2' }
-        ]
-      },
-      {
-        name: 'Research & Analysis',
-        tag: 'RESEARCH',
-        icon: 'fa-magnifying-glass',
-        description: 'تعلمي منهجية البحث العلمي وأساليب تحليل البيانات.',
-        lessons: [
+        ],
+        'Research & Analysis': [
           { title: 'السيشن 1', id: '1WlqgNT0Ci4Ejcl-wucllOp8ZtF1khl9e' },
           { title: 'السيشن 2', id: '1P3OWGkMLFnZf2SG8vvNtaeBZBnHICiXq' },
           { title: 'السيشن 3', id: '1cB6ytQLB1sdPkAriHV54IOt8nlUGRNRl' },
           { title: 'السيشن 4 — الجزء الأول', id: '1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0' },
-          { title: 'السيشن 4 — الجزء الثاني', id: '1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0', note: 'تم استخدام نفس الرابط للجزء الثاني كما تم إرساله.' },
+          { title: 'السيشن 4 — الجزء الثاني', id: '1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0', note: 'الرابط المرسل للجزء الثاني هو نفس رابط الجزء الأول.' },
           { title: 'السيشن 5', id: '1KE6rUfyTSwwASz_AfZVAeXyIV6foaRoA' }
-        ]
-      },
-      {
-        name: 'Graphic Design Fundamentals',
-        tag: 'DESIGN',
-        icon: 'fa-palette',
-        description: 'تعلمي أساسيات التصميم، الألوان، والتعديل البصري في Photoshop.',
-        lessons: [
+        ],
+        'Graphic Design Fundamentals': [
           { title: 'السيشن 1', id: '1mXYYNbOmiJ-eIyI0Tl1OD1XOLwIidQRB' },
           { title: 'السيشن 2', soon: true },
           { title: 'السيشن 3', soon: true },
           { title: 'السيشن 4', id: '1UR0eUMdckbnfsuwz4z9jYmFRCNUjFiKB' },
           { title: 'السيشن 5', id: '1JirhIHtrN4jxSRfG6uCVZaNKc_F32xJb' }
         ]
+      };
+
+      function makePlayer(id, title) {
+        const wrapper = doc.createElement('div');
+        wrapper.className = 'bscim-inline-video';
+        wrapper.style.cssText = 'display:none;margin-top:12px;';
+        const frame = doc.createElement('iframe');
+        frame.src = 'https://drive.google.com/file/d/' + encodeURIComponent(id) + '/preview';
+        frame.title = title;
+        frame.allow = 'autoplay; fullscreen';
+        frame.allowFullscreen = true;
+        frame.loading = 'lazy';
+        frame.style.cssText = 'display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#102b42;';
+        wrapper.appendChild(frame);
+        return wrapper;
       }
-    ];
 
-    const sessions = [
-      { name:'AI Journey', speaker:'AI Session', id:'191lFjaDUl8GClBEpjnnIwj4vCQmK70EE', icon:'fa-robot' },
-      { name:'Presentation Skills', speaker:'Communication Session', id:'11Q2BSIEQqMQWTJB-NDhIEBorr6kpjHPN', icon:'fa-person-chalkboard' }
-    ];
+      function addRegistrationNote(parent) {
+        const note = doc.createElement('p');
+        note.textContent = 'التسجيل للحصول على الشهادة: رابط التسجيل سيضاف قريبًا.';
+        note.style.cssText = 'margin-top:10px;padding:10px 12px;background:#f4f7f9;border-radius:8px;color:#5a7282;font-size:14px;';
+        parent.appendChild(note);
+      }
 
-    const modal = document.getElementById('courseModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalContent = document.getElementById('modalContent');
+      const originalShowCourseDetails = site.showCourseDetails;
+      site.showCourseDetails = function (courseName) {
+        originalShowCourseDetails.call(site, courseName);
+        const videos = courseVideos[courseName];
+        const body = doc.getElementById('modalBody');
+        if (!videos || !body) return;
 
-    function buildVideoFrame(videoId, title) {
-      const wrap = document.createElement('div');
-      wrap.className = 'player-wrap';
-      const iframe = document.createElement('iframe');
-      iframe.src = 'https://drive.google.com/file/d/' + encodeURIComponent(videoId) + '/preview';
-      iframe.title = title;
-      iframe.allow = 'autoplay; fullscreen';
-      iframe.allowFullscreen = true;
-      iframe.loading = 'lazy';
-      wrap.appendChild(iframe);
-      return wrap;
-    }
+        const section = doc.createElement('div');
+        section.className = 'modal-section';
+        const heading = doc.createElement('h3');
+        heading.textContent = '🎬 فيديوهات السيشنات';
+        section.appendChild(heading);
+        const list = doc.createElement('ul');
+        list.style.cssText = 'list-style:none;padding:0;';
 
-    function addRegistrationNote(container) {
-      const note = document.createElement('div');
-      note.className = 'reg-note';
-      note.textContent = 'التسجيل للحصول على الشهادة: رابط التسجيل سيضاف قريبًا.';
-      container.appendChild(note);
-    }
+        videos.forEach(function (video) {
+          const item = doc.createElement('li');
+          item.style.cssText = 'padding:12px 16px;margin:10px 0;background:#ebf4fb;border-radius:8px;';
+          const label = doc.createElement('strong');
+          label.textContent = video.title;
+          item.appendChild(label);
 
-    function openCourse(course) {
-      modalTitle.textContent = course.name;
-      modalContent.replaceChildren();
-
-      const intro = document.createElement('p');
-      intro.textContent = course.description;
-      intro.style.color = '#5a7282';
-      intro.style.margin = '0 0 18px';
-      modalContent.appendChild(intro);
-
-      const list = document.createElement('ul');
-      list.className = 'lesson-list';
-
-      course.lessons.forEach((lesson) => {
-        const item = document.createElement('li');
-        item.className = 'lesson-item';
-
-        const label = document.createElement('div');
-        label.className = 'label';
-        label.textContent = lesson.title;
-
-        item.appendChild(label);
-
-        if (lesson.soon) {
-          const s = document.createElement('div');
-          s.className = 'soon';
-          s.textContent = 'قريبًا';
-          item.appendChild(s);
-        } else {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'btn btn-primary';
-          btn.textContent = 'شاهد الفيديو';
-          btn.style.marginTop = '10px';
-
-          const videoWrap = buildVideoFrame(lesson.id, lesson.title);
-          btn.addEventListener('click', () => {
-            videoWrap.style.display = 'block';
-            btn.textContent = 'الفيديو مشغّل';
-            btn.disabled = true;
-          });
-
-          item.appendChild(btn);
-          item.appendChild(videoWrap);
-
-          if (lesson.note) {
-            const note = document.createElement('div');
-            note.className = 'reg-note';
-            note.textContent = lesson.note;
-            item.appendChild(note);
+          if (video.soon) {
+            const soon = doc.createElement('span');
+            soon.textContent = ' — قريبًا';
+            item.appendChild(soon);
+          } else {
+            const button = doc.createElement('button');
+            button.type = 'button';
+            button.className = 'btn btn-primary';
+            button.textContent = 'شاهد السيشن';
+            button.style.cssText = 'display:block;margin-top:10px;';
+            const player = makePlayer(video.id, courseName + ' — ' + video.title);
+            button.addEventListener('click', function () {
+              player.style.display = 'block';
+              button.textContent = 'الفيديو بالأسفل';
+            });
+            item.append(button, player);
+            addRegistrationNote(item);
+            if (video.note) {
+              const note = doc.createElement('p');
+              note.textContent = video.note;
+              note.style.cssText = 'font-size:13px;color:#5a7282;';
+              item.appendChild(note);
+            }
           }
+          list.appendChild(item);
+        });
+
+        section.appendChild(list);
+        body.appendChild(section);
+      };
+
+      const originalOpenSession = site.openSession;
+      site.openSession = function (index) {
+        originalOpenSession.call(site, index);
+        const item = site.sessionData && site.sessionData[index];
+        const body = doc.getElementById('sessionModalBody');
+        if (!item || !body) return;
+        const title = String(item.title || '').toLowerCase();
+        let video = null;
+
+        if (title.includes('ai journey') || title.includes('artificial intelligence')) {
+          video = { title: 'AI Journey', id: '191lFjaDUl8GClBEpjnnIwj4vCQmK70EE' };
+        } else if (title.includes('presentation')) {
+          video = { title: 'Presentation Skills', id: '11Q2BSIEQqMQWTJB-NDhIEBorr6kpjHPN' };
         }
+        if (!video) return;
 
-        list.appendChild(item);
-      });
+        const block = doc.createElement('div');
+        block.className = 'detail-block';
+        const heading = doc.createElement('h3');
+        heading.textContent = '🎬 مشاهدة الفيديو';
+        const button = doc.createElement('button');
+        button.type = 'button';
+        button.className = 'btn btn-primary';
+        button.textContent = 'شاهد الفيديو';
+        const player = makePlayer(video.id, video.title);
+        button.addEventListener('click', function () {
+          player.style.display = 'block';
+          button.textContent = 'الفيديو بالأسفل';
+        });
+        block.append(heading, button, player);
+        addRegistrationNote(block);
+        body.appendChild(block);
+      };
 
-      modalContent.appendChild(list);
-      addRegistrationNote(modalContent);
-      modal.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function openSession(session) {
-      modalTitle.textContent = session.name;
-      modalContent.replaceChildren();
-
-      const meta = document.createElement('p');
-      meta.textContent = 'المحاضر: ' + session.speaker;
-      meta.style.color = '#5a7282';
-      meta.style.margin = '0 0 18px';
-      modalContent.appendChild(meta);
-
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'btn btn-primary';
-      btn.textContent = 'شاهد الفيديو';
-
-      const videoWrap = buildVideoFrame(session.id, session.name);
-      btn.addEventListener('click', () => {
-        videoWrap.style.display = 'block';
-        btn.textContent = 'الفيديو مشغّل';
-        btn.disabled = true;
-      });
-
-      modalContent.appendChild(btn);
-      modalContent.appendChild(videoWrap);
-      addRegistrationNote(modalContent);
-      modal.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      modal.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal || e.target.closest('[data-close]')) {
-        closeModal();
+      const resizeFrame = function () {
+        try {
+          siteFrame.style.height = Math.max(doc.documentElement.scrollHeight, doc.body.scrollHeight) + 'px';
+        } catch (error) { /* Keep the initial viewport height if sizing is unavailable. */ }
+      };
+      resizeFrame();
+      site.setTimeout(resizeFrame, 250);
+      site.setTimeout(resizeFrame, 1000);
+      if (site.ResizeObserver) {
+        new site.ResizeObserver(resizeFrame).observe(doc.documentElement);
       }
-    });
+    }
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
-
-    const coursesGrid = document.getElementById('coursesGrid');
-    courseData.forEach((course) => {
-      const card = document.createElement('article');
-      card.className = 'course-card';
-
-      const icon = document.createElement('div');
-      icon.className = 'course-image';
-      icon.innerHTML = '<i class="fas ' + course.icon + '"></i>';
-
-      const body = document.createElement('div');
-      body.className = 'course-body';
-
-      const tag = document.createElement('span');
-      tag.className = 'course-tag';
-      tag.textContent = course.tag;
-
-      const h3 = document.createElement('h3');
-      h3.textContent = course.name;
-
-      const p = document.createElement('p');
-      p.textContent = course.description;
-
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'btn btn-primary course-button';
-      btn.textContent = 'تفاصيل الكورس';
-      btn.addEventListener('click', () => openCourse(course));
-
-      body.append(tag, h3, p, btn);
-      card.append(icon, body);
-      coursesGrid.appendChild(card);
-    });
-
-    const sessionsGrid = document.getElementById('sessionsGrid');
-    sessions.forEach((session) => {
-      const card = document.createElement('article');
-      card.className = 'course-card';
-
-      const icon = document.createElement('div');
-      icon.className = 'course-image';
-      icon.innerHTML = '<i class="fas ' + session.icon + '"></i>';
-
-      const body = document.createElement('div');
-      body.className = 'course-body';
-
-      const tag = document.createElement('span');
-      tag.className = 'course-tag';
-      tag.textContent = 'SESSION';
-
-      const h3 = document.createElement('h3');
-      h3.textContent = session.name;
-
-      const speaker = document.createElement('p');
-      speaker.textContent = session.speaker;
-
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'btn btn-primary course-button';
-      btn.textContent = 'شاهد الفيديو';
-      btn.addEventListener('click', () => openSession(session));
-
-      body.append(tag, h3, speaker, btn);
-      card.append(icon, body);
-      sessionsGrid.appendChild(card);
-    });
+    siteFrame.addEventListener('load', installVideoFeatures);
   </script>
 </body>
 </html>
