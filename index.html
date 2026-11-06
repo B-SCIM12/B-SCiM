@@ -1493,108 +1493,126 @@
         <div class="team-role">${person.role}</div><h3>${person.name}</h3><p class="bio">${person.bio}</p>
       </article>`).join('');
 
-    function showCourseDetails(courseName) {
-        const details = {
-            
-        'Professional English': {
-            sessions: [
-                'Grammar Fundamentals & Language Basics',
-                'Conversation Skills & Fluency',
-                'Business English & Professional Communication',
-                'Advanced Communication & Mastery'
-            ],
-            instructors: [
-                'Mohammed Ghouneim',
-                'Marwa Amir',
-                'Heba Ramadan',
-                'Eman El Sayed'
-            ]
-        },
+    (function () {
+    const courseVideos = {
+        'Professional English': [
+            { title: 'السيشن 1', id: '1OBxgPy5ZuO5uY2Qfdtceie84pS5PEP1s' },
+            { title: 'السيشن 2', id: '1tK-XWWp3TXrHXCo2mysb1RbbKCxfN8Go' },
+            { title: 'السيشن 3', id: '1samiHybl8pm5M8KMOMYyhYMTyN8OWU4v' },
+            { title: 'السيشن 4', id: '16oE29O94m0N8nv2o20RV8yL5kJZVy-CO' }
+        ],
 
-              'Microsoft Excel for Beginners': {
-            sessions: [
-                'Excel Basics & Interface',
-                'Data Entry & Basic Formatting',
-                'Basic Formulas & Functions',
-                'Tables, Charts & Simple Data Analysis'
-            ],
-            instructors: [
-                'Eng. Abdelazim Shaheen',
-                'Eng. Manar Gamal',
-                'Eng. Abdelrahman Khaled',
-                'Acc. Mahmoud Amin'
-            ]
-        },
+        'Microsoft Excel for Beginners': [
+            { title: 'السيشن 1', soon: true },
+            { title: 'السيشن 2', id: '1-R0u5YWEPuxFMOBbvYB2I2N3MfUTHdvh' },
+            { title: 'السيشن 3', id: '1KnVDd5bMYFvZQ8zeB-z_XMIBVkzFnbTT' },
+            { title: 'السيشن 4', id: '1Iu8a5qf36HJxk6kMpyLQGX_Rxyz4sbK2' }
+        ],
 
-        'Research & Analysis': {
-            sessions: [
-                'Research Methodology & Scientific Approach',
-                'Literature Review & Source Management',
-                'Data Collection, Analysis & Interpretation',
-                'Writing, Publication & Presentation'
-            ],
-            instructors: [
-                'Dr. Hanaa Sabry',
-                'Dr. Heba Mansour',
-                'Dr. Mohamed Abdel-aziz',
-                'Dr. Asmaa Tawfik'
-            ]
-        },
+        'Research & Analysis': [
+            { title: 'السيشن 1', id: '1WlqgNT0Ci4Ejcl-wucllOp8ZtF1khl9e' },
+            { title: 'السيشن 2', id: '1P3OWGkMLFnZf2SG8vvNtaeBZBnHICiXq' },
+            { title: 'السيشن 3', id: '1cB6ytQLB1sdPkAriHV54IOt8nlUGRNRl' },
+            {
+                title: 'السيشن 4 — الجزء الأول',
+                id: '1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0'
+            },
+            {
+                title: 'السيشن 4 — الجزء الثاني',
+                id: '1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0',
+                note: 'الرابط المرسل للجزء الثاني هو نفس رابط الجزء الأول.'
+            },
+            { title: 'السيشن 5', id: '1KE6rUfyTSwwASz_AfZVAeXyIV6foaRoA' }
+        ],
 
-        'Graphic Design Fundamentals': {
-            sessions: [
-                'Interface Mastery & Tools Introduction',
-                'Photo Editing & Color Correction Techniques',
-                'Design Projects & Creative Composition',
-                'Advanced Effects, Finishes & Professional Output'
-            ],
-            instructors: [
-                'Rehab Mohamed',
-                'Jaser Saeed',
-                'Ahmed Yousry',
-                'Shimaa Mohamed'
-            ]
-        }
+        'Graphic Design Fundamentals': [
+            { title: 'السيشن 1', id: '1mXYYNbOmiJ-eIyI0Tl1OD1XOLwIidQRB' },
+            { title: 'السيشن 2', soon: true },
+            { title: 'السيشن 3', soon: true },
+            { title: 'السيشن 4', id: '1UR0eUMdckbnfsuwz4z9jYmFRCNUjFiKB' },
+            { title: 'السيشن 5', id: '1JirhIHtrN4jxSRfG6uCVZaNKc_F32xJb' }
+        ]
     };
 
-    const courseData = details[courseName];
+    function addDriveVideo(container, video, title) {
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://drive.google.com/file/d/${encodeURIComponent(video.id)}/preview`;
+        iframe.title = title;
+        iframe.allow = 'autoplay; fullscreen';
+        iframe.allowFullscreen = true;
+        iframe.style.cssText =
+            'display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:10px;margin-top:12px;';
 
-    const modal = document.getElementById('courseModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
+        container.replaceChildren(iframe);
 
-    modalTitle.textContent = courseName;
-
-    modalBody.innerHTML = `
-        <div class="modal-section">
-            <h3>📚 Course Sessions</h3>
-            <ul>
-                ${courseData.sessions.map((session, index) =>
-                    `<li><strong>Session ${index + 1}:</strong> ${session}</li>`
-                ).join('')}
-            </ul>
-        </div>
-
-        <div class="modal-section">
-            <h3>👨‍🏫 Instructors</h3>
-            <ul>
-                ${courseData.instructors.map(instructor =>
-                    `<li>${instructor}</li>`
-                ).join('')}
-            </ul>
-        </div>
-    `;
-
-    modal.classList.add('show');
-}
-    function closeCourseModal() {
-        document.getElementById('courseModal').classList.remove('show');
+        const note = document.createElement('p');
+        note.textContent = 'التسجيل للشهادة: رابط التسجيل سيضاف قريبًا.';
+        note.style.cssText =
+            'margin-top:10px;padding:10px;background:#ebf4fb;border-radius:8px;';
+        container.appendChild(note);
     }
 
-    window.onclick = function(event) {
-        const modal = document.getElementById('courseModal');
-        if (event.target == modal) {
-            modal.classList.remove('show');
+    // أضيفي قائمة فيديوهات السيشنات إلى نافذة معلومات الكورس.
+    const originalShowCourseDetails = window.showCourseDetails;
+
+    window.showCourseDetails = function (courseName) {
+        originalShowCourseDetails(courseName);
+
+        const videos = courseVideos[courseName];
+        if (!videos) return;
+
+        const modalBody = document.getElementById('modalBody');
+        const section = document.createElement('div');
+        section.className = 'modal-section';
+
+        const heading = document.createElement('h3');
+        heading.textContent = '🎬 فيديوهات السيشنات';
+        section.appendChild(heading);
+
+        const list = document.createElement('ul');
+        list.style.listStyle = 'none';
+        list.style.padding = '0';
+
+        videos.forEach(function (video) {
+            const item = document.createElement('li');
+            item.style.cssText =
+                'padding:12px;margin:10px 0;background:#ebf4fb;border-radius:8px;';
+
+            const label = document.createElement('strong');
+            label.textContent = video.title + ': ';
+            item.appendChild(label);
+
+            if (video.soon) {
+                item.appendChild(document.createTextNode('قريبًا'));
+            } else {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'btn btn-primary';
+                button.textContent = 'شاهد السيشن';
+                button.style.marginTop = '8px';
+
+                const playerArea = document.createElement('div');
+
+                button.addEventListener('click', function () {
+                    addDriveVideo(playerArea, video, courseName + ' — ' + video.title);
+                });
+
+                item.appendChild(button);
+                item.appendChild(playerArea);
+
+                if (video.note) {
+                    const note = document.createElement('p');
+                    note.textContent = video.note;
+                    item.appendChild(note);
+                }
+            }
+
+            list.appendChild(item);
+        });
+
+        section.appendChild(list);
+        modalBody.appendChild(section);
+    };
         }
     }
 </script>
