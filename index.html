@@ -10,7 +10,7 @@
   </style>
 </head>
 <body>
-  <!-- Load the original site so its existing design and sections remain unchanged. -->
+  <!-- Keep the existing site design and add video behavior to its existing modals. -->
   <iframe id="original-site" src="B-SCIM_updated_sessions_team.html" title="B-SCIM website"></iframe>
   <script>
     const siteFrame = document.getElementById('original-site');
@@ -46,7 +46,7 @@
           { title: 'السيشن 2', id: '1P3OWGkMLFnZf2SG8vvNtaeBZBnHICiXq' },
           { title: 'السيشن 3', id: '1cB6ytQLB1sdPkAriHV54IOt8nlUGRNRl' },
           { title: 'السيشن 4 — الجزء الأول', id: '1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0' },
-          { title: 'السيشن 4 — الجزء الثاني', id: '1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0', note: 'الرابط المرسل للجزء الثاني هو نفس رابط الجزء الأول.' },
+          { title: 'السيشن 4 — الجزء الثاني', id: '1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0', note: 'رابط الجزء الثاني المرسل هو نفسه رابط الجزء الأول.' },
           { title: 'السيشن 5', id: '1KE6rUfyTSwwASz_AfZVAeXyIV6foaRoA' }
         ],
         'Graphic Design Fundamentals': [
@@ -73,11 +73,18 @@
         return wrapper;
       }
 
-      function addRegistrationNote(parent) {
-        const note = doc.createElement('p');
-        note.textContent = 'التسجيل للحصول على الشهادة: رابط التسجيل سيضاف قريبًا.';
-        note.style.cssText = 'margin-top:10px;padding:10px 12px;background:#f4f7f9;border-radius:8px;color:#5a7282;font-size:14px;';
-        parent.appendChild(note);
+      function addVideoButton(parent, video, courseName) {
+        const button = doc.createElement('button');
+        button.type = 'button';
+        button.className = 'btn btn-primary';
+        button.textContent = 'مشاهدة الفيديو';
+        button.style.cssText = 'display:block;margin-top:8px;';
+        const player = makePlayer(video.id, courseName + ' — ' + video.title);
+        button.addEventListener('click', function () {
+          player.style.display = 'block';
+          button.textContent = 'الفيديو بالأسفل';
+        });
+        parent.append(button, player);
       }
 
       const originalShowCourseDetails = site.showCourseDetails;
@@ -87,10 +94,15 @@
         const body = doc.getElementById('modalBody');
         if (!videos || !body) return;
 
+        // The original modal lists session names at the top. Remove that list so each
+        // session appears only once here, next to its video action.
+        const originalSections = body.querySelectorAll('.modal-section');
+        if (originalSections.length) originalSections[0].remove();
+
         const section = doc.createElement('div');
         section.className = 'modal-section';
         const heading = doc.createElement('h3');
-        heading.textContent = '🎬 فيديوهات السيشنات';
+        heading.textContent = '🎬 السيشنات';
         section.appendChild(heading);
         const list = doc.createElement('ul');
         list.style.cssText = 'list-style:none;padding:0;';
@@ -103,26 +115,24 @@
           item.appendChild(label);
 
           if (video.soon) {
-            const soon = doc.createElement('span');
-            soon.textContent = ' — قريبًا';
-            item.appendChild(soon);
+            const status = doc.createElement('span');
+            status.textContent = ' — قريبًا';
+            status.style.cssText = 'display:block;margin-top:6px;color:#5a7282;font-weight:700;';
+            item.appendChild(status);
+            const placeholder = doc.createElement('button');
+            placeholder.type = 'button';
+            placeholder.className = 'btn btn-primary';
+            placeholder.textContent = 'مشاهدة الفيديو';
+            placeholder.disabled = true;
+            placeholder.setAttribute('aria-label', video.title + ' — الفيديو قريبًا');
+            placeholder.style.cssText = 'display:block;margin-top:8px;opacity:.55;cursor:not-allowed;';
+            item.appendChild(placeholder);
           } else {
-            const button = doc.createElement('button');
-            button.type = 'button';
-            button.className = 'btn btn-primary';
-            button.textContent = 'شاهد السيشن';
-            button.style.cssText = 'display:block;margin-top:10px;';
-            const player = makePlayer(video.id, courseName + ' — ' + video.title);
-            button.addEventListener('click', function () {
-              player.style.display = 'block';
-              button.textContent = 'الفيديو بالأسفل';
-            });
-            item.append(button, player);
-            addRegistrationNote(item);
+            addVideoButton(item, video, courseName);
             if (video.note) {
-              const note = doc.createElement('p');
+              const note = doc.createElement('small');
               note.textContent = video.note;
-              note.style.cssText = 'font-size:13px;color:#5a7282;';
+              note.style.cssText = 'display:block;margin-top:8px;color:#5a7282;';
               item.appendChild(note);
             }
           }
@@ -136,15 +146,17 @@
       const originalOpenSession = site.openSession;
       site.openSession = function (index) {
         originalOpenSession.call(site, index);
-        const item = site.sessionData && site.sessionData[index];
         const body = doc.getElementById('sessionModalBody');
-        if (!item || !body) return;
-        const title = String(item.title || '').toLowerCase();
-        let video = null;
+        const cards = doc.querySelectorAll('#sessionsGrid .session-card');
+        const sessionTitle = cards[index] && cards[index].querySelector('h3')
+          ? cards[index].querySelector('h3').textContent.toLowerCase()
+          : '';
+        if (!body) return;
 
-        if (title.includes('ai journey') || title.includes('artificial intelligence')) {
+        let video = null;
+        if (sessionTitle.includes('ai journey') || sessionTitle.includes('artificial intelligence') || sessionTitle.includes('ai engineer')) {
           video = { title: 'AI Journey', id: '191lFjaDUl8GClBEpjnnIwj4vCQmK70EE' };
-        } else if (title.includes('presentation')) {
+        } else if (sessionTitle.includes('presentation')) {
           video = { title: 'Presentation Skills', id: '11Q2BSIEQqMQWTJB-NDhIEBorr6kpjHPN' };
         }
         if (!video) return;
@@ -153,31 +165,25 @@
         block.className = 'detail-block';
         const heading = doc.createElement('h3');
         heading.textContent = '🎬 مشاهدة الفيديو';
-        const button = doc.createElement('button');
-        button.type = 'button';
-        button.className = 'btn btn-primary';
-        button.textContent = 'شاهد الفيديو';
-        const player = makePlayer(video.id, video.title);
-        button.addEventListener('click', function () {
-          player.style.display = 'block';
-          button.textContent = 'الفيديو بالأسفل';
-        });
-        block.append(heading, button, player);
-        addRegistrationNote(block);
+        const item = doc.createElement('div');
+        item.style.cssText = 'padding:12px 16px;background:#ebf4fb;border-radius:8px;';
+        const label = doc.createElement('strong');
+        label.textContent = video.title;
+        item.appendChild(label);
+        addVideoButton(item, video, video.title);
+        block.append(heading, item);
         body.appendChild(block);
       };
 
       const resizeFrame = function () {
         try {
           siteFrame.style.height = Math.max(doc.documentElement.scrollHeight, doc.body.scrollHeight) + 'px';
-        } catch (error) { /* Keep the initial viewport height if sizing is unavailable. */ }
+        } catch (error) { /* Keep current size if resizing is unavailable. */ }
       };
       resizeFrame();
       site.setTimeout(resizeFrame, 250);
       site.setTimeout(resizeFrame, 1000);
-      if (site.ResizeObserver) {
-        new site.ResizeObserver(resizeFrame).observe(doc.documentElement);
-      }
+      if (site.ResizeObserver) new site.ResizeObserver(resizeFrame).observe(doc.documentElement);
     }
 
     siteFrame.addEventListener('load', installVideoFeatures);
