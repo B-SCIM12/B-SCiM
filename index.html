@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#102a43">
+  <meta name="theme-color" content="#081d35">
   <title>B-SCIM | Building Scientific Minds</title>
-  <style>html,body{margin:0;min-height:100%;background:#f7f9fc}#original-site{display:block;width:100%;height:100vh;border:0}</style>
+  <style>
+    html,body{margin:0;min-height:100%;background:#f7f9fc}
+    #original-site{display:block;width:100%;height:100vh;border:0}
+  </style>
 </head>
 <body>
   <iframe id="original-site" src="B-SCIM_updated_sessions_team.html" title="B-SCIM website"></iframe>
@@ -18,50 +21,60 @@
       if(doc.documentElement.dataset.bscimFeaturesInstalled==='true')return;
       doc.documentElement.dataset.bscimFeaturesInstalled='true';doc.documentElement.lang='en';
       const polish=doc.createElement('style');
-      polish.textContent=`:root{--primary:#176b70!important;--primary-dark:#102a43!important;--secondary:#d29b3d!important;--accent:#f0c66e!important;--light-blue:#eaf3f5!important;--soft-bg:#f5f8fa!important;--text:#243b53!important;--muted:#627d98!important;--border:#d9e2ec!important;--shadow:0 16px 42px rgba(16,42,67,.12)!important}body{background:#fbfcfe!important;color:#243b53!important}.navbar{background:rgba(255,255,255,.97)!important}.hero{background:radial-gradient(circle at 85% 20%,rgba(210,155,61,.15),transparent 28%),linear-gradient(135deg,#f8fbff,#edf5f6)!important}.course-card,.session-card,.team-card,.committee-card{border-color:#d9e2ec!important;box-shadow:0 8px 26px rgba(16,42,67,.07)!important}.btn-primary,.nav-button{background:linear-gradient(135deg,#176b70,#21858a)!important}.btn-primary:hover,.nav-button:hover{background:linear-gradient(135deg,#d29b3d,#bd8429)!important}.session-soon{display:inline-flex;align-items:center;gap:6px;margin:6px 0 12px;color:#687e91;background:#eef2f6;border-radius:30px;padding:4px 11px;font-size:12px;font-weight:700}`;
+      polish.textContent=`
+        :root{--primary:#176b70!important;--primary-dark:#081d35!important;--secondary:#d7a84b!important;--accent:#f2ce7d!important;--light-blue:#e9f2f7!important;--soft-bg:#f4f7fb!important;--text:#21364d!important;--muted:#62778c!important;--border:#d9e2ec!important;--shadow:0 16px 42px rgba(8,29,53,.13)!important}
+        body{background:#fbfcfe!important;color:#21364d!important}
+        .navbar{background:rgba(255,255,255,.97)!important;border-bottom-color:#d9e2ec!important;box-shadow:0 4px 20px rgba(8,29,53,.08)!important}
+        .hero{position:relative!important;isolation:isolate;background:radial-gradient(circle at 82% 18%,rgba(215,168,75,.22),transparent 25%),radial-gradient(circle at 5% 95%,rgba(33,133,138,.25),transparent 33%),linear-gradient(125deg,#081d35 0%,#102a43 58%,#176b70 100%)!important;color:#fff!important}
+        .hero:before{content:'';position:absolute;z-index:-1;width:310px;height:310px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:4%;top:8%;box-shadow:0 0 0 28px rgba(255,255,255,.025),0 0 0 62px rgba(255,255,255,.02)}
+        .hero:after{content:'';position:absolute;z-index:-1;width:180px;height:180px;border-radius:50%;left:5%;bottom:-110px;background:rgba(215,168,75,.12);filter:blur(2px)}
+        .hero h1{color:#fff!important;text-shadow:0 4px 24px rgba(0,0,0,.18)}.hero-text{color:#d8e5ee!important}.eyebrow{color:#f3d795!important;border-color:rgba(215,168,75,.65)!important;background:rgba(255,255,255,.08)!important}
+        .visual-card{background:rgba(255,255,255,.94)!important;border-color:rgba(215,168,75,.35)!important;box-shadow:0 24px 70px rgba(0,0,0,.2)!important;position:relative;overflow:hidden}
+        .visual-card:before{content:'';position:absolute;width:150px;height:150px;border:18px solid rgba(23,107,112,.08);border-radius:50%;right:-65px;top:-65px}.visual-card>*{position:relative}
+        .about-image{background:radial-gradient(circle at 75% 20%,rgba(215,168,75,.22),transparent 28%),linear-gradient(145deg,#e9f2f7,#dcecef)!important}
+        .courses{background:linear-gradient(180deg,#f4f7fb,#edf3f7)!important}.course-card,.session-card,.team-card,.committee-card{border-color:#d9e2ec!important;box-shadow:0 8px 26px rgba(8,29,53,.075)!important;overflow:hidden}
+        .course-card:hover,.session-card:hover,.team-card:hover,.committee-card:hover{box-shadow:0 20px 46px rgba(8,29,53,.15)!important;border-color:#d7a84b!important}
+        .course-image{background:radial-gradient(circle at 78% 28%,rgba(215,168,75,.24),transparent 24%),linear-gradient(135deg,#e9f2f7,#dcebef)!important}
+        .course-image:before{content:'';position:absolute;width:100px;height:100px;border:12px solid rgba(23,107,112,.09);border-radius:50%;left:18px;bottom:-48px}
+        .course-image>*{position:relative;z-index:1}
+        .btn-primary,.nav-button{background:linear-gradient(135deg,#102a43,#176b70)!important}.btn-primary:hover,.nav-button:hover{background:linear-gradient(135deg,#d7a84b,#b8832d)!important}
+        .stats{background:radial-gradient(circle at 88% 18%,rgba(215,168,75,.14),transparent 25%),linear-gradient(135deg,#07182a,#102a43 65%,#176b70)!important}
+        .session-card .session-icon,.team-icon,.committee-icon{background:linear-gradient(135deg,#102a43,#176b70)!important;box-shadow:0 8px 18px rgba(8,29,53,.18)}
+        .session-soon{display:inline-flex;align-items:center;gap:6px;margin:6px 0 12px;color:#62778c;background:#eef2f6;border-radius:30px;padding:4px 11px;font-size:12px;font-weight:700}
+        .detail-modal{backdrop-filter:blur(5px)}.detail-modal-content{border:1px solid #d9e2ec;box-shadow:0 30px 90px rgba(8,29,53,.3)}
+        @media(max-width:700px){.hero:before{width:180px;height:180px;right:-60px;top:15%}}
+      `;
       doc.head.appendChild(polish);
 
       site.showCourseDetails=function(courseName){window.location.href='course.html?course='+encodeURIComponent(courseName);};
-
-      const sessionVideos={
+      const videoByTitle={
         'AI Journey':'191lFjaDUl8GClBEpjnnIwj4vCQmK70EE',
         'Presentation Secrets They Never Teach You':'11Q2BSIEQqMQWTJB-NDhIEBorr6kpjHPN'
       };
-      const sessionData=site.eval('sessionData');
-      if(Array.isArray(sessionData)){
-        const planningIndex=sessionData.findIndex(item=>item.title==='Planning Your Presentation');
-        if(planningIndex>=0){sessionData.splice(planningIndex,1);const planningCard=doc.querySelector('#sessionsGrid .session-card:nth-child('+(planningIndex+1)+')');if(planningCard)planningCard.remove();}
+      let data=site.eval('sessionData');
+      if(Array.isArray(data)){
+        data=data.filter(item=>item.title!=='Planning Your Presentation');
+        // Replace the page's original data list and redraw its session cards without the removed session.
+        site.eval('sessionData.splice(0, sessionData.length, ...'+JSON.stringify(data)+')');
+        const icons=['fa-file-lines','fa-flask','fa-person-chalkboard','fa-people-group','fa-book-open','fa-robot'];
+        const grid=doc.getElementById('sessionsGrid');
+        if(grid){
+          grid.innerHTML=data.map((item,index)=>{
+            const available=Boolean(videoByTitle[item.title]);
+            return `<article class="session-card"><div class="session-icon"><i class="fas ${icons[index%icons.length]}"></i></div><h3>${item.title}</h3><p class="session-speaker">${item.speaker}</p>${available?'':'<span class="session-soon"><i class="fa-regular fa-clock"></i> Coming soon</span>'}<button class="btn btn-primary" type="button" data-session-index="${index}">View Session Details</button></article>`;
+          }).join('');
+          grid.addEventListener('click',function(event){
+            const button=event.target.closest('button[data-session-index]');if(!button)return;
+            const item=data[Number(button.dataset.sessionIndex)];if(!item)return;
+            const params=new URLSearchParams();params.set('title',item.title||'Session');params.set('speaker',item.speaker||'B-SCIM Instructor');params.set('bio',item.bio||'');params.set('topics',JSON.stringify(item.topics||[]));
+            if(videoByTitle[item.title])params.set('video',videoByTitle[item.title]);
+            window.location.href='session.html?'+params.toString();
+          });
+        }
       }
-
-      function sessionPageUrl(item){
-        const params=new URLSearchParams();
-        params.set('title',item.title||'Session');params.set('speaker',item.speaker||'B-SCIM Instructor');
-        params.set('bio',item.bio||'');params.set('topics',JSON.stringify(item.topics||[]));
-        const video=sessionVideos[item.title];if(video)params.set('video',video);
-        return 'session.html?'+params.toString();
-      }
-      const grid=doc.getElementById('sessionsGrid');
-      if(grid){
-        grid.addEventListener('click',function(event){
-          const button=event.target.closest('button[onclick*="openSession"]');
-          if(!button)return;
-          event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();
-          const card=button.closest('.session-card');
-          const cards=Array.from(grid.querySelectorAll('.session-card'));
-          const index=cards.indexOf(card);
-          const data=site.eval('sessionData');
-          const item=data&&data[index];
-          if(item)window.location.href=sessionPageUrl(item);
-        },true);
-
-        // Show clear availability on every session card; the detailed page uses the same status.
-        Array.from(grid.querySelectorAll('.session-card')).forEach(card=>{
-          const title=card.querySelector('h3')?.textContent?.trim();
-          if(!title||sessionVideos[title])return;
-          const status=doc.createElement('span');status.className='session-soon';status.textContent='Coming soon';
-          const button=card.querySelector('button');if(button)card.insertBefore(status,button);
-        });
-      }
+      const resize=()=>{try{siteFrame.style.height=Math.max(doc.documentElement.scrollHeight,doc.body.scrollHeight)+'px'}catch(_){}};
+      resize();site.setTimeout(resize,300);site.setTimeout(resize,1000);
+      if(site.ResizeObserver)new site.ResizeObserver(resize).observe(doc.documentElement);
     }
     siteFrame.addEventListener('load',installSiteFeatures);
   </script>
