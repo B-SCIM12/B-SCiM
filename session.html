@@ -1,1 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#081d35">
+  <title>Session Details | B-SCIM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+  <style>
+    :root {
+      --navy: #081d35;
+      --navy-light: #102a43;
+      --teal: #176b70;
+      --gold: #d7a84b;
+      --ink: #243b53;
+      --muted: #62778c;
+      --surface: #fff;
+      --line: #d9e2ec;
+      --background: #f4f7fb;
+      --shadow: 0 16px 42px rgba(8, 29, 53, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--ink);
+      font: 16px/1.7 "DM Sans", sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .topbar-inner {
+      width: min(980px, 92%);
+      height: 70px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      color: var(--navy);
+      font: 800 21px Manrope, sans-serif;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--gold);
+      font: 700 9px "DM Sans", sans-serif;
+      letter-spacing: .18em;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--teal);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: 58px 0;
+      color: white;
+      background:
+        radial-gradient(circle at 85% 12%, rgba(215,168,75,.24), transparent 23%),
+        radial-gradient(circle at 8% 100%, rgba(33,133,138,.25), transparent 34%),
+        linear-gradient(125deg, var(--navy), var(--navy-light) 58%, var(--teal));
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 230px;
+      height: 230px;
+      top: -110px;
+      right: 7%;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 50%;
+      box-shadow: 0 0 0 25px rgba(255,255,255,.025),
+                  0 0 0 55px rgba(255,255,255,.02);
+    }
+
+    .container {
+      position: relative;
+      width: min(980px, 92%);
+      margin: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border: 1px solid rgba(215,168,75,.65);
+      border-radius: 30px;
+      color: #f3d795;
+      background: rgba(255,255,255,.08);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 16px 0 10px;
+      font: 800 clamp(30px, 5vw, 48px)/1.15 Manrope, sans-serif;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-description {
+      margin: 0;
+      color: #d8e5ee;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .chip {
+      padding: 7px 11px;
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 9px;
+      color: #f3f7fa;
+      background: rgba(255,255,255,.09);
+      font-size: 13px;
+    }
+
+    main {
+      width: min(980px, 92%);
+      margin: 28px auto 64px;
+    }
+
+    .notice {
+      margin-bottom: 20px;
+      padding: 12px 15px;
+      border: 1px solid #f1dfbd;
+      border-radius: 10px;
+      color: #6b542d;
+      background: #fff9ed;
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(250px, .75fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .panel h2 {
+      margin: 0 0 15px;
+      color: var(--navy);
+      font: 800 20px Manrope, sans-serif;
+    }
+
+    .detail-block {
+      padding: 15px 0;
+      border-top: 1px solid #e8eef3;
+    }
+
+    .detail-block:first-of-type {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .detail-block h3 {
+      margin: 0 0 7px;
+      color: var(--ink);
+      font: 700 16px Manrope, sans-serif;
+    }
+
+    .detail-block p {
+      margin: 5px 0;
+      color: var(--muted);
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .topics {
+      margin: 8px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .topics li { margin: 7px 0; }
+
+    .presenter-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 11px;
+      background: #f0f6f7;
+    }
+
+    .avatar {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      place-items: center;
+      border-radius: 13px;
+      color: white;
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+    }
+
+    .presenter-card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 14px;
+    }
+
+    .presenter-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .watch-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      padding: 10px 15px;
+      border: 0;
+      border-radius: 9px;
+      color: white;
+      background: linear-gradient(135deg, var(--teal), #21858a);
+      font: 700 14px "DM Sans", sans-serif;
+      cursor: pointer;
+    }
+
+    .watch-button:hover {
+      background: linear-gradient(135deg, #145b60, var(--teal));
+    }
+
+    .player {
+      display: none;
+      aspect-ratio: 16 / 9;
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: 12px;
+      background: var(--navy);
+      box-shadow: 0 12px 28px rgba(16,42,67,.2);
+    }
+
+    .player iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .soon {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 12px;
+      border-radius: 30px;
+      color: #66798b;
+      background: #eef2f6;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .small-note {
+      margin-top: 12px !important;
+      font-size: 12px !important;
+    }
+
+    .footer {
+      padding: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: white;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 740px) {
+      .layout { grid-template-columns: 1fr; }
+      .hero { padding: 42px 0; }
+      .panel { padding: 18px; }
+      .topbar-inner { height: 64px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        B-SCIM
+        <small>BUILDING SCIENTIFIC MINDS</small>
+      </a>
+      <a class="back" href="index.html#sessions">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to sessions
+      </a>
+    </div>
+  </header>
+
+  <div id="session-page"></div>
+
+  <footer class="footer">© 2026 B-SCIM · Building Scientific Minds Initiative</footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get('title') || 'Session';
+    const speaker = params.get('speaker') || 'B-SCIM Instructor';
+    const bio = params.get('bio') || 'Presenter information will be added soon.';
+    const videoParam = params.get('video') || '';
+    let topics = [];
+
+    try {
+      topics = JSON.parse(params.get('topics') || '[]');
+      if (!Array.isArray(topics)) topics = [];
+    } catch {
+      topics = [];
+    }
+
+    const knownVideos = {
+      'AI Journey': '191lFjaDUl8GClBEpjnnIwj4vCQmK70EE',
+      'Presentation Secrets They Never Teach You': '11Q2BSIEQqMQWTJB-NDhIEBorr6kpjHPN'
+    };
+
+    function getDriveFileId(value) {
+      if (!value) return '';
+      const match = value.match(/\/file\/d\/([^/?]+)/) || value.match(/\/d\/([^/?]+)/);
+      if (match) return match[1];
+      if (/^[\w-]+$/.test(value)) return value;
+      return '';
+    }
+
+    const videoId = getDriveFileId(videoParam) || knownVideos[title] || '';
+    const root = document.getElementById('session-page');
+    document.title = title + ' | B-SCIM';
+
+    function addText(parent, tag, className, value) {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      element.textContent = value;
+      parent.appendChild(element);
+      return element;
+    }
+
+    const hero = document.createElement('section');
+    hero.className = 'hero';
+
+    const heroContainer = document.createElement('div');
+    heroContainer.className = 'container';
+
+    const badge = document.createElement('span');
+    badge.className = 'eyebrow';
+    badge.innerHTML = '<i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i> B-SCIM SESSION';
+
+    heroContainer.appendChild(badge);
+    addText(heroContainer, 'h1', '', title);
+    addText(heroContainer, 'p', 'hero-description', 'Session overview, presenter information, topics, and video.');
+
+    const heroMeta = document.createElement('div');
+    heroMeta.className = 'hero-meta';
+
+    const presenterChip = document.createElement('span');
+    presenterChip.className = 'chip';
+    presenterChip.textContent = 'Presenter: ' + speaker;
+
+    const statusChip = document.createElement('span');
+    statusChip.className = 'chip';
+    statusChip.textContent = videoId ? 'Video available' : 'Coming soon';
+
+    heroMeta.append(presenterChip, statusChip);
+    heroContainer.appendChild(heroMeta);
+    hero.appendChild(heroContainer);
+    root.appendChild(hero);
+
+    const main = document.createElement('main');
+
+    const notice = document.createElement('div');
+    notice.className = 'notice';
+    notice.innerHTML = '<strong>Video access:</strong> Google Drive videos must be shared as “Anyone with the link — Viewer” to play here.';
+    main.appendChild(notice);
+
+    const layout = document.createElement('div');
+    layout.className = 'layout';
+
+    const detailsPanel = document.createElement('section');
+    detailsPanel.className = 'panel';
+    addText(detailsPanel, 'h2', '', 'Session details');
+
+    const presenterBlock = document.createElement('article');
+    presenterBlock.className = 'detail-block';
+    addText(presenterBlock, 'h3', '', 'About the presenter');
+
+    const presenterCard = document.createElement('div');
+    presenterCard.className = 'presenter-card';
+
+    const avatar = document.createElement('div');
+    avatar.className = 'avatar';
+    avatar.innerHTML = '<i class="fa-solid fa-user" aria-hidden="true"></i>';
+
+    const presenterInfo = document.createElement('div');
+    addText(presenterInfo, 'strong', '', speaker);
+    addText(presenterInfo, 'span', '', 'Session presenter');
+
+    presenterCard.append(avatar, presenterInfo);
+    presenterBlock.appendChild(presenterCard);
+    addText(presenterBlock, 'p', '', bio);
+    detailsPanel.appendChild(presenterBlock);
+
+    const topicsBlock = document.createElement('article');
+    topicsBlock.className = 'detail-block';
+    addText(topicsBlock, 'h3', '', 'Session topics');
+
+    if (topics.length) {
+      const topicList = document.createElement('ul');
+      topicList.className = 'topics';
+      topics.forEach(topic => addText(topicList, 'li', '', topic));
+      topicsBlock.appendChild(topicList);
+    } else {
+      addText(topicsBlock, 'p', '', 'Session topics will be added soon.');
+    }
+
+    detailsPanel.appendChild(topicsBlock);
+
+    const videoPanel = document.createElement('aside');
+    videoPanel.className = 'panel';
+    addText(videoPanel, 'h2', '', 'Session video');
+
+    if (videoId) {
+      const watchButton = document.createElement('button');
+      watchButton.type = 'button';
+      watchButton.className = 'watch-button';
+      watchButton.innerHTML = '<i class="fa-solid fa-play" aria-hidden="true"></i> Watch video';
+
+      const player = document.createElement('div');
+      player.className = 'player';
+
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://drive.google.com/file/d/' + encodeURIComponent(videoId) + '/preview';
+      iframe.title = title;
+      iframe.allow = 'autoplay; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.loading = 'lazy';
+
+      player.appendChild(iframe);
+
+      watchButton.addEventListener('click', () => {
+        const isOpen = player.style.display === 'block';
+        player.style.display = isOpen ? 'none' : 'block';
+        watchButton.innerHTML = isOpen
+          ? '<i class="fa-solid fa-play" aria-hidden="true"></i> Watch video'
+          : '<i class="fa-solid fa-pause" aria-hidden="true"></i> Hide video';
+      });
+
+      videoPanel.append(watchButton, player);
+      addText(videoPanel, 'p', 'small-note', 'Certificate registration link will be added soon.');
+    } else {
+      const comingSoon = document.createElement('span');
+      comingSoon.className = 'soon';
+      comingSoon.innerHTML = '<i class="fa-regular fa-clock" aria-hidden="true"></i> Coming soon';
+      videoPanel.appendChild(comingSoon);
+      addText(videoPanel, 'p', 'small-note', 'The session video will be available soon.');
+    }
+
+    layout.append(detailsPanel, videoPanel);
+    main.appendChild(layout);
+    root.appendChild(main);
+  </script>
+</body>
+</html>
+```
+
+بعدها:
+
+1. احفظي الملف بامتداد `.html` باسم **`session.html`**.
+2. ارفعيه إلى **جذر المستودع** `B-SCIM12/B-SCiM`، بجانب `index.html` و`course.html`، ثم اعملي **Commit**.
+3. تأكدي أن فيديوهات Drive مشاركة بصلاحية **Anyone with the link — Viewer**.
+4. بعد نشر الموقع، جرّبي الضغط على **View Session Details**. السيشنات بلا فيديو ستعرض **Coming soon**.
+
+ملاحظة: صفحة `index.html` الحالية توجّه إلى `session.html`، لكن المستودع لا يحتوي الملف بعد حسب آخر فحص.
