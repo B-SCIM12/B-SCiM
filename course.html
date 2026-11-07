@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102a43">
+  <meta name="description" content="Explore B-SCIM course sessions, instructors, and video lessons.">
+  <title>Course Details | B-SCIM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root{--navy:#102a43;--teal:#176b70;--teal-bright:#21858a;--gold:#d29b3d;--ink:#243b53;--muted:#627d98;--mist:#edf5f6;--surface:#fff;--line:#d9e2ec;--bg:#f6f8fb;--shadow:0 14px 36px rgba(16,42,67,.09)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 'DM Sans',sans-serif}a{color:inherit;text-decoration:none}button{font:inherit}
+    .topbar{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.topbar-inner{width:min(1120px,92%);height:72px;margin:auto;display:flex;align-items:center;justify-content:space-between}.brand{font:800 21px Manrope,sans-serif;color:var(--navy);letter-spacing:.02em}.brand span{display:block;color:var(--gold);font:700 9px 'DM Sans',sans-serif;letter-spacing:.18em}.back{display:inline-flex;align-items:center;gap:9px;color:var(--teal);font-weight:700;font-size:14px}.back:hover{color:var(--gold)}
+    .hero{background:radial-gradient(circle at 85% 10%,rgba(210,155,61,.18),transparent 25%),linear-gradient(135deg,#102a43,#176b70);color:#fff;padding:62px 0 58px}.wrap{width:min(1000px,92%);margin:0 auto}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#ffe0a2;background:#ffffff16;border:1px solid #ffffff2a;border-radius:40px;padding:7px 13px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.hero h1{font:800 clamp(32px,5vw,52px)/1.15 Manrope,sans-serif;margin:17px 0 12px}.hero p{max-width:720px;color:#e3edf2;margin:0;font-size:17px}.hero-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}.meta-chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffffff30;background:#ffffff10;border-radius:9px;padding:8px 12px;color:#f3f7fa;font-size:13px}
+    .main{width:min(1000px,92%);margin:32px auto 70px}.notice{padding:13px 16px;border:1px solid #f1dfbd;background:#fff9ed;color:#6b542d;border-radius:11px;font-size:14px;margin-bottom:25px}.layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr);gap:22px;align-items:start}.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px}.panel h2{font:800 21px Manrope,sans-serif;color:var(--navy);margin:0 0 17px}.session{padding:17px 0;border-top:1px solid #e8eef3}.session:first-of-type{border-top:0;padding-top:0}.session-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.session h3{margin:0;color:var(--ink);font:700 16px Manrope,sans-serif}.session-desc{margin:6px 0 0;color:var(--muted);font-size:14px}.status{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;color:#677d91;background:#eef2f6;border-radius:30px;padding:4px 10px;font-size:12px;font-weight:700}.status.available{background:#eaf7ef;color:#28734a}.watch{margin-top:13px;border:0;border-radius:9px;background:linear-gradient(135deg,var(--teal),var(--teal-bright));color:#fff;display:inline-flex;align-items:center;gap:9px;padding:10px 15px;font-weight:700;cursor:pointer;transition:.2s}.watch:hover{transform:translateY(-1px);background:linear-gradient(135deg,#145b60,#176b70)}.watch:disabled{background:#aab8c2;cursor:not-allowed;transform:none}.player{display:none;margin-top:14px;border-radius:12px;overflow:hidden;background:#102a43;aspect-ratio:16/9}.player iframe{width:100%;height:100%;border:0}.registration{font-size:12px;color:var(--muted);margin:10px 0 0}.instructor{display:flex;gap:13px;align-items:center;padding:15px;background:#f2f7f8;border-radius:12px}.avatar{width:46px;height:46px;flex:0 0 46px;display:grid;place-items:center;background:linear-gradient(135deg,var(--teal),var(--navy));border-radius:14px;color:#fff;font-size:18px}.instructor strong{display:block;color:var(--navy);font-size:14px}.instructor span{display:block;color:var(--muted);font-size:12px;margin-top:2px}.info-copy{color:var(--muted);font-size:14px;margin:14px 0 0}.topics{padding-left:19px;color:var(--muted);font-size:14px}.topics li{margin:6px 0}.error{text-align:center;background:#fff;border:1px solid var(--line);border-radius:15px;padding:40px 20px;box-shadow:var(--shadow)}.error h1{color:var(--navy)}.footer{text-align:center;color:var(--muted);font-size:13px;padding:22px;border-top:1px solid var(--line);background:#fff}
+    @media(max-width:760px){.layout{grid-template-columns:1fr}.hero{padding:45px 0}.panel{padding:19px}.topbar-inner{height:64px}.hero-meta{gap:8px}.meta-chip{font-size:12px}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html">B-SCIM<span>BUILDING SCIENTIFIC MINDS</span></a><a class="back" href="index.html#courses"><i class="fa-solid fa-arrow-left"></i> Back to courses</a></div></header>
+  <div id="course-page"></div>
+  <footer class="footer">© 2026 B-SCIM · Building Scientific Minds Initiative</footer>
+  <script>
+    const courseCatalog = {
+      'Professional English': {
+        displayName:'Professional English', track:'LANGUAGE', icon:'fa-language',
+        description:'Build confidence in professional English communication through focused, practical learning sessions.',
+        instructors:['Mohammed Ghouneim','Marwa Amir','Heba Ramadan','Eman El Sayed'],
+        overview:['Grammar fundamentals and language basics','Conversation skills and fluency','Business English and professional communication','Advanced communication and mastery'],
+        sessions:[
+          {title:'Session 1',id:'1OBxgPy5ZuO5uY2Qfdtceie84pS5PEP1s',description:'Grammar fundamentals and essential language skills.'},
+          {title:'Session 2',id:'1tK-XWWp3TXrHXCo2mysb1RbbKCxfN8Go',description:'Conversation practice and fluency development.'},
+          {title:'Session 3',id:'1samiHybl8pm5M8KMOMYyhYMTyN8OWU4v',description:'Business English and professional communication.'},
+          {title:'Session 4',id:'16oE29O94m0N8nv2o20RV8yL5kJZVy-CO',description:'Advanced communication and course mastery.'}
+        ]
+      },
+      'Microsoft Excel for Beginners': {
+        displayName:'Microsoft Excel for Beginners',track:'DATA & PRODUCTIVITY',icon:'fa-table-cells-large',
+        description:'Learn practical spreadsheet skills, from entering and formatting data to formulas, tables, and charts.',
+        instructors:['Eng. Abdelazim Shaheen','Eng. Manar Gamal','Eng. Abdelrahman Khaled','Acc. Mahmoud Amin'],
+        overview:['Excel basics and interface','Data entry and basic formatting','Basic formulas and functions','Tables, charts and simple data analysis'],
+        sessions:[
+          {title:'Session 1',soon:true,description:'Excel basics and getting familiar with the interface.'},
+          {title:'Session 2',id:'1-R0u5YWEPuxFMOBbvYB2I2N3MfUTHdvh',description:'Entering data and applying basic formatting.'},
+          {title:'Session 3',id:'1KnVDd5bMYFvZQ8zeB-z_XMIBVkzFnbTT',description:'Working with essential formulas and functions.'},
+          {title:'Session 4',id:'1Iu8a5qf36HJxk6kMpyLQGX_Rxyz4sbK2',description:'Creating tables and charts for simple data analysis.'}
+        ]
+      },
+      'Research & Analysis': {
+        displayName:'Scientific Research',track:'RESEARCH',icon:'fa-microscope',
+        description:'Explore the core stages of scientific research, from methodology and literature review to analysis and presentation.',
+        instructors:['Dr. Hanaa Sabry','Dr. Heba Mansour','Dr. Mohamed Abdel-Aziz','Dr. Asmaa Tawfik'],
+        overview:['Research methodology and scientific approach','Literature review and source management','Data collection, analysis and interpretation','Writing, publication and presentation'],
+        sessions:[
+          {title:'Session 1',id:'1WlqgNT0Ci4Ejcl-wucllOp8ZtF1khl9e',description:'Introduction to research methodology and scientific thinking.'},
+          {title:'Session 2',id:'1P3OWGkMLFnZf2SG8vvNtaeBZBnHICiXq',description:'Reviewing literature and managing research sources.'},
+          {title:'Session 3',id:'1cB6ytQLB1sdPkAriHV54IOt8nlUGRNRl',description:'Collecting, analyzing, and interpreting data.'},
+          {title:'Session 4 — Part 1',id:'1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0',description:'Research writing, publication, and presentation.'},
+          {title:'Session 4 — Part 2',id:'1gVnn42LBwKaNzqE9OyhT_T5fM3QxkvQ0',description:'The provided Part 2 link is currently the same as Part 1.'},
+          {title:'Session 5',id:'1KE6rUfyTSwwASz_AfZVAeXyIV6foaRoA',description:'Further practical guidance in scientific research.'}
+        ]
+      },
+      'Graphic Design Fundamentals': {
+        displayName:'Photoshop Basics',track:'DESIGN',icon:'fa-palette',
+        description:'Learn Photoshop essentials through practical sessions covering image editing and visual design skills.',
+        instructors:['Rehab Mohamed','Jaser Saeed','Ahmed Yousry','Shimaa Mohamed'],
+        overview:['Interface mastery and tools introduction','Photo editing and color correction','Design projects and creative composition','Advanced effects and professional output'],
+        sessions:[
+          {title:'Session 1',id:'1mXYYNbOmiJ-eIyI0Tl1OD1XOLwIidQRB',description:'Introduction to Photoshop and its essential interface.'},
+          {title:'Session 2',soon:true,description:'Photo editing and color correction.'},
+          {title:'Session 3',soon:true,description:'Design projects and creative composition.'},
+          {title:'Session 4',id:'1UR0eUMdckbnfsuwz4z9jYmFRCNUjFiKB',description:'Practical Photoshop lesson.'},
+          {title:'Session 5',id:'1JirhIHtrN4jxSRfG6uCVZaNKc_F32xJb',description:'Practical Photoshop lesson.'}
+        ]
+      }
+    };
+
+    const courseName = new URLSearchParams(location.search).get('course') || '';
+    const course = courseCatalog[courseName];
+    const root = document.getElementById('course-page');
+
+    function addText(parent, tag, className, text) {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      element.textContent = text;
+      parent.appendChild(element);
+      return element;
+    }
+
+    function render() {
+      if (!course) {
+        const main = document.createElement('main');
+        main.className = 'main';
+        const error = document.createElement('div');
+        error.className = 'error';
+        addText(error,'h1','', 'Course not found');
+        addText(error,'p','info-copy','Please return to the course list and select a course.');
+        const link = document.createElement('a');
+        link.className = 'watch'; link.href = 'index.html#courses'; link.textContent = 'Browse courses';
+        error.appendChild(link); main.appendChild(error); root.appendChild(main); return;
+      }
+
+      document.title = course.displayName + ' | B-SCIM';
+      const hero = document.createElement('section'); hero.className = 'hero';
+      const heroInner = document.createElement('div'); heroInner.className = 'wrap';
+      const eyebrow = document.createElement('span'); eyebrow.className = 'eyebrow';
+      const icon = document.createElement('i'); icon.className = 'fa-solid ' + course.icon; icon.setAttribute('aria-hidden','true');
+      eyebrow.append(icon, document.createTextNode(' ' + course.track)); heroInner.appendChild(eyebrow);
+      addText(heroInner,'h1','',course.displayName); addText(heroInner,'p','',course.description);
+      const meta = document.createElement('div'); meta.className = 'hero-meta';
+      const sessionsChip = document.createElement('span'); sessionsChip.className = 'meta-chip';
+      sessionsChip.innerHTML = '<i class="fa-solid fa-circle-play" aria-hidden="true"></i> ' + course.sessions.length + ' sessions';
+      const onlineChip = document.createElement('span'); onlineChip.className = 'meta-chip';
+      onlineChip.innerHTML = '<i class="fa-solid fa-laptop" aria-hidden="true"></i> Online learning';
+      meta.append(sessionsChip, onlineChip); heroInner.appendChild(meta); hero.appendChild(heroInner); root.appendChild(hero);
+
+      const main = document.createElement('main'); main.className = 'main';
+      const notice = document.createElement('div'); notice.className = 'notice';
+      notice.innerHTML = '<strong>Video access:</strong> Google Drive videos must be shared as “Anyone with the link — Viewer” to play here.';
+      main.appendChild(notice);
+      const layout = document.createElement('div'); layout.className = 'layout';
+      const sessionPanel = document.createElement('section'); sessionPanel.className = 'panel'; addText(sessionPanel,'h2','', 'Course sessions');
+
+      course.sessions.forEach((session,index) => {
+        const row = document.createElement('article'); row.className = 'session';
+        const head = document.createElement('div'); head.className = 'session-head';
+        addText(head,'h3','',session.title);
+        const badge = document.createElement('span'); badge.className = session.soon ? 'status' : 'status available';
+        badge.innerHTML = session.soon ? '<i class="fa-regular fa-clock" aria-hidden="true"></i> Coming soon' : '<i class="fa-solid fa-circle-check" aria-hidden="true"></i> Available';
+        head.appendChild(badge); row.appendChild(head);
+        addText(row,'p','session-desc',session.description);
+        const instructorLine = document.createElement('p'); instructorLine.className = 'session-desc';
+        const teacherIcon = document.createElement('i'); teacherIcon.className = 'fa-solid fa-user-tie'; teacherIcon.setAttribute('aria-hidden','true');
+        instructorLine.append(teacherIcon, document.createTextNode(' Instructor: '));
+        const instructorName = document.createElement('strong'); instructorName.textContent = course.instructors[index % course.instructors.length];
+        instructorLine.appendChild(instructorName); row.appendChild(instructorLine);
+
+        const button = document.createElement('button'); button.className = 'watch'; button.type = 'button';
+        button.innerHTML = '<i class="fa-solid fa-play" aria-hidden="true"></i> Watch video';
+        if (session.soon) {
+          button.disabled = true; row.appendChild(button);
+          addText(row,'p','registration','The video will be available soon.');
+        } else {
+          const player = document.createElement('div'); player.className = 'player';
+          const iframe = document.createElement('iframe');
+          iframe.src = 'https://drive.google.com/file/d/' + encodeURIComponent(session.id) + '/preview';
+          iframe.title = course.displayName + ' — ' + session.title;
+          iframe.allow = 'autoplay; fullscreen'; iframe.allowFullscreen = true; iframe.loading = 'lazy';
+          player.appendChild(iframe);
+          button.addEventListener('click', () => {
+            const open = player.style.display === 'block'; player.style.display = open ? 'none' : 'block';
+            button.innerHTML = open ? '<i class="fa-solid fa-play" aria-hidden="true"></i> Watch video' : '<i class="fa-solid fa-pause" aria-hidden="true"></i> Hide video';
+          });
+          row.append(button,player);
+          addText(row,'p','registration','Certificate registration link will be added soon.');
+        }
+        sessionPanel.appendChild(row);
+      });
+
+      const sidebar = document.createElement('aside');
+      const instructorsPanel = document.createElement('section'); instructorsPanel.className = 'panel';
+      addText(instructorsPanel,'h2','', 'Instructors');
+      course.instructors.forEach((name,index) => {
+        const profile = document.createElement('div'); profile.className = 'instructor'; if(index) profile.style.marginTop='10px';
+        const avatar = document.createElement('div'); avatar.className='avatar'; avatar.innerHTML='<i class="fa-solid fa-user" aria-hidden="true"></i>';
+        const info = document.createElement('div'); addText(info,'strong','',name); addText(info,'span','',index===0?'Course instructor':'Instructor');
+        profile.append(avatar,info); instructorsPanel.appendChild(profile);
+      });
+      const outcomesPanel = document.createElement('section'); outcomesPanel.className='panel'; outcomesPanel.style.marginTop='18px';
+      addText(outcomesPanel,'h2','', 'What you will learn');
+      const topics = document.createElement('ul'); topics.className='topics';
+      course.overview.forEach(topic => addText(topics,'li','',topic)); outcomesPanel.appendChild(topics);
+      sidebar.append(instructorsPanel,outcomesPanel); layout.append(sessionPanel,sidebar); main.appendChild(layout); root.appendChild(main);
+    }
+    render();
+  </script>
+</body>
+</html>
