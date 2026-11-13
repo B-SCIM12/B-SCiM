@@ -25,7 +25,8 @@
         .hero:before{content:'';position:absolute;z-index:-1;width:310px;height:310px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:4%;top:8%;box-shadow:0 0 0 28px rgba(255,255,255,.025),0 0 0 62px rgba(255,255,255,.02)}.hero:after{content:'';position:absolute;z-index:-1;width:180px;height:180px;border-radius:50%;left:5%;bottom:-110px;background:rgba(215,168,75,.12);filter:blur(2px)}
         .hero h1{color:#fff!important;text-shadow:0 4px 24px rgba(0,0,0,.18)}.hero-text{color:#d8e5ee!important}.eyebrow{color:#f3d795!important;border-color:rgba(215,168,75,.65)!important;background:rgba(255,255,255,.08)!important}
         .visual-card{background:rgba(255,255,255,.94)!important;border-color:rgba(215,168,75,.35)!important;box-shadow:0 24px 70px rgba(0,0,0,.2)!important;position:relative;overflow:hidden}.visual-card:before{content:'';position:absolute;width:150px;height:150px;border:18px solid rgba(23,107,112,.08);border-radius:50%;right:-65px;top:-65px}.visual-card>*{position:relative}
-        .about-image{background:radial-gradient(circle at 75% 20%,rgba(215,168,75,.22),transparent 28%),linear-gradient(145deg,#e9f2f7,#dcecef)!important}.about-content .about-lead{font-size:16px;line-height:1.9}.about-content .about-vision{padding:21px 23px;margin:20px 0;background:linear-gradient(135deg,#102a43,#176b70);border-radius:16px;color:#fff;box-shadow:0 12px 30px rgba(8,29,53,.15)}.about-content .about-vision h3{margin:0 0 8px;color:#f2ce7d;font-size:16px}.about-content .about-vision p{margin:0;color:#f3f7fa}.about-content .about-focus{margin-top:16px;padding:15px 18px;border-left:4px solid #d7a84b;background:#f0f6f7;border-radius:0 12px 12px 0}.about-content .about-focus strong{color:#102a43}.about-content .features{margin-top:20px}
+        #about .about-grid{grid-template-columns:1fr!important;gap:0!important}#about .about-content{width:100%;max-width:900px;margin-inline:auto}#about .about-image{display:none!important}
+        .about-content .about-lead{font-size:16px;line-height:1.9}.about-content .about-vision{padding:21px 23px;margin:20px 0;background:linear-gradient(135deg,#102a43,#176b70);border-radius:16px;color:#fff;box-shadow:0 12px 30px rgba(8,29,53,.15)}.about-content .about-vision h3{margin:0 0 8px;color:#f2ce7d;font-size:16px}.about-content .about-vision p{margin:0;color:#f3f7fa}.about-content .about-focus{margin-top:16px;padding:15px 18px;border-left:4px solid #d7a84b;background:#f0f6f7;border-radius:0 12px 12px 0}.about-content .about-focus strong{color:#102a43}.about-content .features{margin-top:20px}
         .courses{background:linear-gradient(180deg,#f4f7fb,#edf3f7)!important}.course-card,.session-card,.team-card,.committee-card{border-color:#d9e2ec!important;box-shadow:0 8px 26px rgba(8,29,53,.075)!important;overflow:hidden}.course-card:hover,.session-card:hover,.team-card:hover,.committee-card:hover{box-shadow:0 20px 46px rgba(8,29,53,.15)!important;border-color:#d7a84b!important}
         .course-image{background:radial-gradient(circle at 78% 28%,rgba(215,168,75,.24),transparent 24%),linear-gradient(135deg,#e9f2f7,#dcebef)!important}.course-image:before{content:'';position:absolute;width:100px;height:100px;border:12px solid rgba(23,107,112,.09);border-radius:50%;left:18px;bottom:-48px}.course-image>*{position:relative;z-index:1}
         .btn-primary,.nav-button{background:linear-gradient(135deg,#102a43,#176b70)!important}.btn-primary:hover,.nav-button:hover{background:linear-gradient(135deg,#d7a84b,#b8832d)!important}.stats{background:radial-gradient(circle at 88% 18%,rgba(215,168,75,.14),transparent 25%),linear-gradient(135deg,#07182a,#102a43 65%,#176b70)!important}
@@ -35,30 +36,25 @@
       doc.head.appendChild(polish);
 
       const about=doc.querySelector('#about .about-content');
+      const aboutImage=doc.querySelector('#about .about-image');
+      if(aboutImage)aboutImage.remove();
       if(about){
         about.innerHTML=`
           <h2>About B-SCIM</h2>
           <p class="about-lead"><strong>B-SCIM (Building Scientific Minds)</strong> is a Scientific &amp; Professional Development Initiative. We empower university students and graduates through integrated learning experiences that build knowledge, develop practical skills, and create opportunities.</p>
           <p class="about-lead">We help bridge the gap between education and industry by combining academic knowledge with practical experience, research readiness, and career preparation.</p>
-          <div class="about-vision">
-            <h3><i class="fas fa-eye" aria-hidden="true"></i> Our Vision</h3>
-            <p>To build a sustainable scientific and professional ecosystem that empowers individuals with the knowledge, skills, and opportunities needed to contribute effectively to science and society.</p>
-          </div>
+          <div class="about-vision"><h3><i class="fas fa-eye" aria-hidden="true"></i> Our Vision</h3><p>To build a sustainable scientific and professional ecosystem that empowers individuals with the knowledge, skills, and opportunities needed to contribute effectively to science and society.</p></div>
           <div class="features">
             <div class="feature"><div class="feature-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div><div><h4>Who We Serve</h4><p>University students and graduates across scientific disciplines and universities.</p></div></div>
             <div class="feature"><div class="feature-icon"><i class="fas fa-flask" aria-hidden="true"></i></div><div><h4>Academic Knowledge</h4><p>Strengthen scientific foundations and connect learning to real-world needs.</p></div></div>
             <div class="feature"><div class="feature-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></div><div><h4>Practical Experience</h4><p>Develop applied skills through relevant learning and professional experiences.</p></div></div>
             <div class="feature"><div class="feature-icon"><i class="fas fa-magnifying-glass-chart" aria-hidden="true"></i></div><div><h4>Research Readiness</h4><p>Build research capabilities and scientific communication skills.</p></div></div>
           </div>
-          <div class="about-focus"><strong><i class="fas fa-bullseye" aria-hidden="true"></i> Our Focus:</strong> Science &bull; Pharmacy &bull; Agriculture</div>
-        `;
+          <div class="about-focus"><strong><i class="fas fa-bullseye" aria-hidden="true"></i> Our Focus:</strong> Science &bull; Pharmacy &bull; Agriculture</div>`;
       }
 
       site.showCourseDetails=function(courseName){window.location.href='course.html?course='+encodeURIComponent(courseName);};
-      const videoByTitle={
-        'AI Journey':'191lFjaDUl8GClBEpjnnIwj4vCQmK70EE',
-        'Presentation Secrets They Never Teach You':'11Q2BSIEQqMQWTJB-NDhIEBorr6kpjHPN'
-      };
+      const videoByTitle={'AI Journey':'191lFjaDUl8GClBEpjnnIwj4vCQmK70EE','Presentation Secrets They Never Teach You':'11Q2BSIEQqMQWTJB-NDhIEBorr6kpjHPN'};
       let data=site.eval('sessionData');
       if(Array.isArray(data)){
         data=data.filter(item=>item.title!=='Planning Your Presentation');
@@ -66,17 +62,8 @@
         const icons=['fa-file-lines','fa-flask','fa-person-chalkboard','fa-people-group','fa-book-open','fa-robot'];
         const grid=doc.getElementById('sessionsGrid');
         if(grid){
-          grid.innerHTML=data.map((item,index)=>{
-            const available=Boolean(videoByTitle[item.title]);
-            return '<article class="session-card"><div class="session-icon"><i class="fas '+icons[index%icons.length]+'"></i></div><h3>'+item.title+'</h3><p class="session-speaker">'+item.speaker+'</p>'+(available?'':'<span class="session-soon"><i class="fa-regular fa-clock"></i> Coming soon</span>')+'<button class="btn btn-primary" type="button" data-session-index="'+index+'">View Session Details</button></article>';
-          }).join('');
-          grid.addEventListener('click',function(event){
-            const button=event.target.closest('button[data-session-index]');if(!button)return;
-            const item=data[Number(button.dataset.sessionIndex)];if(!item)return;
-            const query=new URLSearchParams();query.set('title',item.title||'Session');query.set('speaker',item.speaker||'B-SCIM Instructor');query.set('bio',item.bio||'');query.set('topics',JSON.stringify(item.topics||[]));
-            if(videoByTitle[item.title])query.set('video',videoByTitle[item.title]);
-            window.location.href='session.html?'+query.toString();
-          });
+          grid.innerHTML=data.map((item,index)=>{const available=Boolean(videoByTitle[item.title]);return '<article class="session-card"><div class="session-icon"><i class="fas '+icons[index%icons.length]+'"></i></div><h3>'+item.title+'</h3><p class="session-speaker">'+item.speaker+'</p>'+(available?'':'<span class="session-soon"><i class="fa-regular fa-clock"></i> Coming soon</span>')+'<button class="btn btn-primary" type="button" data-session-index="'+index+'">View Session Details</button></article>';}).join('');
+          grid.addEventListener('click',function(event){const button=event.target.closest('button[data-session-index]');if(!button)return;const item=data[Number(button.dataset.sessionIndex)];if(!item)return;const query=new URLSearchParams();query.set('title',item.title||'Session');query.set('speaker',item.speaker||'B-SCIM Instructor');query.set('bio',item.bio||'');query.set('topics',JSON.stringify(item.topics||[]));if(videoByTitle[item.title])query.set('video',videoByTitle[item.title]);window.location.href='session.html?'+query.toString();});
         }
       }
       const resize=()=>{try{siteFrame.style.height=Math.max(doc.documentElement.scrollHeight,doc.body.scrollHeight)+'px'}catch(_){}};
